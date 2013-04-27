@@ -241,11 +241,15 @@ typedef QSharedPointer<Astm> PAstm;
 
 class ASTMParser
 {
+	ASTMParser();
 	public:
-		ASTMParser(QString delim);
-		PAstm parse( QString data );
+		static ASTMParser & instance()
+		{
+			static ASTMParser inst;
+			return inst;
+		}
 
-
+		PAstm parse( const QString & sdata );
 };
 
 

@@ -64,6 +64,67 @@ QByteArray Helpers::toLIS2_A2( QByteArray lis01_A2data)
 	return  lis2;
 }
 
+PAstm ASTMParser::parse( const QString & sdata )
+{
+	QString rec = sdata;
+	rec.replace(QRegExp("[<][^>]*[>].*"),"");
+	PAstm prec;
+
+	if ( rec.isEmpty() )
+		return prec;
+
+	if( rec.at(0) == 'H'  )
+	{
+		if ( rec.length() < 5 )
+			return prec;
+
+		prec->_sep._fieldSep = rec.at(1).toAscii();
+		prec->_sep._repeatSep = rec.at(2).toAscii();
+		prec->_sep._componentSep = rec.at(3).toAscii();
+		prec->_sep._escapeSep = rec.at(4).toAscii();
+	}
+
+	QStringList fields = rec.split(prec->_sep._fieldSep);
+	if (!fields.isEmpty())
+	{
+		char rt = fields.at(0).at( fields.at(0).size()-1 ).toAscii();
+		
+		switch( rt )
+		{
+			case 'H':
+				prec = PAstm(new ASTMHeader( prec->_sep.toString() ));
+				break;
+			case 'P':
+				prec = PAstm(new ASTMPatient(1));
+				break;
+			case 'O':
+				prec = PAstm(new ASTMOrder(1));
+				break;
+			case 'R':
+				prec = PAstm(new ASTMResult(1));
+				break;
+			case 'C':
+				prec = PAstm(new ASTMComment(1));
+				break;
+			case 'L':
+				prec = PAstm(new ASTMTerminator(1));
+				break;
+		}
+	}
+	if (!prec.isNull())
+	{
+		int startIdx=1; //Skip type
+		if ( prec->_type == EHeader )
+			startIdx=2; //Skip delimeter
+		for( int i=startIdx; i<fields.size(); ++i )
+		{
+			prec->setValue( i, fields.at(i) );
+		}
+	}
+	return prec;
+}
+
+
 Astm::Astm( int seq ):_seq(seq),_error(ErrNone)
 {
 	
