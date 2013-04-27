@@ -64,6 +64,11 @@ QByteArray Helpers::toLIS2_A2( QByteArray lis01_A2data)
 	return  lis2;
 }
 
+ASTMParser::ASTMParser()
+{
+
+}
+
 PAstm ASTMParser::parse( const QString & sdata )
 {
 	QString rec = sdata;

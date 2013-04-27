@@ -36,7 +36,6 @@ public:
     
 private slots:
     void on_actionExit_triggered();
-    void on_actionCommunication_triggered();
     void on_actionLoad_Trace_triggered();
 	void connectToTcpServer();
 

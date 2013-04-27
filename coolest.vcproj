@@ -128,8 +128,6 @@
 			<File
 				RelativePath="src\astm.cpp" />
 			<File
-				RelativePath="src\communicationoptions.cpp" />
-			<File
 				RelativePath="src\culistgui.cpp" />
 			<File
 				RelativePath="src\main.cpp" />
@@ -143,28 +141,7 @@
 			<File
 				RelativePath="src\astm.h" />
 			<File
-				RelativePath="src\communicationoptions.h">
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCustomBuildTool"
-						AdditionalDependencies="C:\Qt\4.8.4\bin\moc.exe;src\communicationoptions.h"
-						CommandLine="C:\Qt\4.8.4\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_SQL_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;..\..\..\Qt\4.8.4\include\QtCore&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtNetwork&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtGui&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtSql&quot; -I&quot;..\..\..\Qt\4.8.4\include&quot; -I&quot;..\..\..\Qt\4.8.4\include\ActiveQt&quot; -I&quot;debug&quot; -I&quot;.&quot; -I..\..\..\Qt\4.8.4\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\communicationoptions.h -o debug\moc_communicationoptions.cpp"
-						Description="MOC src\communicationoptions.h"
-						Outputs="debug\moc_communicationoptions.cpp"
-						Path="c:\Qt\4.8.4\bin" />
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCustomBuildTool"
-						AdditionalDependencies="C:\Qt\4.8.4\bin\moc.exe;src\communicationoptions.h"
-						CommandLine="C:\Qt\4.8.4\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_SQL_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;..\..\..\Qt\4.8.4\include\QtCore&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtNetwork&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtGui&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtSql&quot; -I&quot;..\..\..\Qt\4.8.4\include&quot; -I&quot;..\..\..\Qt\4.8.4\include\ActiveQt&quot; -I&quot;release&quot; -I&quot;.&quot; -I..\..\..\Qt\4.8.4\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\communicationoptions.h -o release\moc_communicationoptions.cpp"
-						Description="MOC src\communicationoptions.h"
-						Outputs="release\moc_communicationoptions.cpp"
-						Path="c:\Qt\4.8.4\bin" />
-				</FileConfiguration>
-			</File>
+				RelativePath="src\config.h" />
 			<File
 				RelativePath="src\culistgui.h">
 				<FileConfiguration
@@ -216,18 +193,6 @@
 			Name="Generated Files"
 			Filter="cpp;c;cxx;moc;h;def;odl;idl;res;"
 			UniqueIdentifier="{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}">
-			<File
-				RelativePath="debug\moc_communicationoptions.cpp">
-				<FileConfiguration
-					Name="Release|Win32"
-					ExcludedFromBuild="true" />
-			</File>
-			<File
-				RelativePath="release\moc_communicationoptions.cpp">
-				<FileConfiguration
-					Name="Debug|Win32"
-					ExcludedFromBuild="true" />
-			</File>
 			<File
 				RelativePath="debug\moc_culistgui.cpp">
 				<FileConfiguration

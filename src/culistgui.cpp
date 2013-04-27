@@ -7,7 +7,6 @@
 
 #include "culistgui.h"
 #include "ui_culistgui.h"
-#include "communicationoptions.h"
 
 #include <QFileDialog>
 #include <QTextStream>
@@ -77,18 +76,6 @@ void CulistGui::clearLog()
 void CulistGui::on_actionExit_triggered()
 {
     close();
-}
-
-void CulistGui::on_actionCommunication_triggered()
-{
-    CommunicationOptions *commdlg = new CommunicationOptions;
-	commdlg->init();
-	int res = commdlg->exec();
-	if ( res == QDialog::Accepted )
-	{
-		_actAsProxyServer = 0;//TODO
-	}
-
 }
 
 void CulistGui::connectToTcpServer()
@@ -289,6 +276,7 @@ bool CulistGui::loadTrace(QString tf)
 			//_records.setStringList(traceData);
 		}
 	}
+	return true;
 }
 
 void CulistGui::on_actionListen_triggered()
