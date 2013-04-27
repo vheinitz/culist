@@ -14,13 +14,12 @@ TEMPLATE = app
 SOURCES += \
 	src/main.cpp\
     src/culistgui.cpp \
-    src/communicationoptions.cpp \
     src/persistence.cpp \
     src/astm.cpp \
 
 HEADERS  += \
 	src/culistgui.h \
-    src/communicationoptions.h \
+	src/config.h \
     src/persistence.h \
     src/astm.h \
 
