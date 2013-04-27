@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9,00"
 	Name="coolest"
-	ProjectGUID="{6FE67168-3D6A-3929-99FA-836BF0D47D5B}"
+	ProjectGUID="{12F53DBF-8A31-379D-96E2-92BA5BB91B6A}"
 	Keyword="Qt4VSv1.0">
 	<Platforms>
 		<Platform
@@ -19,7 +19,7 @@
 			UseOfMfc="0">
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="&quot;..\..\..\..\Qt\4.8.4\include\QtCore&quot;,&quot;..\..\..\..\Qt\4.8.4\include\QtNetwork&quot;,&quot;..\..\..\..\Qt\4.8.4\include\QtGui&quot;,&quot;..\..\..\..\Qt\4.8.4\include\QtSql&quot;,&quot;..\..\..\..\Qt\4.8.4\include&quot;,&quot;..\..\..\..\Qt\4.8.4\include\ActiveQt&quot;,&quot;debug&quot;,&quot;.&quot;,..\..\..\..\Qt\4.8.4\mkspecs\default"
+				AdditionalIncludeDirectories="&quot;..\..\..\Qt\4.8.4\include\QtCore&quot;,&quot;..\..\..\Qt\4.8.4\include\QtNetwork&quot;,&quot;..\..\..\Qt\4.8.4\include\QtGui&quot;,&quot;..\..\..\Qt\4.8.4\include\QtSql&quot;,&quot;..\..\..\Qt\4.8.4\include&quot;,&quot;..\..\..\Qt\4.8.4\include\ActiveQt&quot;,&quot;debug&quot;,&quot;.&quot;,..\..\..\Qt\4.8.4\mkspecs\default"
 				AdditionalOptions="-Zm200 -w34100 -w34189"
 				AssemblerListingLocation="debug\"
 				BufferSecurityCheck="false"
@@ -73,7 +73,7 @@
 			UseOfMfc="0">
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="&quot;..\..\..\..\Qt\4.8.4\include\QtCore&quot;,&quot;..\..\..\..\Qt\4.8.4\include\QtNetwork&quot;,&quot;..\..\..\..\Qt\4.8.4\include\QtGui&quot;,&quot;..\..\..\..\Qt\4.8.4\include\QtSql&quot;,&quot;..\..\..\..\Qt\4.8.4\include&quot;,&quot;..\..\..\..\Qt\4.8.4\include\ActiveQt&quot;,&quot;release&quot;,&quot;.&quot;,..\..\..\..\Qt\4.8.4\mkspecs\default"
+				AdditionalIncludeDirectories="&quot;..\..\..\Qt\4.8.4\include\QtCore&quot;,&quot;..\..\..\Qt\4.8.4\include\QtNetwork&quot;,&quot;..\..\..\Qt\4.8.4\include\QtGui&quot;,&quot;..\..\..\Qt\4.8.4\include\QtSql&quot;,&quot;..\..\..\Qt\4.8.4\include&quot;,&quot;..\..\..\Qt\4.8.4\include\ActiveQt&quot;,&quot;release&quot;,&quot;.&quot;,..\..\..\Qt\4.8.4\mkspecs\default"
 				AdditionalOptions="-Zm200 -w34100 -w34189"
 				AssemblerListingLocation="release\"
 				BufferSecurityCheck="false"
@@ -149,7 +149,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						AdditionalDependencies="C:\Qt\4.8.4\bin\moc.exe;src\communicationoptions.h"
-						CommandLine="C:\Qt\4.8.4\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_SQL_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;..\..\..\..\Qt\4.8.4\include\QtCore&quot; -I&quot;..\..\..\..\Qt\4.8.4\include\QtNetwork&quot; -I&quot;..\..\..\..\Qt\4.8.4\include\QtGui&quot; -I&quot;..\..\..\..\Qt\4.8.4\include\QtSql&quot; -I&quot;..\..\..\..\Qt\4.8.4\include&quot; -I&quot;..\..\..\..\Qt\4.8.4\include\ActiveQt&quot; -I&quot;debug&quot; -I&quot;.&quot; -I..\..\..\..\Qt\4.8.4\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\communicationoptions.h -o debug\moc_communicationoptions.cpp"
+						CommandLine="C:\Qt\4.8.4\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_SQL_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;..\..\..\Qt\4.8.4\include\QtCore&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtNetwork&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtGui&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtSql&quot; -I&quot;..\..\..\Qt\4.8.4\include&quot; -I&quot;..\..\..\Qt\4.8.4\include\ActiveQt&quot; -I&quot;debug&quot; -I&quot;.&quot; -I..\..\..\Qt\4.8.4\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\communicationoptions.h -o debug\moc_communicationoptions.cpp"
 						Description="MOC src\communicationoptions.h"
 						Outputs="debug\moc_communicationoptions.cpp"
 						Path="c:\Qt\4.8.4\bin" />
@@ -159,7 +159,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						AdditionalDependencies="C:\Qt\4.8.4\bin\moc.exe;src\communicationoptions.h"
-						CommandLine="C:\Qt\4.8.4\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_SQL_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;..\..\..\..\Qt\4.8.4\include\QtCore&quot; -I&quot;..\..\..\..\Qt\4.8.4\include\QtNetwork&quot; -I&quot;..\..\..\..\Qt\4.8.4\include\QtGui&quot; -I&quot;..\..\..\..\Qt\4.8.4\include\QtSql&quot; -I&quot;..\..\..\..\Qt\4.8.4\include&quot; -I&quot;..\..\..\..\Qt\4.8.4\include\ActiveQt&quot; -I&quot;release&quot; -I&quot;.&quot; -I..\..\..\..\Qt\4.8.4\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\communicationoptions.h -o release\moc_communicationoptions.cpp"
+						CommandLine="C:\Qt\4.8.4\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_SQL_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;..\..\..\Qt\4.8.4\include\QtCore&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtNetwork&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtGui&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtSql&quot; -I&quot;..\..\..\Qt\4.8.4\include&quot; -I&quot;..\..\..\Qt\4.8.4\include\ActiveQt&quot; -I&quot;release&quot; -I&quot;.&quot; -I..\..\..\Qt\4.8.4\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\communicationoptions.h -o release\moc_communicationoptions.cpp"
 						Description="MOC src\communicationoptions.h"
 						Outputs="release\moc_communicationoptions.cpp"
 						Path="c:\Qt\4.8.4\bin" />
@@ -172,7 +172,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						AdditionalDependencies="C:\Qt\4.8.4\bin\moc.exe;src\culistgui.h"
-						CommandLine="C:\Qt\4.8.4\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_SQL_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;..\..\..\..\Qt\4.8.4\include\QtCore&quot; -I&quot;..\..\..\..\Qt\4.8.4\include\QtNetwork&quot; -I&quot;..\..\..\..\Qt\4.8.4\include\QtGui&quot; -I&quot;..\..\..\..\Qt\4.8.4\include\QtSql&quot; -I&quot;..\..\..\..\Qt\4.8.4\include&quot; -I&quot;..\..\..\..\Qt\4.8.4\include\ActiveQt&quot; -I&quot;debug&quot; -I&quot;.&quot; -I..\..\..\..\Qt\4.8.4\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\culistgui.h -o debug\moc_culistgui.cpp"
+						CommandLine="C:\Qt\4.8.4\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_SQL_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;..\..\..\Qt\4.8.4\include\QtCore&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtNetwork&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtGui&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtSql&quot; -I&quot;..\..\..\Qt\4.8.4\include&quot; -I&quot;..\..\..\Qt\4.8.4\include\ActiveQt&quot; -I&quot;debug&quot; -I&quot;.&quot; -I..\..\..\Qt\4.8.4\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\culistgui.h -o debug\moc_culistgui.cpp"
 						Description="MOC src\culistgui.h"
 						Outputs="debug\moc_culistgui.cpp"
 						Path="c:\Qt\4.8.4\bin" />
@@ -182,7 +182,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						AdditionalDependencies="C:\Qt\4.8.4\bin\moc.exe;src\culistgui.h"
-						CommandLine="C:\Qt\4.8.4\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_SQL_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;..\..\..\..\Qt\4.8.4\include\QtCore&quot; -I&quot;..\..\..\..\Qt\4.8.4\include\QtNetwork&quot; -I&quot;..\..\..\..\Qt\4.8.4\include\QtGui&quot; -I&quot;..\..\..\..\Qt\4.8.4\include\QtSql&quot; -I&quot;..\..\..\..\Qt\4.8.4\include&quot; -I&quot;..\..\..\..\Qt\4.8.4\include\ActiveQt&quot; -I&quot;release&quot; -I&quot;.&quot; -I..\..\..\..\Qt\4.8.4\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\culistgui.h -o release\moc_culistgui.cpp"
+						CommandLine="C:\Qt\4.8.4\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_SQL_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;..\..\..\Qt\4.8.4\include\QtCore&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtNetwork&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtGui&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtSql&quot; -I&quot;..\..\..\Qt\4.8.4\include&quot; -I&quot;..\..\..\Qt\4.8.4\include\ActiveQt&quot; -I&quot;release&quot; -I&quot;.&quot; -I..\..\..\Qt\4.8.4\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\culistgui.h -o release\moc_culistgui.cpp"
 						Description="MOC src\culistgui.h"
 						Outputs="release\moc_culistgui.cpp"
 						Path="c:\Qt\4.8.4\bin" />
@@ -195,7 +195,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						AdditionalDependencies="C:\Qt\4.8.4\bin\moc.exe;src\persistence.h"
-						CommandLine="C:\Qt\4.8.4\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_SQL_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;..\..\..\..\Qt\4.8.4\include\QtCore&quot; -I&quot;..\..\..\..\Qt\4.8.4\include\QtNetwork&quot; -I&quot;..\..\..\..\Qt\4.8.4\include\QtGui&quot; -I&quot;..\..\..\..\Qt\4.8.4\include\QtSql&quot; -I&quot;..\..\..\..\Qt\4.8.4\include&quot; -I&quot;..\..\..\..\Qt\4.8.4\include\ActiveQt&quot; -I&quot;debug&quot; -I&quot;.&quot; -I..\..\..\..\Qt\4.8.4\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\persistence.h -o debug\moc_persistence.cpp"
+						CommandLine="C:\Qt\4.8.4\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_SQL_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;..\..\..\Qt\4.8.4\include\QtCore&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtNetwork&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtGui&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtSql&quot; -I&quot;..\..\..\Qt\4.8.4\include&quot; -I&quot;..\..\..\Qt\4.8.4\include\ActiveQt&quot; -I&quot;debug&quot; -I&quot;.&quot; -I..\..\..\Qt\4.8.4\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\persistence.h -o debug\moc_persistence.cpp"
 						Description="MOC src\persistence.h"
 						Outputs="debug\moc_persistence.cpp"
 						Path="c:\Qt\4.8.4\bin" />
@@ -205,7 +205,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						AdditionalDependencies="C:\Qt\4.8.4\bin\moc.exe;src\persistence.h"
-						CommandLine="C:\Qt\4.8.4\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_SQL_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;..\..\..\..\Qt\4.8.4\include\QtCore&quot; -I&quot;..\..\..\..\Qt\4.8.4\include\QtNetwork&quot; -I&quot;..\..\..\..\Qt\4.8.4\include\QtGui&quot; -I&quot;..\..\..\..\Qt\4.8.4\include\QtSql&quot; -I&quot;..\..\..\..\Qt\4.8.4\include&quot; -I&quot;..\..\..\..\Qt\4.8.4\include\ActiveQt&quot; -I&quot;release&quot; -I&quot;.&quot; -I..\..\..\..\Qt\4.8.4\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\persistence.h -o release\moc_persistence.cpp"
+						CommandLine="C:\Qt\4.8.4\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_SQL_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;..\..\..\Qt\4.8.4\include\QtCore&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtNetwork&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtGui&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtSql&quot; -I&quot;..\..\..\Qt\4.8.4\include&quot; -I&quot;..\..\..\Qt\4.8.4\include\ActiveQt&quot; -I&quot;release&quot; -I&quot;.&quot; -I..\..\..\Qt\4.8.4\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\persistence.h -o release\moc_persistence.cpp"
 						Description="MOC src\persistence.h"
 						Outputs="release\moc_persistence.cpp"
 						Path="c:\Qt\4.8.4\bin" />
