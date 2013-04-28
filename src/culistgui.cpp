@@ -243,7 +243,7 @@ bool CulistGui::loadTrace(QString tf)
 				{
 					//traceData << l;
 
-					PAstm prec = ASTMParser::instance().parse(l);
+					PAstm prec = ASTMFactory::instance().parse(l);
 
 					if (!prec.isNull())
 					{

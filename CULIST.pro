@@ -7,7 +7,7 @@
 
 QT       += core gui network sql
 
-TARGET = coolest
+TARGET = culist
 TEMPLATE = app
 
 
