@@ -29,9 +29,21 @@ static const char ASTM_NAK = 0x15;
 static const char ASTM_LF  = 0x0A;
 static const char ASTM_CR  = 0x0D;
 
+//TODO handle escape sequences
+/*
+&H& start highlighting text
+&N& normal text (end highlighting)
+&F& imbedded field delimiter character
+&S& imbedded component field delimiter character
+&R& imbedded repeat field delimiter character
+&E& imbedded escape delimiter character
+&Xhhhh& hexadecimal data
+&Zcccc& Local (manufacturer defined) escape sequence
+*/
+
 typedef QMap<QString, QString> TRecordValues;
 
-enum RecordType{ESession=1, EMessage=2, EHeader, EPatient,EOrder,EResult,EComment,ETerminator};
+enum RecordType{ESession=1, EMessage=2, EHeader, EPatient,EOrder,EResult,EComment,ETManufacturer,ETerminator};
 
 
 class Helpers
@@ -165,7 +177,7 @@ class Astm : public QObject
 protected:
 	QStringList _ent;
 	TRecordValues _vals;
-	int _seq;
+	int _seq; //TODO: remove
 	
 public:
 	static Separators _sep; //TODO: make not static - session/message context data
@@ -205,6 +217,12 @@ class ASTMHeader: public Astm
 {
 	public:
 		ASTMHeader(QString delim);
+};
+
+class ASTMManufacturer: public Astm
+{
+	public:
+		ASTMManufacturer( int seq);
 };
 
 class ASTMPatient: public Astm

@@ -43,7 +43,7 @@ CulistGui::CulistGui(QWidget *parent) :
 	_recordNames[EComment] = tr("Comment");
 	_recordNames[EHeader] = tr("Header");
 	_recordNames[ETerminator] = tr("Terminator");
-	
+	_recordNames[ETManufacturer] = tr("Manufacturer");
 	on_actionClear_All_triggered();
 	
 	ui->actionStop_Listening->setEnabled(false);

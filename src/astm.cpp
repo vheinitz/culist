@@ -111,6 +111,9 @@ PAstm ASTMParser::parse( const QString & sdata )
 			case 'C':
 				prec = PAstm(new ASTMComment(1));
 				break;
+			case 'M':
+				prec = PAstm(new ASTMManufacturer(1));
+				break;
 			case 'L':
 				prec = PAstm(new ASTMTerminator(1));
 				break;
@@ -318,6 +321,19 @@ ASTMComment::ASTMComment( int seq) : Astm( seq )
 	_vals["type"] = "C";
 	_type=EComment;
 }
+
+ASTMManufacturer::ASTMManufacturer( int seq) : Astm( seq )
+{
+	constructRecord( QStringList()
+		<<"type" <<"seq" <<"mdf1"
+			<<"mdf2"<<"mdf3"<<"mdf4"<<"mdf5"<<"mdf6"<<"mdf7"<<"mdf8"
+			<<"mdf9"<<"mdf10"<<"mdf11"<<"mdf12"<<"mdf13"<<"mdf14"<<"mdf15"
+			<<"mdf16"<<"mdf17"<<"mdf18"<<"mdf19"<<"mdf20"<<"mdf21"<<"mdf22"
+		);
+	_vals["type"] = "M";
+	_type=ETManufacturer;
+}
+
 
 ASTMTerminator::ASTMTerminator( int seq ) : Astm( seq )
 {
