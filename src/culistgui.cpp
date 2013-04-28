@@ -38,12 +38,14 @@ CulistGui::CulistGui(QWidget *parent) :
 
 
 	_recordNames[EPatient] = tr("Patient");
+	_recordNames[ERequest] = tr("Request");
+	_recordNames[EScientific] = tr("Scientific");
 	_recordNames[EOrder] = tr("Order");
 	_recordNames[EResult] = tr("Result");
 	_recordNames[EComment] = tr("Comment");
 	_recordNames[EHeader] = tr("Header");
 	_recordNames[ETerminator] = tr("Terminator");
-	_recordNames[ETManufacturer] = tr("Manufacturer");
+	_recordNames[EManufacturer] = tr("Manufacturer");
 	on_actionClear_All_triggered();
 	
 	ui->actionStop_Listening->setEnabled(false);
@@ -234,12 +236,12 @@ bool CulistGui::loadTrace(QString tf)
 		while(!ts.atEnd())
 		{
 			QStringList sl = ts.readAll().split(QRegExp("[\n\r]"));
-			QStringList traceData;
+			//QStringList traceData;
 			foreach( QString l, sl )
 			{
 				if( !l.isEmpty() )
 				{
-					traceData << l;
+					//traceData << l;
 
 					PAstm prec = ASTMParser::instance().parse(l);
 
@@ -366,6 +368,12 @@ void CulistGui::on_trvEditRecords_clicked( const QModelIndex & index )
 			case EPatient:
 				_rec = new ASTMPatient(1);
 			break;
+			case ERequest:
+				_rec = new ASTMRequest(1);
+			break;
+			case EScientific:
+				_rec = new ASTMScientific(1);
+			break;
 			case EOrder:
 				_rec = new ASTMOrder(1);
 			break;
@@ -374,6 +382,9 @@ void CulistGui::on_trvEditRecords_clicked( const QModelIndex & index )
 			break;
 			case EComment:
 				_rec = new ASTMComment(1);
+			break;
+			case EManufacturer:
+				_rec = new ASTMManufacturer(1);
 			break;
 			case EHeader:
 				_rec = new ASTMHeader("");
@@ -469,24 +480,32 @@ void CulistGui::on_trvEditRecords_customContextMenuRequested(const QPoint &pos)
 		case EMessage:
 			ctx->addAction( ui->actionAdd_Header );
 			ctx->addAction( ui->actionAdd_Patient );
+			ctx->addAction( ui->actionAdd_Manufacturer );
+			ctx->addAction( ui->actionAdd_Scientific );
+			ctx->addAction( ui->actionAdd_Request );
 			ctx->addAction( ui->actionAdd_Comment );
 			ctx->addAction( ui->actionAdd_Terminator );
 			ctx->addAction( ui->actionSend_Data );
 			break;
+		case ERequest:
+		case EScientific:
+				//TODO
+			break;
 		case EHeader:
-			ctx->addAction( ui->actionAdd_Comment );
+			ctx->addAction( ui->actionAdd_Comment );			
 			break;
 		case EPatient:
 			ctx->addAction( ui->actionAdd_Order );
-			ctx->addAction( ui->actionAdd_Comment );
-			
+			ctx->addAction( ui->actionAdd_Comment );			
 			break;
 		case EOrder:
 			ctx->addAction( ui->actionAdd_Result );
-			ctx->addAction( ui->actionAdd_Comment );
-			
+			ctx->addAction( ui->actionAdd_Comment );			
 			break;
 		case EResult:
+			ctx->addAction( ui->actionAdd_Comment );
+			break;
+		case EManufacturer:
 			ctx->addAction( ui->actionAdd_Comment );
 			break;
 		case EComment:
@@ -513,6 +532,18 @@ void CulistGui::on_actionAdd_Session_triggered()
 void CulistGui::on_actionAdd_Patient_triggered()
 {
 	addRecord( EPatient );
+}
+void CulistGui::on_actionAdd_Manufacturer_triggered()
+{
+	addRecord( EManufacturer );
+}
+void CulistGui::on_actionAdd_Request_triggered()
+{
+	addRecord( ERequest );
+}
+void CulistGui::on_actionAdd_Scientific_triggered()
+{
+	addRecord( EScientific );
 }
 void CulistGui::on_actionAdd_Order_triggered()
 {
@@ -560,6 +591,9 @@ bool CulistGui::dataFromMessage( QStandardItem *mesg, QList<QByteArray> &outData
 	int orderNum=1;
 	int resultNum=1;
 	int commentNum=1;
+	int scientificNum=1;
+	int requestNum=1;
+	int manufacturerNum=1;
 	
 	
 	QList< QPair<QStandardItem *, int>  > hOrder;
@@ -596,6 +630,17 @@ bool CulistGui::dataFromMessage( QStandardItem *mesg, QList<QByteArray> &outData
 			resultNum=1;
 			commentNum=1;
 			break;
+		case ERequest:
+			rec = new ASTMRequest(requestNum);
+			requestNum++;
+			orderNum=1;
+			resultNum=1;
+			commentNum=1;
+			break;
+		case EScientific:
+			rec = new ASTMScientific(scientificNum);
+			scientificNum++;
+			break;
 		case EOrder:
 			rec = new ASTMOrder(orderNum);
 			orderNum++;
@@ -610,6 +655,10 @@ bool CulistGui::dataFromMessage( QStandardItem *mesg, QList<QByteArray> &outData
 		case EComment:
 			rec = new ASTMComment(commentNum);
 			commentNum++;
+			break;
+		case EManufacturer:
+			rec = new ASTMManufacturer(manufacturerNum);
+			manufacturerNum++;
 			break;
 		case ETerminator:
 			rec = new ASTMTerminator(1); //todo: could be something else then 1?
@@ -706,6 +755,9 @@ QStandardItem * CulistGui::addRecord( RecordType rt )
 				case EHeader:
 				case EPatient:
 				case ETerminator:
+				case EManufacturer:
+				case EScientific:
+				case ERequest:
 					while( _currentEditItem.isValid() && _currentEditItem.data(Qt::UserRole+1).toInt() != EMessage)
 						_currentEditItem = _currentEditItem.parent();
 					break;
@@ -717,6 +769,7 @@ QStandardItem * CulistGui::addRecord( RecordType rt )
 					while( _currentEditItem.isValid() && _currentEditItem.data(Qt::UserRole+1).toInt() != EOrder)
 						_currentEditItem = _currentEditItem.parent();
 					break;
+
 				case EComment:
 					while( _currentEditItem.isValid() && _currentEditItem.data(Qt::UserRole+1).toInt() == EComment)
 						_currentEditItem = _currentEditItem.parent();

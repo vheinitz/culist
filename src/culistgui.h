@@ -70,6 +70,10 @@ private slots:
 	void on_actionAdd_Comment_triggered();
 	void on_actionAdd_Header_triggered();
 	void on_actionAdd_Terminator_triggered();
+	void on_actionAdd_Manufacturer_triggered();
+	void on_actionAdd_Scientific_triggered();
+	void on_actionAdd_Request_triggered();
+	
 
 	void on_actionInsert_Session_triggered();
 	void on_actionInsert_Message_triggered();

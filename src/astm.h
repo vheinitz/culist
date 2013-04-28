@@ -43,7 +43,18 @@ static const char ASTM_CR  = 0x0D;
 
 typedef QMap<QString, QString> TRecordValues;
 
-enum RecordType{ESession=1, EMessage=2, EHeader, EPatient,EOrder,EResult,EComment,ETManufacturer,ETerminator};
+enum RecordType{
+	ESession=1, 
+	EMessage=2, 
+	EHeader, 
+	ERequest,
+	EPatient,
+	EOrder,
+	EResult,
+	EComment,
+	EManufacturer,
+	EScientific,
+	ETerminator};
 
 
 class Helpers
@@ -223,6 +234,18 @@ class ASTMManufacturer: public Astm
 {
 	public:
 		ASTMManufacturer( int seq);
+};
+
+class ASTMScientific: public Astm
+{
+	public:
+		ASTMScientific( int seq);
+};
+
+class ASTMRequest: public Astm
+{
+	public:
+		ASTMRequest( int seq);
 };
 
 class ASTMPatient: public Astm

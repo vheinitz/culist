@@ -608,6 +608,21 @@
     <string>Alt+R</string>
    </property>
   </action>
+  <action name="actionAdd_Manufacturer">
+   <property name="text">
+     <string>Add Manufacturer</string>
+   </property>
+  </action>
+  <action name="actionAdd_Scientific">
+   <property name="text">
+     <string>Add Scientific</string>
+   </property>
+  </action>
+  <action name="actionAdd_Request">
+   <property name="text">
+     <string>Add Request</string>
+   </property>
+  </action>
   <action name="actionAdd_Patient">
    <property name="text">
     <string>Add Patient</string>

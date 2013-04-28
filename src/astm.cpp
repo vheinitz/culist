@@ -114,6 +114,12 @@ PAstm ASTMParser::parse( const QString & sdata )
 			case 'M':
 				prec = PAstm(new ASTMManufacturer(1));
 				break;
+			case 'S':
+				prec = PAstm(new ASTMScientific(1));
+				break;
+			case 'Q':
+				prec = PAstm(new ASTMRequest(1));
+				break;
 			case 'L':
 				prec = PAstm(new ASTMTerminator(1));
 				break;
@@ -142,7 +148,7 @@ Astm::~Astm(void)
 {
 }
 
-QString Astm::toString(bool allFields)
+/*QString Astm::toString(bool allFields)
 {
 	QString out;
 	switch( _type )
@@ -173,7 +179,7 @@ QString Astm::toString(bool allFields)
 			out+="\t"+n+":"+d+"\n";
 	}
 	return out;
-}
+}*/
 
 QMap<QString, QVariant> Astm::values()
 {
@@ -275,6 +281,31 @@ ASTMHeader::ASTMHeader(QString delim)
 	_vals["delimeter"] = delim;
 }
 
+ASTMScientific::ASTMScientific( int seq) : Astm( seq )
+{
+	constructRecord( QStringList()
+		<<"type" <<"seq" <<"practice_id" <<"laboratory_id" <<"id" <<"name"
+		<<"maiden_name" <<"birthdate" <<"sex" <<"race" <<"address" <<"reserved"
+		<<"phone" <<"physician_id" <<"special_1" <<"special_2" <<"height" <<"weight"
+		<<"diagnosis" <<"medication" <<"diet" <<"practice_field_1" 
+		<<"practice_field_2" <<"admission_date" <<"admission_status" <<"location"
+		);
+	_vals["type"] = "S";
+	_type=EScientific;
+}
+
+ASTMRequest::ASTMRequest( int seq) : Astm( seq )
+{
+	constructRecord( QStringList()
+		<<"type" <<"seq" <<"practice_id" <<"laboratory_id" <<"id" <<"name"
+		<<"maiden_name" <<"birthdate" <<"sex" <<"race" <<"address" <<"reserved"
+		<<"phone" <<"physician_id" <<"special_1" <<"special_2" <<"height" <<"weight"
+		<<"diagnosis" <<"medication" <<"diet" <<"practice_field_1" 
+		<<"practice_field_2" <<"admission_date" <<"admission_status" <<"location"
+		);
+	_vals["type"] = "Q";
+	_type=ERequest;
+}
 
 ASTMPatient::ASTMPatient( int seq) : Astm( seq )
 {
@@ -331,7 +362,7 @@ ASTMManufacturer::ASTMManufacturer( int seq) : Astm( seq )
 			<<"mdf16"<<"mdf17"<<"mdf18"<<"mdf19"<<"mdf20"<<"mdf21"<<"mdf22"
 		);
 	_vals["type"] = "M";
-	_type=ETManufacturer;
+	_type=EManufacturer;
 }
 
 
