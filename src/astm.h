@@ -346,6 +346,8 @@ class ASTMFactory
 		void init();
 
 		PAstm parse( const QString & sdata );
+		QString userName( const QString & profile, char rt, int idx );
+		QString stdRef( const QString & profile, char rt, int idx );
 };
 
 
