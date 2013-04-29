@@ -92,6 +92,8 @@ private slots:
 
     void on_bClearLog_clicked();
 
+	void on_bSaveEditedRecord_clicked();
+
     void on_actionSave_Trace_triggered();
 
     void on_actionNew_Project_triggered();

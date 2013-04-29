@@ -329,9 +329,9 @@ public:
 };
 
 typedef QSharedPointer<FieldInfo> PFieldInfo;
-typedef QSharedPointer< QList<PFieldInfo> > PRecordInfo;
-typedef QSharedPointer< QMap<char,PRecordInfo> > PRecordsInfo;
-typedef QMap< QString, PRecordsInfo> TProfileInfo;
+typedef QList<PFieldInfo> TRecordInfo;
+typedef QMap<char, TRecordInfo> TRecordsInfo;
+typedef QMap< QString, TRecordsInfo> TProfileInfo;
 
 class ASTMFactory
 {

@@ -56,6 +56,8 @@ CulistGui::CulistGui(QWidget *parent) :
 	_sendDataTimer->setInterval(3000);//TODO configurable
 	connect( _sendDataTimer, SIGNAL(timeout()), this, SLOT(processSendDataTimeout()) );
 
+	ASTMFactory::instance().init();
+
 	
 }
 
@@ -399,16 +401,28 @@ void CulistGui::on_trvEditRecords_clicked( const QModelIndex & index )
 			return;
 		}
 		
+		char rectype=0;
+		int fi=-1;
 		foreach( QString fld, _rec->fields() )
 		{
-			if ( fld == "type" || fld == "seq" )
+			
+
+			fi++;
+			
+			if ( fld == "type" )
+			{
+				QString type = _rec->values()["type"].toString();
+				rectype = type.at(0).toAscii();
+				continue;
+			}
+			if ( fld == "seq" )
 				continue;
 
 			QHBoxLayout *hboxLayout = new QHBoxLayout;
 			_recordEditViews.append( hboxLayout );
 			//QSpacerItem *spacerItem = new QSpacerItem(;
 			ui->ltRecordFlds->addLayout( hboxLayout);
-			QLabel * fn= new QLabel(fld);
+			QLabel * fn= new QLabel(ASTMFactory::instance().userName("astm_E1394E97",rectype,fi) );
 			fn->setMinimumWidth(150);
 			hboxLayout->addWidget( fn );
 			QLineEdit * fv = new QLineEdit;
@@ -423,14 +437,16 @@ void CulistGui::on_trvEditRecords_clicked( const QModelIndex & index )
 
 		QMap<QString,QVariant> vals = cur->data(Qt::UserRole+2).toMap();		
 
+		
 		for( QMap<QString, QVariant>::const_iterator it = vals.begin(), end = vals.end(); it!=end; ++it )
 		{
-			QString fn = it.key();
-			if ( fn == "type" || fn == "seq" )
+			QString fld = it.key();
+			if ( fld == "type" || fld == "seq" )
 				continue;
+			
 
 			
-			QLineEdit * valEdit = this->findChild<QLineEdit*>( fn+"_myLisTraqDynamicEditView4711" );
+			QLineEdit * valEdit = this->findChild<QLineEdit*>( fld+"_myLisTraqDynamicEditView4711" );
 			if (!valEdit)
 				return;
 			valEdit->setText( it.value().toString() );
@@ -1119,6 +1135,27 @@ void CulistGui::on_bClearLog_clicked()
 	ui->tRecordContent->clear();
 }
 
+void CulistGui::on_bSaveEditedRecord_clicked()
+{
+	if ( _currentEditItem.isValid() )
+	{
+		QStandardItem *cur = _editRecords.itemFromIndex(_currentEditItem);
+		QMap<QString,QVariant> vals = cur->data(Qt::UserRole+2).toMap();
+	
+		foreach( QString fld, vals.keys() )
+		{
+			if ( fld == "type" || fld == "seq" )
+				continue;
+
+			QLineEdit * valEdit = this->findChild<QLineEdit*>( fld+"_myLisTraqDynamicEditView4711" );
+			if (!valEdit)
+				break;
+			vals[fld] = valEdit->text();
+		}
+		cur->setData(vals,Qt::UserRole+2);
+	}
+}
+
 void CulistGui::on_actionSave_Trace_triggered()
 {
     if (_lastTraceFile.isEmpty())
@@ -1132,7 +1169,6 @@ void CulistGui::on_actionSave_Trace_triggered()
 
 void CulistGui::saveTrace(QString fn)
 {
-
     QFile of(fn);
 	if(!of.open(QIODevice::WriteOnly))
 		return; //todo error
