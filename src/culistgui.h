@@ -83,6 +83,8 @@ private slots:
 	void on_actionInsert_Comment_triggered();
 	void insertRecord( RecordType rt );
     void on_actionSend_Data_triggered();	
+	void on_actionRemove_Item_triggered();	
+	
 	void processDataToSend();
 
 private slots:

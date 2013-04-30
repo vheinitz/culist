@@ -480,8 +480,11 @@
     <addaction name="actionLoad_Project"/>
     <addaction name="actionSave_Project"/>
     <addaction name="actionSave_Project_As"/>
+    <addaction name="separator"/>
+    <addaction name="actionLoad_Trace"/>
     <addaction name="actionSave_Trace"/>
     <addaction name="actionSave_Trace_As"/>
+    <addaction name="separator"/>
     <addaction name="actionExport"/>
     <addaction name="actionExit"/>
    </widget>
@@ -513,14 +516,7 @@
     <addaction name="actionAdd_Comment"/>
     <addaction name="actionAdd_Header"/>
     <addaction name="actionAdd_Terminator"/>
-    <addaction name="actionInsert_Session"/>
-    <addaction name="actionInsert_Message"/>
-    <addaction name="actionInsert_Header"/>
-    <addaction name="actionInsert_Patient"/>
-    <addaction name="actionInsert_Order"/>
-    <addaction name="actionInsert_Result"/>
-    <addaction name="actionInsert_Comment"/>
-    <addaction name="actionLoad_Trace"/>
+    <addaction name="actionRemove_Item"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
@@ -766,6 +762,14 @@
   <action name="actionLoad_Project">
    <property name="text">
     <string>Load Project ...</string>
+   </property>
+  </action>
+  <action name="actionRemove_Item">
+   <property name="text">
+    <string>Remove Item</string>
+   </property>
+   <property name="shortcut">
+    <string>Del</string>
    </property>
   </action>
  </widget>

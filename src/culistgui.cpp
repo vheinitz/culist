@@ -990,6 +990,24 @@ QList<QByteArray> CulistGui::currentData()
 	return dataToSendNorm;
 }
 
+void CulistGui::on_actionRemove_Item_triggered()
+{
+	if ( _currentEditItem.isValid() )  
+	{
+		QModelIndex removeItem = _currentEditItem;
+		if ( _currentEditItem.row()>0 )
+			_currentEditItem = _editRecords.index( _currentEditItem.row()-1, 0, _currentEditItem.parent() );
+		else if (_currentEditItem.parent().isValid())
+			_currentEditItem = _currentEditItem.parent();
+		else
+			_currentEditItem=QModelIndex();
+
+		_editRecords.removeRow(  removeItem.row(), removeItem.parent() );
+		ui->trvEditRecords->selectionModel()->select(_currentEditItem, QItemSelectionModel::Rows);
+	}
+	on_trvEditRecords_clicked( _currentEditItem );
+}
+
 void CulistGui::on_actionSend_Data_triggered()
 {
 	if ( createSendData() )
