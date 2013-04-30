@@ -41,6 +41,9 @@
       <property name="defaultDropAction">
        <enum>Qt::MoveAction</enum>
       </property>
+      <property name="autoExpandDelay">
+       <number>1</number>
+      </property>
      </widget>
     </item>
     <item>

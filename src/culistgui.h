@@ -61,6 +61,10 @@ private slots:
     void on_actionConnect_triggered();
     void on_trvEditRecords_customContextMenuRequested(const QPoint &pos);
 	void on_trvEditRecords_clicked( const QModelIndex & index );
+	void on_trvEditRecords_activated( const QModelIndex & index );
+	void processCurrentRowChanged ( const QModelIndex & current, const QModelIndex & previous );
+	void on_trvEditRecords_entered( const QModelIndex & index );
+	void processRecordSelected( const QModelIndex & index );
 	void clearRecordEditView();
     void on_actionAdd_Session_triggered();
 	void on_actionAdd_Message_triggered();

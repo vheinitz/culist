@@ -66,6 +66,8 @@ CulistGui::~CulistGui()
     delete ui;
 }
 
+
+
 void CulistGui::clearMessages()
 {
 	_editRecords.clear();
@@ -352,7 +354,28 @@ void CulistGui::clearRecordEditView()
 	_recordEditViews.clear();
 }
 
+void CulistGui::processCurrentRowChanged ( const QModelIndex & current, const QModelIndex & previous )
+{
+	processRecordSelected( current );
+}
+
+void CulistGui::on_trvEditRecords_activated( const QModelIndex & index )
+{
+	processRecordSelected( index );
+}
+
+void CulistGui::on_trvEditRecords_entered( const QModelIndex & index )
+{
+	processRecordSelected( index );
+}
+
+
 void CulistGui::on_trvEditRecords_clicked( const QModelIndex & index )
+{
+	processRecordSelected( index );
+}
+
+void CulistGui::processRecordSelected( const QModelIndex & index )
 {
 	_currentEditItem = index;
 	if ( _currentEditItem.isValid() )
@@ -1138,6 +1161,8 @@ void CulistGui::on_actionClear_All_triggered()
     clearLog();
 	_currentEditItem = QModelIndex();
 	ui->trvEditRecords->setModel( &_editRecords );
+	connect( ui->trvEditRecords->selectionModel() ,SIGNAL( currentRowChanged ( QModelIndex,QModelIndex))
+			, this, SLOT(processCurrentRowChanged ( QModelIndex,QModelIndex)) );
 	_editRecords.setColumnCount(1);
 	_editRecords.setHorizontalHeaderLabels( QStringList()<<tr("Messages") );
 	clearRecordEditView();
