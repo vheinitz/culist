@@ -27,4 +27,4 @@ HEADERS  += \
 FORMS    += \
 	src/culistgui.ui \
 
-
+RC_FILE = Culist.rc    
