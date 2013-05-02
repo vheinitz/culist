@@ -18,14 +18,27 @@ Features
 -Client/server TCP connection mode
 -Parsing of ASTM-trace files into a tree-like structure
 -Displaying each field separately
--All but manufacturer and query records implemented
 -LIS01-A2 and LIS2-A2
-
-TODOs
-=====
--Load/store projects
--Message editing/saving
 
 Future goals
 ============
 Currently ASTM protocol in TCP mode is implemented. Serial connection and other protocols like HL7 are the future goals. 
+
+TODOs
+=====
+-Show current project in status or window-title
+-Save project as new Project (started on scratch)
+-Project should have a name (create simple New ProJect wizard)
+-Load/save all project configs, server, etc.
+-New view for displaying traces
+-New view for editing profiles
+-Select Project's profile in Settings.
+-Impelement Serial connection
+
+
+CHANGELOG
+=========
+2013-0-02 
+	Load/store projects
+	Message editing/saving
+	Manufacturer and query records implemented
