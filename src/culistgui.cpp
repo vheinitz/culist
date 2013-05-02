@@ -56,6 +56,8 @@ CulistGui::CulistGui(QWidget *parent) :
 	_sendDataTimer->setInterval(3000);//TODO configurable
 	connect( _sendDataTimer, SIGNAL(timeout()), this, SLOT(processSendDataTimeout()) );
 
+	_projectData._profile = "astm_E1394E97";
+	
 	ASTMFactory::instance().init();
 
 	
@@ -561,7 +563,7 @@ void CulistGui::on_trvEditRecords_customContextMenuRequested(const QPoint &pos)
 void CulistGui::on_actionAdd_Session_triggered()
 {	
 	_editRecords.insertRow( _editRecords.rowCount() );
-	_editRecords.setData( _editRecords.index(_editRecords.rowCount()-1,0), 1, Qt::UserRole+1 );
+	_editRecords.setData( _editRecords.index(_editRecords.rowCount()-1,0), ESession, Qt::UserRole+1 );
 	int rc = _editRecords.rowCount(); 
 	_editRecords.setData( _editRecords.index(rc-1,0), "Session" );
 	_currentEditItem = _editRecords.index(_editRecords.rowCount()-1,0);
@@ -737,6 +739,7 @@ bool CulistGui::dataFromMessage( QStandardItem *mesg, QList<QByteArray> &outData
 	return true;
 }
 
+/*
 void CulistGui::on_actionInsert_Session_triggered()
 {	
 	_editRecords.insertRow( _editRecords.rowCount() );
@@ -762,7 +765,7 @@ void CulistGui::on_actionInsert_Comment_triggered()
 {
 	insertRecord( EComment );
 }
-
+*/
 
 bool CulistGui::setRecord( PAstm rec )
 {
@@ -821,7 +824,14 @@ QStandardItem * CulistGui::addRecord( RecordType rt )
 		{
 			QStandardItem *child = new QStandardItem(_recordNames[rt]);
 			child->setData( rt, Qt::UserRole+1 );
+			TRecordInfo recInfo = ASTMFactory::instance().recordInfo( _projectData._profile, rt );
+			QMap<QString,QVariant> vals;
+			foreach( PFieldInfo fi, recInfo )
+			{
+				vals[fi->_shortName] = fi->_stdValue;
+			}
 			child->setEditable(false);
+			child->setData(vals,Qt::UserRole+2);
 			cur->appendRow(child);
 			_currentEditItem = _editRecords.indexFromItem(child);
 			cur = child;
@@ -830,7 +840,7 @@ QStandardItem * CulistGui::addRecord( RecordType rt )
 	return cur;
 }
 
-void CulistGui::insertRecord( RecordType rt )
+/*void CulistGui::insertRecord( RecordType rt )
 {
 	if ( _currentEditItem.isValid() )  
 	{
@@ -840,7 +850,7 @@ void CulistGui::insertRecord( RecordType rt )
 			addRecord( rt );
 		}
 	}
-}
+}*/
 
 void CulistGui::on_actionAdd_Message_triggered()
 {
@@ -848,14 +858,14 @@ void CulistGui::on_actionAdd_Message_triggered()
 	{
 		QStandardItem *child = new QStandardItem("Message");
 		QStandardItem *cur = _editRecords.itemFromIndex(_currentEditItem);
-		child->setData( 2, Qt::UserRole+1 );
+		child->setData( EMessage, Qt::UserRole+1 );
 		child->setEditable(false);
 		cur->appendRow(child);
 		_currentEditItem = _editRecords.indexFromItem(child);
 	}
 }
 
-void CulistGui::on_actionInsert_Message_triggered()
+/*void CulistGui::on_actionInsert_Message_triggered()
 {
 	if ( _currentEditItem.isValid() )  
 	{
@@ -865,7 +875,7 @@ void CulistGui::on_actionInsert_Message_triggered()
 			on_actionAdd_Message_triggered();
 		}
 	}
-}
+}*/
 
 void CulistGui::onDataRead()
 {	
@@ -1230,22 +1240,150 @@ void CulistGui::saveTrace(QString fn)
 
 void CulistGui::on_actionNew_Project_triggered()
 {
-
+	QString fn = QFileDialog::getSaveFileName( this, tr("Project file to save") );
+    if (fn.isEmpty())
+            return;
+	_projectData._fn = fn;
 }
 
 void CulistGui::on_actionSave_Project_triggered()
 {
 
+    if (_projectData._fn.isEmpty())
+            return;
+
+	QFile pf( _projectData._fn );
+	if ( pf.open(QIODevice::WriteOnly) )
+	{
+		QTextStream ts(&pf);
+
+		ts << "ServerModePort="<<_projectData._serverModePort<<"\n";
+		ts << "ClientModeServerPort="<<_projectData._clientModeServerPort<<"\n";
+		ts << "ClientModeServer="<<_projectData._clientModeServer<<"\n";
+		ts << "ProxyMode="<<_projectData._proxyMode<<"\n";
+		ts << "Profile="<<_projectData._profile<<"\n";
+		ts << "DATA\n";
+		
+
+		/*if ( _currentEditItem.data(Qt::UserRole+1).toInt() == EMessage)
+		{
+			ts << "Message=Message\n";
+		}
+		else if ( _currentEditItem.data(Qt::UserRole+1).toInt() == ESession)
+		{					
+			ts << "Session=Session\n";
+		}
+		else*/
+		{
+			int s=0;
+			while ( QStandardItem *msg = _editRecords.item(s++,0) )
+			{
+				ts << "Session=Session\n";
+				/*
+				if ( _currentEditItem.data(Qt::UserRole+1).toInt() == EMessage)
+				{
+					ts << "Message=Message\n";
+				}
+				else if ( _currentEditItem.data(Qt::UserRole+1).toInt() == ESession)
+				{					
+					
+				}*/
+
+				QList<QByteArray> dataToSend;		
+				if ( !dataFromMessage( msg, dataToSend ) )
+				{
+					return ;
+				}
+				foreach ( QByteArray d, dataToSend )
+				{
+					if(d.isEmpty())
+						continue;
+
+					if ( d.at(0) == 'H' )
+						ts << "Message=Message\n";
+					ts << d <<"\n";
+				}
+			}
+		}
+	}
+	else
+	{
+		//TODO error
+	}
+
 }
 
 void CulistGui::on_actionSave_Project_As_triggered()
 {
-
+	
 }
 
 void CulistGui::on_actionLoad_Project_triggered()
 {
+	QString fn = QFileDialog::getOpenFileName( this, tr("Select project file") );
+	if (fn.isEmpty())
+            return;
 
+	_projectData._fn = fn;
+    QFile pf( _projectData._fn );
+	if ( pf.open(QIODevice::ReadOnly) )
+	{
+		QTextStream ts(&pf);
+		on_actionClear_All_triggered();
+
+		int ln=0;
+		bool readData=false;
+		while(!ts.atEnd())
+		{
+			++ln;
+			QString l = ts.readLine();
+			if(l.isEmpty() || l.at(0) == '#')
+				continue;
+
+			if ( readData )
+			{				
+				if (l.contains(QRegExp("\\s*Session\\s*=")) )
+				{
+					QString name = l.section("=",1);
+					on_actionAdd_Session_triggered();
+				}
+				else if (l.contains(QRegExp("\\s*Message\\s*=")) )
+				{
+					QString name = l.section("=",1);
+					on_actionAdd_Message_triggered();
+				}
+				else
+				{
+					PAstm prec = ASTMFactory::instance().parse(l);
+
+					if (prec.isNull())
+					{
+						//TODO error
+						return;
+					}
+					setRecord( prec );
+				}
+			}
+			else if (l.contains(QRegExp("\\s*ServerModePort\\s*=")) )
+				_projectData._serverModePort = l.section("=",1).toUShort();
+			else if (l.contains(QRegExp("\\s*ClientModeServerPort\\s*=")) )
+				_projectData._clientModeServerPort = l.section("=",1).toUShort();
+			else if (l.contains(QRegExp("\\s*ClientModeServer\\s*=")) )
+				_projectData._clientModeServer = l.section("=",1);
+			else if (l.contains(QRegExp("\\s*ProxyMode\\s*=")) )
+				_projectData._proxyMode = l.section("=",1).toInt();
+			else if (l.contains(QRegExp("\\s*Profile\\s*=")) )
+				_projectData._profile = l.section("=",1);
+			else if (l=="DATA")
+				readData=true;
+
+		}
+	
+	}
+	else
+	{
+		//TODO error
+	}
 }
 
 void CulistGui::on_actionSave_Trace_As_triggered()

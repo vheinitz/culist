@@ -21,6 +21,18 @@ namespace Ui {
 class CulistGui;
 }
 
+class ProjectData
+{
+public:
+	QString _fn;
+	QString _profile;
+	unsigned short _serverModePort;
+	QString _clientModeServer;
+	QString _clientModeServerPort;	
+	bool _proxyMode;
+	ProjectData():_serverModePort(0),_proxyMode(0){}
+};
+
 class CulistGui : public QMainWindow
 {
     Q_OBJECT
@@ -79,13 +91,13 @@ private slots:
 	void on_actionAdd_Request_triggered();
 	
 
-	void on_actionInsert_Session_triggered();
+	/*void on_actionInsert_Session_triggered();
 	void on_actionInsert_Message_triggered();
     void on_actionInsert_Patient_triggered();
 	void on_actionInsert_Order_triggered();
 	void on_actionInsert_Result_triggered();
 	void on_actionInsert_Comment_triggered();
-	void insertRecord( RecordType rt );
+	void insertRecord( RecordType rt );*/
     void on_actionSend_Data_triggered();	
 	void on_actionRemove_Item_triggered();	
 	
@@ -143,6 +155,7 @@ private:
 	bool _dataSending;
 	QString _scriptFile;
 	QString _lastTraceFile;
+	ProjectData _projectData;
 	QTimer *_sendDataTimer;
 };
 

@@ -51,17 +51,18 @@ C, P, F, X, I, O result status
 typedef QMap<QString, QString> TRecordValues;
 
 enum RecordType{
-	ESession=1, 
-	EMessage=2, 
-	EHeader, 
-	ERequest,
-	EPatient,
-	EOrder,
-	EResult,
-	EComment,
-	EManufacturer,
-	EScientific,
-	ETerminator};
+	ESession='X', 
+	EMessage='Y', 
+	EHeader='H', 
+	ERequest='Q',
+	EPatient='P',
+	EOrder='O',
+	EResult='R',
+	EComment='C',
+	EManufacturer='M',
+	EScientific='S',
+	ETerminator='L'
+};
 
 
 class Helpers
@@ -307,6 +308,8 @@ public:
 	QString _userName;		///<Full name as used in standard or defined by user (for custom fields)
 	QString _info;			///<Documentation
 	QString _validation;	///<Validation rules (rx)
+	QString _stdValue;	    ///<Standard value when created
+	bool _stdVisible;	    ///<Standard visibility
 
 	FieldInfo( 
 		TFieldType type=EFtScalar
@@ -316,7 +319,9 @@ public:
 		, const QString & shortName=QString::null
 		, const QString & userName=QString::null 
 		, const QString & info=QString::null 
-		, const QString & validation=QString::null ):
+		, const QString & validation=QString::null
+		, const QString & stdValue=QString::null
+		, bool stdVisible=true ):
 		_type(type),
 		_recIdx(recIdx),
 		_fieldIdx(fieldIdx),
@@ -324,7 +329,9 @@ public:
 		_shortName(shortName),
 		_userName(userName),
 		_info(info),
-		_validation(validation)
+		_validation(validation),
+		_stdValue(stdValue),
+		_stdVisible(stdVisible)
 		{}
 };
 
@@ -348,6 +355,7 @@ class ASTMFactory
 		PAstm parse( const QString & sdata );
 		QString userName( const QString & profile, char rt, int idx );
 		QString stdRef( const QString & profile, char rt, int idx );
+		TRecordInfo recordInfo( const QString & profile, char rt ){ return _profilesInfo[profile][rt]; };
 };
 
 
