@@ -15,6 +15,7 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QToolBar>
+#include <QMessageBox>
 #include "persistence.h"
 
 
@@ -61,6 +62,8 @@ CulistGui::CulistGui(QWidget *parent) :
 	
 	ASTMFactory::instance().init();
 	createToolBars();
+	_winTitleBase = "CULIST. Version:"CULIST_VERSION"; Copyright 2013, Valentin Heinitz";
+	this->setWindowTitle(_winTitleBase);
 
 	
 }
@@ -258,7 +261,16 @@ void CulistGui::onError( QAbstractSocket::SocketError )
    on_actionDisconnect_triggered();
 }
 
-
+void CulistGui::on_actionAbout_activated()
+{
+	QMessageBox::about(this,tr("About CULIST"),tr( 
+		"<H1>CULIST</H1><p>Comprehensive, usable LIS tool.<br>"
+		"Version: "CULIST_VERSION"<br>"
+		"Copyright 2013, Valentin Heinitz, http://heinitz-it.de<br>"
+		"License: Apache 2.0, http://www.apache.org/licenses/LICENSE-2.0<br>"
+		"Source-code: https://code.google.com/p/culist<br>"
+		));
+}
 
 void CulistGui::on_actionAbout_Qt_activated()
 {

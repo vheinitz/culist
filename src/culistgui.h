@@ -8,6 +8,8 @@
 #ifndef LISTRAQGUI_H
 #define LISTRAQGUI_H
 
+#define CULIST_VERSION "0.1.1"
+
 #include <QMainWindow>
 #include <QModelIndex>
 #include <QStringListModel>
@@ -58,6 +60,7 @@ private slots:
 	void onError( QAbstractSocket::SocketError );
 	void processConnectedState();
 	void processDisconnectedState();
+	void on_actionAbout_activated();
 	void on_actionAbout_Qt_activated();
 
 	void traceDataSent( const QByteArray & data, QString dir );
@@ -164,6 +167,7 @@ private:
 	QToolBar *_connectToolBar;
 	QToolBar *_runToolBar;
 	QToolBar *_fileToolBar;
+	QString _winTitleBase;
 };
 
 #endif // LISTRAQGUI_H
