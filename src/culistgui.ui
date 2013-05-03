@@ -485,10 +485,8 @@
     <addaction name="actionSave_Project_As"/>
     <addaction name="separator"/>
     <addaction name="actionLoad_Trace"/>
-    <addaction name="actionSave_Trace"/>
-    <addaction name="actionSave_Trace_As"/>
-    <addaction name="separator"/>
     <addaction name="actionExport"/>
+    <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
@@ -545,6 +543,10 @@
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionExit">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/exit.png</normaloff>:/exit.png</iconset>
+   </property>
    <property name="text">
     <string>Exit</string>
    </property>
@@ -555,11 +557,19 @@
    </property>
   </action>
   <action name="actionLoad_Trace">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/import-trace.png</normaloff>:/import-trace.png</iconset>
+   </property>
    <property name="text">
     <string>Load Trace ...</string>
    </property>
   </action>
   <action name="actionExport">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/trace-export.png</normaloff>:/trace-export.png</iconset>
+   </property>
    <property name="text">
     <string>Export ...</string>
    </property>
@@ -583,21 +593,37 @@
    </property>
   </action>
   <action name="actionListen">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/listen.png</normaloff>:/listen.png</iconset>
+   </property>
    <property name="text">
     <string>Listen</string>
    </property>
   </action>
   <action name="actionConnect">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/connect.png</normaloff>:/connect.png</iconset>
+   </property>
    <property name="text">
     <string>Connect</string>
    </property>
   </action>
   <action name="actionStop_Listening">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/stop_listen.png</normaloff>:/stop_listen.png</iconset>
+   </property>
    <property name="text">
     <string>Stop Listening</string>
    </property>
   </action>
   <action name="actionDisconnect">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/disconnect.png</normaloff>:/disconnect.png</iconset>
+   </property>
    <property name="text">
     <string>Disconnect</string>
    </property>
@@ -605,6 +631,10 @@
   <action name="actionAlways_ACK">
    <property name="checkable">
     <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/ack.png</normaloff>:/ack.png</iconset>
    </property>
    <property name="text">
     <string>Always ACK</string>
@@ -614,11 +644,19 @@
    <property name="checkable">
     <bool>true</bool>
    </property>
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/nak.png</normaloff>:/nak.png</iconset>
+   </property>
    <property name="text">
     <string>Always NAK</string>
    </property>
   </action>
   <action name="actionAdd_Session">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/add_session.png</normaloff>:/add_session.png</iconset>
+   </property>
    <property name="text">
     <string>Add Session</string>
    </property>
@@ -627,6 +665,10 @@
    </property>
   </action>
   <action name="actionAdd_Order">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/add_order.png</normaloff>:/add_order.png</iconset>
+   </property>
    <property name="text">
     <string>Add Order</string>
    </property>
@@ -635,6 +677,10 @@
    </property>
   </action>
   <action name="actionAdd_Message">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/add_message.png</normaloff>:/add_message.png</iconset>
+   </property>
    <property name="text">
     <string>Add Message</string>
    </property>
@@ -643,6 +689,10 @@
    </property>
   </action>
   <action name="actionAdd_Result">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/add_result.png</normaloff>:/add_result.png</iconset>
+   </property>
    <property name="text">
     <string>Add Result</string>
    </property>
@@ -651,21 +701,37 @@
    </property>
   </action>
   <action name="actionAdd_Manufacturer">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/add_manufacturing.png</normaloff>:/add_manufacturing.png</iconset>
+   </property>
    <property name="text">
     <string>Add Manufacturer</string>
    </property>
   </action>
   <action name="actionAdd_Scientific">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/add_scientific.png</normaloff>:/add_scientific.png</iconset>
+   </property>
    <property name="text">
     <string>Add Scientific</string>
    </property>
   </action>
   <action name="actionAdd_Request">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/add_request.png</normaloff>:/add_request.png</iconset>
+   </property>
    <property name="text">
     <string>Add Request</string>
    </property>
   </action>
   <action name="actionAdd_Patient">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/add_patient.png</normaloff>:/add_patient.png</iconset>
+   </property>
    <property name="text">
     <string>Add Patient</string>
    </property>
@@ -674,6 +740,10 @@
    </property>
   </action>
   <action name="actionAdd_Comment">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/add_comment.png</normaloff>:/add_comment.png</iconset>
+   </property>
    <property name="text">
     <string>Add Comment</string>
    </property>
@@ -682,6 +752,10 @@
    </property>
   </action>
   <action name="actionAdd_Header">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/add_header.png</normaloff>:/add_header.png</iconset>
+   </property>
    <property name="text">
     <string>Add Header</string>
    </property>
@@ -690,6 +764,10 @@
    </property>
   </action>
   <action name="actionAdd_Terminator">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/add_terminator.png</normaloff>:/add_terminator.png</iconset>
+   </property>
    <property name="text">
     <string>Add Terminator</string>
    </property>
@@ -697,77 +775,74 @@
     <string>Alt+T</string>
    </property>
   </action>
-  <action name="actionInsert_Session">
-   <property name="text">
-    <string>Insert Session</string>
-   </property>
-  </action>
-  <action name="actionInsert_Message">
-   <property name="text">
-    <string>Insert Message</string>
-   </property>
-  </action>
-  <action name="actionInsert_Header">
-   <property name="text">
-    <string>Insert Header</string>
-   </property>
-  </action>
-  <action name="actionInsert_Patient">
-   <property name="text">
-    <string>Insert Patient</string>
-   </property>
-  </action>
-  <action name="actionInsert_Order">
-   <property name="text">
-    <string>Insert Order</string>
-   </property>
-  </action>
-  <action name="actionInsert_Result">
-   <property name="text">
-    <string>Insert Result</string>
-   </property>
-  </action>
-  <action name="actionInsert_Comment">
-   <property name="text">
-    <string>Insert Comment</string>
-   </property>
-  </action>
   <action name="actionSend_Data">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/send.png</normaloff>:/send.png</iconset>
+   </property>
    <property name="text">
     <string>Send Data</string>
    </property>
   </action>
   <action name="actionClear_All">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/clear.png</normaloff>:/clear.png</iconset>
+   </property>
    <property name="text">
     <string>Clear All</string>
    </property>
   </action>
   <action name="actionFork">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/fork.png</normaloff>:/fork.png</iconset>
+   </property>
    <property name="text">
     <string>Fork</string>
    </property>
   </action>
   <action name="actionNew_Project">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/project-new.png</normaloff>:/project-new.png</iconset>
+   </property>
    <property name="text">
     <string>New Project ...</string>
    </property>
   </action>
   <action name="actionSave_Project">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/project-save.png</normaloff>:/project-save.png</iconset>
+   </property>
    <property name="text">
     <string>Save Project</string>
    </property>
   </action>
   <action name="actionSave_Project_As">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/project-save-as.png</normaloff>:/project-save-as.png</iconset>
+   </property>
    <property name="text">
     <string>Save Project As ...</string>
    </property>
   </action>
   <action name="actionLoad_Project">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/project-open.png</normaloff>:/project-open.png</iconset>
+   </property>
    <property name="text">
     <string>Load Project ...</string>
    </property>
   </action>
   <action name="actionRemove_Item">
+   <property name="icon">
+    <iconset resource="res/res.qrc">
+     <normaloff>:/remove.png</normaloff>:/remove.png</iconset>
+   </property>
    <property name="text">
     <string>Remove Item</string>
    </property>
@@ -777,6 +852,8 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="res/res.qrc"/>
+ </resources>
  <connections/>
 </ui>

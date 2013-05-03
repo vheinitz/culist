@@ -45,6 +45,8 @@ public:
 	void clearMessages();
 	void clearLog();
 
+private:
+	void createToolBars();
     
 private slots:
     void on_actionExit_triggered();
@@ -157,6 +159,11 @@ private:
 	QString _lastTraceFile;
 	ProjectData _projectData;
 	QTimer *_sendDataTimer;
+
+	QToolBar *_editToolBar;
+	QToolBar *_connectToolBar;
+	QToolBar *_runToolBar;
+	QToolBar *_fileToolBar;
 };
 
 #endif // LISTRAQGUI_H

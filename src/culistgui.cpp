@@ -14,6 +14,7 @@
 #include <QProcess>
 #include <QLabel>
 #include <QLineEdit>
+#include <QToolBar>
 #include "persistence.h"
 
 
@@ -59,6 +60,7 @@ CulistGui::CulistGui(QWidget *parent) :
 	_projectData._profile = "astm_E1394E97";
 	
 	ASTMFactory::instance().init();
+	createToolBars();
 
 	
 }
@@ -68,6 +70,46 @@ CulistGui::~CulistGui()
     delete ui;
 }
 
+
+void CulistGui::createToolBars()
+{
+	_fileToolBar = addToolBar(tr("File"));    
+	_fileToolBar->addAction(ui->actionNew_Project);
+	_fileToolBar->addAction(ui->actionLoad_Project);
+	_fileToolBar->addAction(ui->actionSave_Project);
+	_fileToolBar->addAction(ui->actionSave_Project_As);
+	_fileToolBar->addAction(ui->actionLoad_Trace);
+	_fileToolBar->addAction(ui->actionExport);
+
+	_editToolBar = addToolBar(tr("Edit"));    
+	_editToolBar->addAction(ui->actionClear_All);
+	_editToolBar->addAction(ui->actionAdd_Session);
+	_editToolBar->addAction(ui->actionAdd_Message);
+	_editToolBar->addAction(ui->actionAdd_Header);
+	_editToolBar->addAction(ui->actionAdd_Patient);
+	_editToolBar->addAction(ui->actionAdd_Order);
+	_editToolBar->addAction(ui->actionAdd_Result);
+	_editToolBar->addAction(ui->actionAdd_Request);
+	_editToolBar->addAction(ui->actionAdd_Terminator);
+	_editToolBar->addAction(ui->actionAdd_Comment);
+	_editToolBar->addAction(ui->actionAdd_Scientific);
+	_editToolBar->addAction(ui->actionAdd_Manufacturer);
+	_editToolBar->addAction(ui->actionRemove_Item);
+
+	_connectToolBar = addToolBar(tr("Connection"));    
+	_connectToolBar->addAction(ui->actionConnect);
+	_connectToolBar->addAction(ui->actionDisconnect);
+	_connectToolBar->addAction(ui->actionListen);
+	_connectToolBar->addAction(ui->actionStop_Listening);
+
+	_runToolBar = addToolBar(tr("Run"));    
+	_runToolBar->addAction(ui->actionSend_Data);
+	_runToolBar->addAction(ui->actionAlways_ACK);
+	_runToolBar->addAction(ui->actionAlways_NAK);
+	_runToolBar->addAction(ui->actionFork);
+
+
+}
 
 
 void CulistGui::clearMessages()

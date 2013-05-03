@@ -22,7 +22,9 @@ Features
 
 Future goals
 ============
-Currently ASTM protocol in TCP mode is implemented. Serial connection and other protocols like HL7 are the future goals. 
+-Serial connection
+-HL7
+-Monitoring Files/Directories for sending/receiving actions
 
 TODOs
 =====

@@ -28,3 +28,6 @@ FORMS    += \
 	src/culistgui.ui \
 
 RC_FILE = Culist.rc    
+
+RESOURCES += \
+    src/res/res.qrc

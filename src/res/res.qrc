@@ -1,0 +1,35 @@
+<RCC>
+    <qresource prefix="/">
+        <file>ack.png</file>
+        <file>add.png</file>
+        <file>clear.png</file>
+        <file>connect.png</file>
+        <file>disconnect.png</file>
+        <file>import-trace.png</file>
+        <file>listen.png</file>
+        <file>nak.png</file>
+        <file>project-open.png</file>
+        <file>remove.png</file>
+        <file>res.qrc</file>
+        <file>save.png</file>
+        <file>stop_listen.png</file>
+        <file>exit.png</file>
+        <file>fork.png</file>
+        <file>send.png</file>
+        <file>project-save.png</file>
+        <file>project-save-as.png</file>
+        <file>trace-export.png</file>
+        <file>add_comment.png</file>
+        <file>add_header.png</file>
+        <file>add_manufacturing.png</file>
+        <file>add_message.png</file>
+        <file>add_order.png</file>
+        <file>add_patient.png</file>
+        <file>add_request.png</file>
+        <file>add_scientific.png</file>
+        <file>add_session.png</file>
+        <file>add_terminator.png</file>
+        <file>add_result.png</file>
+        <file>project-new.png</file>
+    </qresource>
+</RCC>
