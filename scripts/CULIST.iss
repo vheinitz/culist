@@ -4,8 +4,8 @@
 
 [Setup]
 AppName=CULIST
-AppVerName=CULIST 0.1.0
-OutputBaseFilename=CulistSetup_0.1.0
+AppVerName=CULIST 0.1.1
+OutputBaseFilename=CulistSetup_0.1.1
 AppPublisher=HeinitzIT
 AppPublisherURL=http://heinitz-it.de
 AppSupportURL=http://heinitz-it.de
