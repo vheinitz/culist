@@ -19,7 +19,8 @@
 #include "persistence.h"
 
 
-QMap<RecordType,QString> _recordNames;
+typedef QMap<RecordType,QString> TTypeToName;
+TTypeToName _recordNames;
 
 CulistGui::CulistGui(QWidget *parent) :
     QMainWindow(parent),
@@ -52,6 +53,23 @@ CulistGui::CulistGui(QWidget *parent) :
 	
 	ui->actionStop_Listening->setEnabled(false);
 	ui->actionDisconnect->setEnabled(false);
+	ui->actionSave_Project->setEnabled(false);
+	ui->actionSave_Project_As->setEnabled(false);
+
+	ui->lvProfileRecords->setModel(&_profileRecords);
+	_profileRecords.setColumnCount(1);
+	_profileRecords.setHorizontalHeaderLabels(QStringList()<<tr("Include/Exclude Record Names"));
+
+
+	for ( TTypeToName::iterator it = _recordNames.begin(); it != _recordNames.end(); ++it )
+	{
+		_profileRecords.insertRow(0);
+		_profileRecords.setItem(0,0, new QStandardItem(it.value() ) );
+		_profileRecords.item(0,0)->setCheckable(true);
+		_profileRecords.item(0,0)->setData(it.key(), Qt::UserRole+1);
+	}
+
+	
 
 	_sendDataTimer = new QTimer(this);
 	_sendDataTimer->setSingleShot(true);
@@ -567,7 +585,7 @@ void CulistGui::on_trvEditRecords_customContextMenuRequested(const QPoint &pos)
 		{
 		case ESession:
 			ctx->addAction( ui->actionLoad_Trace );
-			ctx->addAction( ui->actionSave_Trace );
+			ctx->addAction( ui->actionExport );
 			ctx->addAction( ui->actionAdd_Session );
 			ctx->addAction( ui->actionAdd_Message );
 			ctx->addAction( ui->actionSend_Data );
@@ -880,7 +898,7 @@ QStandardItem * CulistGui::addRecord( RecordType rt )
 			child->setData( rt, Qt::UserRole+1 );
 			TRecordInfo recInfo = ASTMFactory::instance().recordInfo( _projectData._profile, rt );
 			QMap<QString,QVariant> vals;
-			foreach( PFieldInfo fi, recInfo )
+			foreach( PFieldInfo fi, recInfo.first )
 			{
 				vals[fi->_shortName] = fi->_stdValue;
 			}
@@ -1228,13 +1246,15 @@ void CulistGui::on_actionClear_All_triggered()
 	connect( ui->trvEditRecords->selectionModel() ,SIGNAL( currentRowChanged ( QModelIndex,QModelIndex))
 			, this, SLOT(processCurrentRowChanged ( QModelIndex,QModelIndex)) );
 	_editRecords.setColumnCount(1);
-	_editRecords.setHorizontalHeaderLabels( QStringList()<<tr("Messages") );
+	_editRecords.setHorizontalHeaderLabels( QStringList()<<tr("Project's Messages") );
 	clearRecordEditView();
 }
 
 void CulistGui::on_actionFork_triggered()
 {
-    QProcess::startDetached(qApp->arguments().at(0));
+	//QString appExe = qApp->arguments().at(0);
+	//TODO: pass arguments
+	QProcess::startDetached(qApp->applicationFilePath(),QStringList(),qApp->applicationDirPath());
 }
 
 void CulistGui::on_bClearLog_clicked()
@@ -1294,18 +1314,26 @@ void CulistGui::saveTrace(QString fn)
 
 void CulistGui::on_actionNew_Project_triggered()
 {
-	QString fn = QFileDialog::getSaveFileName( this, tr("Project file to save") );
+	QString fn = QFileDialog::getSaveFileName( this, tr("Define New Project's File") );
     if (fn.isEmpty())
             return;
+	_projectData.reset();
 	_projectData._fn = fn;
+	on_actionClear_All_triggered();	
+
+	ui->actionSave_Project_As->setEnabled(true);
+	ui->actionSave_Project->setEnabled(true);
 }
 
 void CulistGui::on_actionSave_Project_triggered()
 {
-
-    if (_projectData._fn.isEmpty())
+	if (_projectData._fn.isEmpty())
             return;
+	saveProject();
+}
 
+void CulistGui::saveProject()
+{   
 	QFile pf( _projectData._fn );
 	if ( pf.open(QIODevice::WriteOnly) )
 	{
@@ -1369,7 +1397,11 @@ void CulistGui::on_actionSave_Project_triggered()
 
 void CulistGui::on_actionSave_Project_As_triggered()
 {
-	
+	QString fn = QFileDialog::getSaveFileName( this, tr("Define New Project's File") );
+    if (fn.isEmpty())
+            return;
+	_projectData._fn = fn;
+	saveProject();
 }
 
 void CulistGui::on_actionLoad_Project_triggered()
@@ -1377,7 +1409,7 @@ void CulistGui::on_actionLoad_Project_triggered()
 	QString fn = QFileDialog::getOpenFileName( this, tr("Select project file") );
 	if (fn.isEmpty())
             return;
-
+	
 	_projectData._fn = fn;
     QFile pf( _projectData._fn );
 	if ( pf.open(QIODevice::ReadOnly) )
@@ -1432,6 +1464,8 @@ void CulistGui::on_actionLoad_Project_triggered()
 				readData=true;
 
 		}
+		ui->actionSave_Project_As->setEnabled(true);
+		ui->actionSave_Project->setEnabled(true);
 	
 	}
 	else
@@ -1440,11 +1474,65 @@ void CulistGui::on_actionLoad_Project_triggered()
 	}
 }
 
-void CulistGui::on_actionSave_Trace_As_triggered()
+void CulistGui::on_actionSave_Trace_As_triggered() //export trace
+{
+
+}
+
+void CulistGui::on_actionExport_triggered()
 {
     QString fn = QFileDialog::getSaveFileName( this, tr("Select file name") );
     if (fn.isEmpty())
             return;
     _lastTraceFile=fn;
     saveTrace(_lastTraceFile);
+}
+
+void CulistGui::on_lvProfileRecords_clicked(const QModelIndex &index)
+{
+	_profileFields.clear();
+	_profileFields.setColumnCount(
+		4
+		);
+	
+	_profileFields.setHorizontalHeaderLabels( QStringList()
+		<<tr("Field")<<tr("Used")<<tr("Std. value")<<tr("Validation")
+		<<tr("Type")
+	);
+
+	ui->tvProfileFields->setModel( &_profileFields );
+
+	QStandardItem *ri= _profileRecords.itemFromIndex(index);
+	if (ri)
+	{
+
+		RecordType rt = (RecordType)ri->data(Qt::UserRole+1).toInt();
+		if ( ri->checkState() == Qt::Checked )
+		{
+			TRecordInfo recInfo = ASTMFactory::instance().recordInfo( _projectData._profile,  rt );
+			int r=0;
+			foreach( PFieldInfo fi, recInfo.first )
+			{
+				_profileFields.insertRow(r);
+				_profileFields.setItem(r,0, new QStandardItem( fi->_userName ) );
+				_profileFields.setItem(r,1, new QStandardItem( " " ) );
+				_profileFields.item(r,1)->setCheckable(true);
+				_profileFields.item(r,1)->setCheckState(fi->_stdVisible?Qt::Checked:Qt::Unchecked);
+				_profileFields.setItem(r,2, new QStandardItem( fi->_stdValue ) );
+				_profileFields.setItem(r,3, new QStandardItem( fi->_validation ) );
+				_profileFields.setItem(r,4, new QStandardItem( fi->_type ) );
+				++r;
+			}
+		}
+	}
+}
+
+void CulistGui::on_bExportProfile_clicked()
+{
+
+}
+
+void CulistGui::on_bSaveProfile_clicked()
+{
+
 }

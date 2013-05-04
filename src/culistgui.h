@@ -32,7 +32,21 @@ public:
 	QString _clientModeServer;
 	QString _clientModeServerPort;	
 	bool _proxyMode;
-	ProjectData():_serverModePort(0),_proxyMode(0){}
+	ProjectData()
+	{
+		reset();
+	}
+
+	void reset()
+	{
+		_fn.clear();
+		_profile.clear();
+		_serverModePort = 0;
+		_clientModeServer.clear();
+		_clientModeServerPort.clear();
+		_proxyMode=false;
+
+	}
 };
 
 class CulistGui : public QMainWindow
@@ -95,14 +109,6 @@ private slots:
 	void on_actionAdd_Scientific_triggered();
 	void on_actionAdd_Request_triggered();
 	
-
-	/*void on_actionInsert_Session_triggered();
-	void on_actionInsert_Message_triggered();
-    void on_actionInsert_Patient_triggered();
-	void on_actionInsert_Order_triggered();
-	void on_actionInsert_Result_triggered();
-	void on_actionInsert_Comment_triggered();
-	void insertRecord( RecordType rt );*/
     void on_actionSend_Data_triggered();	
 	void on_actionRemove_Item_triggered();	
 	
@@ -131,7 +137,16 @@ private slots:
     void saveTrace(QString fn);
 	void processSendDataTimeout();
 
+    void on_actionExport_triggered();
+
+    void on_lvProfileRecords_clicked(const QModelIndex &index);
+
+    void on_bExportProfile_clicked();
+
+    void on_bSaveProfile_clicked();
+
 private:
+	void saveProject();
 	bool dataFromMessage( QStandardItem *mesg, QList<QByteArray> &outData );
 	bool createSendData();
 	QTcpSocket * getSendSocket( );
@@ -168,6 +183,8 @@ private:
 	QToolBar *_runToolBar;
 	QToolBar *_fileToolBar;
 	QString _winTitleBase;
+	QStandardItemModel _profileFields;
+	QStandardItemModel _profileRecords;
 };
 
 #endif // LISTRAQGUI_H

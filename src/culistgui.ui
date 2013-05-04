@@ -41,15 +41,24 @@
       <property name="defaultDropAction">
        <enum>Qt::MoveAction</enum>
       </property>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
       <property name="autoExpandDelay">
-       <number>1</number>
+       <number>100</number>
+      </property>
+      <property name="itemsExpandable">
+       <bool>true</bool>
+      </property>
+      <property name="animated">
+       <bool>true</bool>
       </property>
      </widget>
     </item>
     <item>
      <widget class="QTabWidget" name="twTabs">
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tMessageEdit">
        <attribute name="title">
@@ -93,6 +102,13 @@
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QCheckBox" name="cbDisplayAll">
+            <property name="text">
+             <string>Display all</string>
+            </property>
+           </widget>
+          </item>
           <item>
            <spacer name="horizontalSpacer_8">
             <property name="orientation">
@@ -462,6 +478,120 @@
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="tProfile">
+       <attribute name="title">
+        <string>Profile</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_7">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_11">
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>Name</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="eProfileName"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableView" name="lvProfileRecords">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>150</height>
+           </size>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="verticalHeaderDefaultSectionSize">
+           <number>15</number>
+          </attribute>
+          <attribute name="verticalHeaderMinimumSectionSize">
+           <number>15</number>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTreeView" name="tvProfileFields">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>200</height>
+           </size>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+          <property name="textElideMode">
+           <enum>Qt::ElideNone</enum>
+          </property>
+          <property name="autoExpandDelay">
+           <number>100</number>
+          </property>
+          <property name="rootIsDecorated">
+           <bool>false</bool>
+          </property>
+          <property name="animated">
+           <bool>true</bool>
+          </property>
+          <attribute name="headerHighlightSections">
+           <bool>true</bool>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_10">
+          <item>
+           <spacer name="horizontalSpacer_9">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="bExportProfile">
+            <property name="text">
+             <string>Export</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="bSaveProfile">
+            <property name="text">
+             <string>Save</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -551,11 +681,6 @@
     <string>Exit</string>
    </property>
   </action>
-  <action name="actionSave_Trace">
-   <property name="text">
-    <string>Save Trace</string>
-   </property>
-  </action>
   <action name="actionLoad_Trace">
    <property name="icon">
     <iconset resource="res/res.qrc">
@@ -572,11 +697,6 @@
    </property>
    <property name="text">
     <string>Export ...</string>
-   </property>
-  </action>
-  <action name="actionSave_Trace_As">
-   <property name="text">
-    <string>Save Trace As ...</string>
    </property>
   </action>
   <action name="actionAbout">

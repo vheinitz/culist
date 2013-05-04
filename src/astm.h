@@ -13,6 +13,7 @@
 #include <QByteArray>
 #include <QDateTime>
 #include <QSharedPointer>
+#include <QPair>
 
 
 
@@ -336,7 +337,7 @@ public:
 };
 
 typedef QSharedPointer<FieldInfo> PFieldInfo;
-typedef QList<PFieldInfo> TRecordInfo;
+typedef QPair< QList<PFieldInfo>,bool > TRecordInfo;
 typedef QMap<char, TRecordInfo> TRecordsInfo;
 typedef QMap< QString, TRecordsInfo> TProfileInfo;
 
