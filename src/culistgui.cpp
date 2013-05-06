@@ -1488,6 +1488,8 @@ void CulistGui::on_actionExport_triggered()
     saveTrace(_lastTraceFile);
 }
 
+RecordType _currentRt=ESession;
+
 void CulistGui::on_lvProfileRecords_clicked(const QModelIndex &index)
 {
 	_profileFields.clear();
@@ -1506,10 +1508,10 @@ void CulistGui::on_lvProfileRecords_clicked(const QModelIndex &index)
 	if (ri)
 	{
 
-		RecordType rt = (RecordType)ri->data(Qt::UserRole+1).toInt();
+		_currentRt = (RecordType)ri->data(Qt::UserRole+1).toInt();
 		if ( ri->checkState() == Qt::Checked )
 		{
-			TRecordInfo recInfo = ASTMFactory::instance().recordInfo( _projectData._profile,  rt );
+			TRecordInfo recInfo = ASTMFactory::instance().recordInfo( _projectData._profile,  _currentRt );
 			int r=0;
 			foreach( PFieldInfo fi, recInfo.first )
 			{
@@ -1520,7 +1522,7 @@ void CulistGui::on_lvProfileRecords_clicked(const QModelIndex &index)
 				_profileFields.item(r,1)->setCheckState(fi->_stdVisible?Qt::Checked:Qt::Unchecked);
 				_profileFields.setItem(r,2, new QStandardItem( fi->_stdValue ) );
 				_profileFields.setItem(r,3, new QStandardItem( fi->_validation ) );
-				_profileFields.setItem(r,4, new QStandardItem( fi->_type ) );
+				_profileFields.setItem(r,4, new QStandardItem( fi->_isList ) );
 				++r;
 			}
 		}
@@ -1534,5 +1536,18 @@ void CulistGui::on_bExportProfile_clicked()
 
 void CulistGui::on_bSaveProfile_clicked()
 {
+	for( int r = 0; r < _profileFields.rowCount(); ++r )
+	{
+		ASTMFactory::instance().setFieldVisible( _projectData._profile, _currentRt, r, 
+			_profileFields.item(r, 1)->checkState() == Qt::Checked
+			);
 
+		ASTMFactory::instance().setFieldStdValue( _projectData._profile, _currentRt, r, 
+			_profileFields.item( r, 2)->data(Qt::DisplayRole ).toString()
+			);
+
+		ASTMFactory::instance().setFieldValidator( _projectData._profile, _currentRt, r, 
+			_profileFields.item( r, 3)->data(Qt::DisplayRole ).toString()
+			);
+	}
 }

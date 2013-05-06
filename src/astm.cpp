@@ -67,154 +67,154 @@ QByteArray Helpers::toLIS2_A2( QByteArray lis01_A2data)
 void ASTMFactory::init()
 {
 	_profilesInfo["astm_E1394E97"]['H'].second=true;
-	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(EFtScalar,1,0,"7.1.1","type","Record Type ID") ) );
-	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(EFtScalar,2,0,"7.1.2","delimeter","Delimiter Definition") ) );
-	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(EFtScalar,3,0,"7.1.3","message_id","Message Control ID") ) );
-	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(EFtScalar,4,0,"7.1.4","password","Access Password") ) );
-	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(EFtScalar,5,0,"7.1.5","sender","Sender Nameor ID") ) );
-	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(EFtScalar,6,0,"7.1.6","address","Sender Street Address") ) );
-	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(EFtScalar,7,0,"7.1.7","reserved","Reserved Field") ) );
-	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(EFtScalar,8,0,"7.1.8","phone","Sender Telephone Number") ) );
-	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(EFtScalar,9,0,"7.1.9","caps","Characteristics of Sender") ) );
-	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(EFtScalar,10,0,"7.1.10","receiver","Receiver ID") ) );
-	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(EFtScalar,11,0,"7.1.11","comments","Comments") ) );
-	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(EFtScalar,12,0,"7.1.12","processing_id","Processing ID") ) );
-	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(EFtScalar,13,0,"7.1.13","version","Version Number") ) );
-	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(EFtScalar,14,0,"7.1.14","timestamp","Date/Timeof Message") ) );
+	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(1,0,"7.1.1","type","Record Type ID") ) );
+	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(2,0,"7.1.2","delimeter","Delimiter Definition") ) );
+	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(3,0,"7.1.3","message_id","Message Control ID") ) );
+	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(4,0,"7.1.4","password","Access Password") ) );
+	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(5,0,"7.1.5","sender","Sender Nameor ID") ) );
+	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(6,0,"7.1.6","address","Sender Street Address") ) );
+	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(7,0,"7.1.7","reserved","Reserved Field") ) );
+	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(8,0,"7.1.8","phone","Sender Telephone Number") ) );
+	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(9,0,"7.1.9","caps","Characteristics of Sender") ) );
+	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(10,0,"7.1.10","receiver","Receiver ID") ) );
+	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(11,0,"7.1.11","comments","Comments") ) );
+	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(12,0,"7.1.12","processing_id","Processing ID") ) );
+	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(13,0,"7.1.13","version","Version Number") ) );
+	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(14,0,"7.1.14","timestamp","Date/Timeof Message") ) );
 
 	//Standard patient definition
 	_profilesInfo["astm_E1394E97"]['P'].second=true;
-	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(EFtScalar,1,0,"8.1.1","type","Record Type ID") ) );
-	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(EFtScalar,2,0,"8.1.2","seq","Sequence Number") ) );
-	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(EFtScalar,3,0,"8.1.3","practice_id","Practice Assigned Patient ID") ) );
-	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(EFtScalar,4,0,"8.1.4","laboratory_id","Laboratory Assigned Patient ID") ) );
-	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(EFtScalar,5,0,"8.1.5","id","Patient ID") ) );
-	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(EFtScalar,6,0,"8.1.6","name","Patient Name") ) );
-	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(EFtScalar,7,0,"8.1.7","maiden_name","Mother’s Maiden Name") ) );
-	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(EFtScalar,8,0,"8.1.8","birthdate","Birthdate") ) );
-	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(EFtScalar,9,0,"8.1.9","sex","Patient Sex") ) );
-	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(EFtScalar,10,0,"8.1.10","race","Patient Race-, Ethnic Origin") ) );
-	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(EFtScalar,11,0,"8.1.11","address","Patient Address") ) );
-	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(EFtScalar,12,0,"8.1.12","reserved","Reserved Field") ) );
-	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(EFtScalar,13,0,"8.1.13","phone","Patient Telephone Number") ) );
-	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(EFtScalar,14,0,"8.1.14","physician_id","Attending Physician ID") ) );
-	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(EFtScalar,15,0,"8.1.15","special_1","Special Field No. 1") ) );
-	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(EFtScalar,16,0,"8.1.16","special_2","Special Field No. 2") ) );
-	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(EFtScalar,17,0,"8.1.17","height","Patient Height") ) );
-	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(EFtScalar,18,0,"8.1.18","weight","Patient Weight") ) );
-	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(EFtScalar,19,0,"8.1.19","diagnosis","Patient’s Known Diagnosis") ) );
-	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(EFtScalar,20,0,"8.1.20","medication","Patient’s Active Medication") ) );
-	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(EFtScalar,21,0,"8.1.21","diet","Patient’s Diet") ) );
-	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(EFtScalar,22,0,"8.1.22","practice_field_1","Practice Field No. 1") ) );
-	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(EFtScalar,23,0,"8.1.23","practice_field_2","Practice Field No. 2") ) );
-	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(EFtScalar,24,0,"8.1.24","admission_date","Admission/Discharge Dates") ) );
-	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(EFtScalar,25,0,"8.1.25","admission_status","Admission Status") ) );
-	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(EFtScalar,26,0,"8.1.26","location","Location") ) );
+	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(1,0,"8.1.1","type","Record Type ID") ) );
+	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(2,0,"8.1.2","seq","Sequence Number") ) );
+	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(3,0,"8.1.3","practice_id","Practice Assigned Patient ID") ) );
+	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(4,0,"8.1.4","laboratory_id","Laboratory Assigned Patient ID") ) );
+	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(5,0,"8.1.5","id","Patient ID") ) );
+	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(6,0,"8.1.6","name","Patient Name") ) );
+	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(7,0,"8.1.7","maiden_name","Mother’s Maiden Name") ) );
+	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(8,0,"8.1.8","birthdate","Birthdate") ) );
+	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(9,0,"8.1.9","sex","Patient Sex") ) );
+	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(10,0,"8.1.10","race","Patient Race-, Ethnic Origin") ) );
+	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(11,0,"8.1.11","address","Patient Address") ) );
+	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(12,0,"8.1.12","reserved","Reserved Field") ) );
+	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(13,0,"8.1.13","phone","Patient Telephone Number") ) );
+	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(14,0,"8.1.14","physician_id","Attending Physician ID") ) );
+	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(15,0,"8.1.15","special_1","Special Field No. 1") ) );
+	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(16,0,"8.1.16","special_2","Special Field No. 2") ) );
+	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(17,0,"8.1.17","height","Patient Height") ) );
+	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(18,0,"8.1.18","weight","Patient Weight") ) );
+	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(19,0,"8.1.19","diagnosis","Patient’s Known Diagnosis") ) );
+	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(20,0,"8.1.20","medication","Patient’s Active Medication") ) );
+	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(21,0,"8.1.21","diet","Patient’s Diet") ) );
+	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(22,0,"8.1.22","practice_field_1","Practice Field No. 1") ) );
+	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(23,0,"8.1.23","practice_field_2","Practice Field No. 2") ) );
+	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(24,0,"8.1.24","admission_date","Admission/Discharge Dates") ) );
+	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(25,0,"8.1.25","admission_status","Admission Status") ) );
+	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(26,0,"8.1.26","location","Location") ) );
 
 	//Standard order definition
 	_profilesInfo["astm_E1394E97"]['O'].second=true;
-	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(EFtScalar,1,0,"9.4.1","type","Record Type ID") ) );
-	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(EFtScalar,2,0,"9.4.2","seq","Sequence Number") ) );
-	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(EFtScalar,3,0,"9.4.3","sample_id","Specimen ID") ) );
-	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(EFtScalar,4,0,"9.4.4","instrument","Instrument Specimen ID") ) );
-	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(EFtScalar,5,0,"9.4.5","test","Universal Test ID") ) );
-	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(EFtScalar,6,0,"9.4.6","priority","Priority") ) );
-	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(EFtScalar,7,0,"9.4.7","created_at","Requested/Ordered Date/Time") ) );
-	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(EFtScalar,8,0,"9.4.8","sampled_at","Specimen Collection Date/Time") ) );
-	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(EFtScalar,9,0,"9.4.9","collected_at","Collection End Time") ) );
-	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(EFtScalar,10,0,"9.4.10","volume","Collection Volume") ) );
-	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(EFtScalar,11,0,"9.4.11","collector","Collector ID") ) );
-	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(EFtScalar,12,0,"9.4.12","action_code","Action Code") ) );
-	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(EFtScalar,13,0,"9.4.13","danger_code","Danger Code") ) );
-	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(EFtScalar,14,0,"9.4.14","clinical_info","Relevant Information") ) );
-	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(EFtScalar,15,0,"9.4.15","delivered_at","Date/Time Specimen Received") ) );
-	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(EFtScalar,16,0,"9.4.16","biomaterial","Specimen Descriptor") ) );
-	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(EFtScalar,17,0,"9.4.17","physician","Ordering Physician") ) );
-	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(EFtScalar,18,0,"9.4.18","physician_phone","Physician’s Telephone Number") ) );
-	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(EFtScalar,19,0,"9.4.19","user_field_1","User Field No. 1") ) );
-	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(EFtScalar,20,0,"9.4.20","user_field_2","User Field No. 2") ) );
-	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(EFtScalar,21,0,"9.4.21","laboratory_field_1","Laboratory Field No. 1") ) );
-	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(EFtScalar,22,0,"9.4.22","laboratory_field_2","Laboratory Field No. 2") ) );
-	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(EFtScalar,23,0,"9.4.23","modified_at","Date/Time Reported") ) );
-	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(EFtScalar,24,0,"9.4.24","instrument_charge","Instrument Charge") ) );
-	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(EFtScalar,25,0,"9.4.25","instrument_section","Instrument Section ID") ) );
-	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(EFtScalar,26,0,"9.4.26","report_type","Report Type") ) );
+	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(1,0,"9.4.1","type","Record Type ID") ) );
+	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(2,0,"9.4.2","seq","Sequence Number") ) );
+	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(3,0,"9.4.3","sample_id","Specimen ID") ) );
+	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(4,0,"9.4.4","instrument","Instrument Specimen ID") ) );
+	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(5,0,"9.4.5","test","Universal Test ID") ) );
+	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(6,0,"9.4.6","priority","Priority") ) );
+	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(7,0,"9.4.7","created_at","Requested/Ordered Date/Time") ) );
+	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(8,0,"9.4.8","sampled_at","Specimen Collection Date/Time") ) );
+	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(9,0,"9.4.9","collected_at","Collection End Time") ) );
+	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(10,0,"9.4.10","volume","Collection Volume") ) );
+	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(11,0,"9.4.11","collector","Collector ID") ) );
+	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(12,0,"9.4.12","action_code","Action Code") ) );
+	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(13,0,"9.4.13","danger_code","Danger Code") ) );
+	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(14,0,"9.4.14","clinical_info","Relevant Information") ) );
+	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(15,0,"9.4.15","delivered_at","Date/Time Specimen Received") ) );
+	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(16,0,"9.4.16","biomaterial","Specimen Descriptor") ) );
+	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(17,0,"9.4.17","physician","Ordering Physician") ) );
+	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(18,0,"9.4.18","physician_phone","Physician’s Telephone Number") ) );
+	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(19,0,"9.4.19","user_field_1","User Field No. 1") ) );
+	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(20,0,"9.4.20","user_field_2","User Field No. 2") ) );
+	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(21,0,"9.4.21","laboratory_field_1","Laboratory Field No. 1") ) );
+	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(22,0,"9.4.22","laboratory_field_2","Laboratory Field No. 2") ) );
+	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(23,0,"9.4.23","modified_at","Date/Time Reported") ) );
+	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(24,0,"9.4.24","instrument_charge","Instrument Charge") ) );
+	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(25,0,"9.4.25","instrument_section","Instrument Section ID") ) );
+	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(26,0,"9.4.26","report_type","Report Type") ) );
 
 	//Standard result definition
 	_profilesInfo["astm_E1394E97"]['R'].second=true;
-	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(EFtScalar,1,0,"10.1.1","type","Record Type ID") ) );
-	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(EFtScalar,2,0,"10.1.2","seq","Sequence Number") ) );
-	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(EFtScalar,3,0,"10.1.3","test","Universal Test ID") ) );
-	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(EFtScalar,4,0,"10.1.4","value","Data or Measurement Value") ) );
-	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(EFtScalar,5,0,"10.1.5","units","Units") ) );
-	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(EFtScalar,6,0,"10.1.6","references","Reference Ranges") ) );
-	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(EFtScalar,7,0,"10.1.7","abnormal_flag","Result Abnormal Flags") ) );
-	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(EFtScalar,8,0,"10.1.8","abnormality_nature","Nature of Abnormal Testing") ) );
-	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(EFtScalar,9,0,"10.1.9","status","Results Status") ) );
-	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(EFtScalar,10,0,"10.1.10","norms_changed_at","Date of Changein Instrument") ) );
-	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(EFtScalar,11,0,"10.1.11","operator","Operator Identification") ) );
-	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(EFtScalar,12,0,"10.1.12","started_at","Date/Time Test Started") ) );
-	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(EFtScalar,13,0,"10.1.13","completed_at","Date/Time Test Complete") ) );
-	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(EFtScalar,14,0,"10.1.14","instrument","Instrument Identification") ) );
+	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(1,0,"10.1.1","type","Record Type ID") ) );
+	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(2,0,"10.1.2","seq","Sequence Number") ) );
+	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(3,0,"10.1.3","test","Universal Test ID") ) );
+	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(4,0,"10.1.4","value","Data or Measurement Value") ) );
+	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(5,0,"10.1.5","units","Units") ) );
+	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(6,0,"10.1.6","references","Reference Ranges") ) );
+	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(7,0,"10.1.7","abnormal_flag","Result Abnormal Flags") ) );
+	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(8,0,"10.1.8","abnormality_nature","Nature of Abnormal Testing") ) );
+	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(9,0,"10.1.9","status","Results Status") ) );
+	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(10,0,"10.1.10","norms_changed_at","Date of Changein Instrument") ) );
+	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(11,0,"10.1.11","operator","Operator Identification") ) );
+	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(12,0,"10.1.12","started_at","Date/Time Test Started") ) );
+	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(13,0,"10.1.13","completed_at","Date/Time Test Complete") ) );
+	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(14,0,"10.1.14","instrument","Instrument Identification") ) );
 
 	//Standard comment definition
 	_profilesInfo["astm_E1394E97"]['C'].second=true;
-	_profilesInfo["astm_E1394E97"]['C'].first.append( PFieldInfo(new FieldInfo(EFtScalar,1,0,"11.1.1","type","Record Type ID") ) );
-	_profilesInfo["astm_E1394E97"]['C'].first.append( PFieldInfo(new FieldInfo(EFtScalar,2,0,"11.1.2","seq","Sequence Number") ) );
-	_profilesInfo["astm_E1394E97"]['C'].first.append( PFieldInfo(new FieldInfo(EFtScalar,3,0,"11.1.3","source","Comment Source") ) );
-	_profilesInfo["astm_E1394E97"]['C'].first.append( PFieldInfo(new FieldInfo(EFtScalar,4,0,"11.1.4","data","Comment Text") ) );
-	_profilesInfo["astm_E1394E97"]['C'].first.append( PFieldInfo(new FieldInfo(EFtScalar,5,0,"11.1.5","ctype","Comment Type") ) );
+	_profilesInfo["astm_E1394E97"]['C'].first.append( PFieldInfo(new FieldInfo(1,0,"11.1.1","type","Record Type ID") ) );
+	_profilesInfo["astm_E1394E97"]['C'].first.append( PFieldInfo(new FieldInfo(2,0,"11.1.2","seq","Sequence Number") ) );
+	_profilesInfo["astm_E1394E97"]['C'].first.append( PFieldInfo(new FieldInfo(3,0,"11.1.3","source","Comment Source") ) );
+	_profilesInfo["astm_E1394E97"]['C'].first.append( PFieldInfo(new FieldInfo(4,0,"11.1.4","data","Comment Text") ) );
+	_profilesInfo["astm_E1394E97"]['C'].first.append( PFieldInfo(new FieldInfo(5,0,"11.1.5","ctype","Comment Type") ) );
 
 	//Standard request definition
 	_profilesInfo["astm_E1394E97"]['Q'].second=true;
-	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(EFtScalar,1,0,"12.1.1","type","Record Type ID") ) );
-	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(EFtScalar,2,0,"12.1.2","seq","Sequence Number") ) );
-	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(EFtScalar,3,0,"12.1.3","srangeid","Starting Range ID Number") ) );
-	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(EFtScalar,4,0,"12.1.4","erangeid","Ending Range ID Number") ) );
-	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(EFtScalar,5,0,"12.1.5","utestid","Universal Test ID") ) );
-	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(EFtScalar,5,0,"12.1.6","noreqtmlim","Nature of Request Time Limits") ) );
-	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(EFtScalar,5,0,"12.1.7","begreqresdt","Beginning Request Results Date and Time") ) );
-	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(EFtScalar,5,0,"12.1.8","endreqresdt","Ending Request Results Date and Time") ) );
-	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(EFtScalar,5,0,"12.1.9","reqphysname","Requesting Physician Name") ) );
-	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(EFtScalar,5,0,"12.1.10","reqphystel","Requesting Physician Telephone Number") ) );
-	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(EFtScalar,5,0,"12.1.11","userfld1","User Field No. 1") ) );
-	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(EFtScalar,5,0,"12.1.12","userfld2","User Field No. 2") ) );
-	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(EFtScalar,5,0,"12.1.13","utestid","Request Information Status Codes","","/[CPFXISMRANOD]/") ) );
+	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(1,0,"12.1.1","type","Record Type ID") ) );
+	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(2,0,"12.1.2","seq","Sequence Number") ) );
+	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(3,0,"12.1.3","srangeid","Starting Range ID Number") ) );
+	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(4,0,"12.1.4","erangeid","Ending Range ID Number") ) );
+	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(5,0,"12.1.5","utestid","Universal Test ID") ) );
+	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(5,0,"12.1.6","noreqtmlim","Nature of Request Time Limits") ) );
+	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(5,0,"12.1.7","begreqresdt","Beginning Request Results Date and Time") ) );
+	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(5,0,"12.1.8","endreqresdt","Ending Request Results Date and Time") ) );
+	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(5,0,"12.1.9","reqphysname","Requesting Physician Name") ) );
+	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(5,0,"12.1.10","reqphystel","Requesting Physician Telephone Number") ) );
+	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(5,0,"12.1.11","userfld1","User Field No. 1") ) );
+	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(5,0,"12.1.12","userfld2","User Field No. 2") ) );
+	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(5,0,"12.1.13","utestid","Request Information Status Codes","","/[CPFXISMRANOD]/") ) );
 
 	//Standard termination definition
 	_profilesInfo["astm_E1394E97"]['L'].second=true;
-	_profilesInfo["astm_E1394E97"]['L'].first.append( PFieldInfo(new FieldInfo(EFtScalar,1,0,"13.1.1","type","Record Type ID") ) );
-	_profilesInfo["astm_E1394E97"]['L'].first.append( PFieldInfo(new FieldInfo(EFtScalar,2,0,"13.1.2","seq","Sequence Number") ) );
-	_profilesInfo["astm_E1394E97"]['L'].first.append( PFieldInfo(new FieldInfo(EFtScalar,3,0,"13.1.3","code","Termination Code") ) );
+	_profilesInfo["astm_E1394E97"]['L'].first.append( PFieldInfo(new FieldInfo(1,0,"13.1.1","type","Record Type ID") ) );
+	_profilesInfo["astm_E1394E97"]['L'].first.append( PFieldInfo(new FieldInfo(2,0,"13.1.2","seq","Sequence Number") ) );
+	_profilesInfo["astm_E1394E97"]['L'].first.append( PFieldInfo(new FieldInfo(3,0,"13.1.3","code","Termination Code") ) );
 
 	//Standard manufacturer definition
 	_profilesInfo["astm_E1394E97"]['M'].second=true;
-	_profilesInfo["astm_E1394E97"]['M'].first.append( PFieldInfo(new FieldInfo(EFtScalar,1,0,"15.1.1","type","Record Type ID") ) );
-	_profilesInfo["astm_E1394E97"]['M'].first.append( PFieldInfo(new FieldInfo(EFtScalar,2,0,"15.1.2","seq","Sequence Number") ) );
+	_profilesInfo["astm_E1394E97"]['M'].first.append( PFieldInfo(new FieldInfo(1,0,"15.1.1","type","Record Type ID") ) );
+	_profilesInfo["astm_E1394E97"]['M'].first.append( PFieldInfo(new FieldInfo(2,0,"15.1.2","seq","Sequence Number") ) );
 
 	//Standard scientific definition
 	_profilesInfo["astm_E1394E97"]['S'].second=true;
-	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(EFtScalar,1,0,"14.1.1","type","Record Type ID") ) );
-	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(EFtScalar,2,0,"14.1.2","seq","Sequence Number") ) );
-	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(EFtScalar,2,0,"14.1.3","anmeth","Analytical Method") ) );
-	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(EFtScalar,2,0,"14.1.4","instr","Instrumentation") ) );
-	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(EFtScalar,2,0,"14.1.5","reagents","Reagents") ) );
-	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(EFtScalar,2,0,"14.1.6","unitofmeas","Units of Measure") ) );
-	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(EFtScalar,2,0,"14.1.7","qc","Quality Control") ) );
-	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(EFtScalar,2,0,"14.1.8","spcmdescr","Specimen Descriptor") ) );
-	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(EFtScalar,2,0,"14.1.9","resrvd","Reserved Field") ) );
-	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(EFtScalar,2,0,"14.1.10","container","Container") ) );
-	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(EFtScalar,2,0,"14.1.11","spcmid","Specimen ID") ) );
-	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(EFtScalar,2,0,"14.1.12","analyte","Analyte") ) );
-	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(EFtScalar,2,0,"14.1.13","result","Result") ) );
-	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(EFtScalar,2,0,"14.1.14","resunts","Result Units") ) );
-	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(EFtScalar,2,0,"14.1.15","collctdt","Collection Date and Time") ) );
-	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(EFtScalar,2,0,"14.1.16","resdt","Result Date and Time") ) );
-	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(EFtScalar,2,0,"14.1.17","anlprocstp","Analytical Preprocessing Steps") ) );
-	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(EFtScalar,2,0,"14.1.18","patdiagn","Patient Diagnosis") ) ); //TODO validate as IDC-9-CM
-	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(EFtScalar,2,0,"14.1.19","patbd","Patient Birthdate") ) );
-	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(EFtScalar,2,0,"14.1.20","patsex","Patient Sex") ) );
-	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(EFtScalar,2,0,"14.1.21","patrace","Patient Race") ) );
+	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(1,0,"14.1.1","type","Record Type ID") ) );
+	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.2","seq","Sequence Number") ) );
+	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.3","anmeth","Analytical Method") ) );
+	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.4","instr","Instrumentation") ) );
+	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.5","reagents","Reagents") ) );
+	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.6","unitofmeas","Units of Measure") ) );
+	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.7","qc","Quality Control") ) );
+	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.8","spcmdescr","Specimen Descriptor") ) );
+	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.9","resrvd","Reserved Field") ) );
+	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.10","container","Container") ) );
+	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.11","spcmid","Specimen ID") ) );
+	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.12","analyte","Analyte") ) );
+	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.13","result","Result") ) );
+	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.14","resunts","Result Units") ) );
+	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.15","collctdt","Collection Date and Time") ) );
+	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.16","resdt","Result Date and Time") ) );
+	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.17","anlprocstp","Analytical Preprocessing Steps") ) );
+	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.18","patdiagn","Patient Diagnosis") ) ); //TODO validate as IDC-9-CM
+	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.19","patbd","Patient Birthdate") ) );
+	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.20","patsex","Patient Sex") ) );
+	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.21","patrace","Patient Race") ) );
 
 }
 
@@ -224,7 +224,7 @@ QString ASTMFactory::userName( const QString & profile, char rt, int idx )
 	TRecordsInfo::ConstIterator riit;
 	if ( (prit = _profilesInfo.find(profile)) != _profilesInfo.end()  )
 		if( (riit = prit->find( rt ) ) != prit.value().end()  )
-			if ( riit.value().first.size() > idx && idx>0 )
+			if ( riit.value().first.size() > idx && idx>=0 )
 				return riit.value().first.at(idx)->_userName;
 
 	return QString::null;
@@ -233,6 +233,65 @@ QString ASTMFactory::userName( const QString & profile, char rt, int idx )
 QString ASTMFactory::stdRef( const QString & profile, char rt, int idx )
 {
 	return QString::null;
+}
+
+bool ASTMFactory::setFieldVisible( const QString & profile, char rt, int idx, bool visible )
+{
+	TProfileInfo::iterator prit = _profilesInfo.end();
+	TRecordsInfo::Iterator riit;
+	if ( (prit = _profilesInfo.find(profile)) != _profilesInfo.end()  )
+		if( (riit = prit->find( rt ) ) != prit.value().end()  )
+			if ( riit.value().first.size() > idx && idx>=0 )
+			{
+				riit->first.at(idx)->_stdVisible = visible;
+				return true;
+			}
+			
+	return false;
+}
+
+bool ASTMFactory::setFieldStdValue( const QString & profile, char rt, int idx, QVariant value )
+{
+	TProfileInfo::iterator prit = _profilesInfo.end();
+	TRecordsInfo::Iterator riit;
+	if ( (prit = _profilesInfo.find(profile)) != _profilesInfo.end()  )
+		if( (riit = prit->find( rt ) ) != prit.value().end()  )
+			if ( riit.value().first.size() > idx && idx>=0 )
+			{
+				riit->first.at(idx)->_stdValue = value.toString();
+				return true;
+			}
+			
+	return false;
+}
+
+bool ASTMFactory::setFieldValidator( const QString & profile, char rt, int idx, QString value )
+{
+	TProfileInfo::iterator prit = _profilesInfo.end();
+	TRecordsInfo::Iterator riit;
+	if ( (prit = _profilesInfo.find(profile)) != _profilesInfo.end()  )
+		if( (riit = prit->find( rt ) ) != prit.value().end()  )
+			if ( riit.value().first.size() > idx && idx>=0 )
+			{
+				riit->first.at(idx)->_validation = value;
+				return true;
+			}
+			
+	return false;
+}
+
+bool ASTMFactory::setRecordVisible( const QString & profile, char rt, bool visible )
+{
+	TProfileInfo::iterator prit = _profilesInfo.end();
+	TRecordsInfo::Iterator riit;
+	if ( (prit = _profilesInfo.find(profile)) != _profilesInfo.end()  )
+		if( (riit = prit->find( rt ) ) != prit.value().end()  )
+		{
+			riit->second = visible;
+			return true;
+		}
+			
+	return false;
 }
 
 PAstm ASTMFactory::parse( const QString & sdata )

@@ -290,18 +290,21 @@ class ASTMTerminator: public Astm
 typedef QSharedPointer<Astm> PAstm;
 
 
-
-enum TFieldType{ 
-	EFtScalar, ///<Simple type number or text
-	ETfStruct, ///<Consists of sub-fields ( ^- deviced)
-	ETfList,   ///<Consists of list ( \- deviced)
-	ETfSub     ///<Subtype, implicitly scalar
+class SubFieldInfo
+{
+public:
+	QString _name;
+	QString _stdValue;
+	QString _validation;
+	SubFieldInfo( QString n=QString::null, QString val=QString::null, QString vld=QString::null ):
+		_name(n),_stdValue(val),_validation(vld){}
 };
 
+typedef QList<SubFieldInfo> TSubFields;
 class FieldInfo
 {
 public:
-	TFieldType _type;       ///<Value type: scalar, array, structure, sub-type
+	bool _isList;           ///<States whether the field may contain repeat-values
 	int _recIdx;			///<Index within the record
 	int _fieldIdx;			///<Index within the field in case of subfield (^-separator)
 	QString _stdRef;		///<Reference chapter in standard
@@ -311,10 +314,10 @@ public:
 	QString _validation;	///<Validation rules (rx)
 	QString _stdValue;	    ///<Standard value when created
 	bool _stdVisible;	    ///<Standard visibility
+	TSubFields _subFields;	///<Subfields
 
 	FieldInfo( 
-		TFieldType type=EFtScalar
-		, int recIdx=0
+		int recIdx=0
 		, int fieldIdx=0
 		, const QString & stdRef=QString::null
 		, const QString & shortName=QString::null
@@ -323,7 +326,7 @@ public:
 		, const QString & validation=QString::null
 		, const QString & stdValue=QString::null
 		, bool stdVisible=true ):
-		_type(type),
+		_isList(false),
 		_recIdx(recIdx),
 		_fieldIdx(fieldIdx),
 		_stdRef(stdRef),
@@ -355,6 +358,10 @@ class ASTMFactory
 
 		PAstm parse( const QString & sdata );
 		QString userName( const QString & profile, char rt, int idx );
+		bool setFieldVisible( const QString & profile, char rt, int idx, bool visible=true );
+		bool setFieldStdValue( const QString & profile, char rt, int idx, QVariant value );
+		bool setFieldValidator( const QString & profile, char rt, int idx, QString value );
+		bool setRecordVisible( const QString & profile, char rt, bool visible=true );
 		QString stdRef( const QString & profile, char rt, int idx );
 		TRecordInfo recordInfo( const QString & profile, char rt ){ return _profilesInfo[profile][rt]; };
 };
