@@ -1343,7 +1343,8 @@ void CulistGui::saveProject()
 		ts << "ClientModeServerPort="<<_projectData._clientModeServerPort<<"\n";
 		ts << "ClientModeServer="<<_projectData._clientModeServer<<"\n";
 		ts << "ProxyMode="<<_projectData._proxyMode<<"\n";
-		ts << "Profile="<<_projectData._profile<<"\n";
+		ts << "CurrentProfile="<<_projectData._profile<<"\n";
+		ts << ASTMFactory::instance().exportProfiles();
 		ts << "DATA\n";
 		
 

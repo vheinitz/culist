@@ -364,6 +364,7 @@ class ASTMFactory
 		bool setRecordVisible( const QString & profile, char rt, bool visible=true );
 		QString stdRef( const QString & profile, char rt, int idx );
 		TRecordInfo recordInfo( const QString & profile, char rt ){ return _profilesInfo[profile][rt]; };
+		QString exportProfiles() const;
 };
 
 

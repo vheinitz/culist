@@ -294,6 +294,32 @@ bool ASTMFactory::setRecordVisible( const QString & profile, char rt, bool visib
 	return false;
 }
 
+QString ASTMFactory::exportProfiles( /*todo regexp or name*/ ) const
+{
+	QString out;
+	for ( TProfileInfo::const_iterator pit = _profilesInfo.begin(), pend = _profilesInfo.end(); pit!=pend; ++pit )
+	{
+		out += QString("PROFILES BEGIN\n");
+		for (TRecordsInfo::const_iterator rit = pit.value().constBegin(), rend =  pit.value().constEnd(); rit != rend; ++rit )
+		{
+			for (QList<PFieldInfo>::const_iterator fit = rit.value().first.constBegin(), fend =  rit.value().first.constEnd(); fit != fend; ++fit )
+			{
+				out  += QString( "%1\t%2\t%3\n" ).arg(pit.key()).arg(rit.key()).arg(rit.value().second);
+			}
+		}
+		out += QString("PROFILES END\n");
+	}
+	
+	return out;
+/*
+	typedef QSharedPointer<FieldInfo> PFieldInfo;
+typedef QPair< QList<PFieldInfo>,bool > TRecordInfo;
+typedef QMap<char, TRecordInfo> TRecordsInfo;
+typedef QMap< QString, TRecordsInfo> TProfileInfo;
+*/
+
+}
+
 PAstm ASTMFactory::parse( const QString & sdata )
 {
 	QString rec = sdata;
