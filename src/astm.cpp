@@ -304,7 +304,13 @@ QString ASTMFactory::exportProfiles( /*todo regexp or name*/ ) const
 		{
 			for (QList<PFieldInfo>::const_iterator fit = rit.value().first.constBegin(), fend =  rit.value().first.constEnd(); fit != fend; ++fit )
 			{
-				out  += QString( "%1\t%2\t%3\n" ).arg(pit.key()).arg(rit.key()).arg(rit.value().second);
+				out  += QString( "%1\t%2\t%3\n" ).arg(pit.key()).arg(rit.key()).arg(rit.value().second)
+					.arg((*fit)->_recIdx)
+					.arg((*fit)->_isList?1:0)					
+					.arg((*fit)->_stdVisible)
+					.arg((*fit)->_stdValue)
+					.arg((*fit)->_validation)
+					;
 			}
 		}
 		out += QString("PROFILES END\n");

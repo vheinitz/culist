@@ -1420,6 +1420,7 @@ void CulistGui::on_actionLoad_Project_triggered()
 
 		int ln=0;
 		bool readData=false;
+		bool readProfiles = false;
 		while(!ts.atEnd())
 		{
 			++ln;
@@ -1427,7 +1428,13 @@ void CulistGui::on_actionLoad_Project_triggered()
 			if(l.isEmpty() || l.at(0) == '#')
 				continue;
 
-			if ( readData )
+			if ( readProfiles )
+			{	
+				QStringList items = l.split("\t");
+				//if (items.size()<3)
+				
+			}
+			else if ( readData )
 			{				
 				if (l.contains(QRegExp("\\s*Session\\s*=")) )
 				{
@@ -1463,6 +1470,16 @@ void CulistGui::on_actionLoad_Project_triggered()
 				_projectData._profile = l.section("=",1);
 			else if (l=="DATA")
 				readData=true;
+			else if (l=="PROFILES BEGIN")
+			{
+				readData=false;
+				readProfiles=true;
+			}
+			else if (l=="PROFILES END")
+			{
+				readData=false;
+				readProfiles=false;
+			}
 
 		}
 		ui->actionSave_Project_As->setEnabled(true);

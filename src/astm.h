@@ -306,7 +306,6 @@ class FieldInfo
 public:
 	bool _isList;           ///<States whether the field may contain repeat-values
 	int _recIdx;			///<Index within the record
-	int _fieldIdx;			///<Index within the field in case of subfield (^-separator)
 	QString _stdRef;		///<Reference chapter in standard
 	QString _shortName;		///<Short, uniq name for use in referencing via name
 	QString _userName;		///<Full name as used in standard or defined by user (for custom fields)
@@ -318,7 +317,6 @@ public:
 
 	FieldInfo( 
 		int recIdx=0
-		, int fieldIdx=0
 		, const QString & stdRef=QString::null
 		, const QString & shortName=QString::null
 		, const QString & userName=QString::null 
@@ -328,7 +326,6 @@ public:
 		, bool stdVisible=true ):
 		_isList(false),
 		_recIdx(recIdx),
-		_fieldIdx(fieldIdx),
 		_stdRef(stdRef),
 		_shortName(shortName),
 		_userName(userName),
