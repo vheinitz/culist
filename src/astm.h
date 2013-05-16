@@ -359,6 +359,7 @@ class ASTMFactory
 		bool setFieldStdValue( const QString & profile, char rt, int idx, QVariant value );
 		bool setFieldValidator( const QString & profile, char rt, int idx, QString value );
 		bool setRecordVisible( const QString & profile, char rt, bool visible=true );
+		bool isRecordVisible( const QString & profile, char rt );
 		QString stdRef( const QString & profile, char rt, int idx );
 		TRecordInfo recordInfo( const QString & profile, char rt ){ return _profilesInfo[profile][rt]; };
 		QString exportProfiles() const;

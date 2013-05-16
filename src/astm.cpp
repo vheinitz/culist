@@ -66,7 +66,8 @@ QByteArray Helpers::toLIS2_A2( QByteArray lis01_A2data)
 
 void ASTMFactory::init()
 {
-	_profilesInfo["astm_E1394E97"]['H'].second=true;
+	_profilesInfo.clear();
+	_profilesInfo["astm_E1394E97"]['H'].second=false;
 	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(1,0,"7.1.1","type","Record Type ID") ) );
 	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(2,0,"7.1.2","delimeter","Delimiter Definition") ) );
 	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(3,0,"7.1.3","message_id","Message Control ID") ) );
@@ -83,7 +84,7 @@ void ASTMFactory::init()
 	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(14,0,"7.1.14","timestamp","Date/Timeof Message") ) );
 
 	//Standard patient definition
-	_profilesInfo["astm_E1394E97"]['P'].second=true;
+	_profilesInfo["astm_E1394E97"]['P'].second=false;
 	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(1,0,"8.1.1","type","Record Type ID") ) );
 	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(2,0,"8.1.2","seq","Sequence Number") ) );
 	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(3,0,"8.1.3","practice_id","Practice Assigned Patient ID") ) );
@@ -112,7 +113,7 @@ void ASTMFactory::init()
 	_profilesInfo["astm_E1394E97"]['P'].first.append( PFieldInfo(new FieldInfo(26,0,"8.1.26","location","Location") ) );
 
 	//Standard order definition
-	_profilesInfo["astm_E1394E97"]['O'].second=true;
+	_profilesInfo["astm_E1394E97"]['O'].second=false;
 	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(1,0,"9.4.1","type","Record Type ID") ) );
 	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(2,0,"9.4.2","seq","Sequence Number") ) );
 	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(3,0,"9.4.3","sample_id","Specimen ID") ) );
@@ -141,7 +142,7 @@ void ASTMFactory::init()
 	_profilesInfo["astm_E1394E97"]['O'].first.append( PFieldInfo(new FieldInfo(26,0,"9.4.26","report_type","Report Type") ) );
 
 	//Standard result definition
-	_profilesInfo["astm_E1394E97"]['R'].second=true;
+	_profilesInfo["astm_E1394E97"]['R'].second=false;
 	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(1,0,"10.1.1","type","Record Type ID") ) );
 	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(2,0,"10.1.2","seq","Sequence Number") ) );
 	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(3,0,"10.1.3","test","Universal Test ID") ) );
@@ -158,7 +159,7 @@ void ASTMFactory::init()
 	_profilesInfo["astm_E1394E97"]['R'].first.append( PFieldInfo(new FieldInfo(14,0,"10.1.14","instrument","Instrument Identification") ) );
 
 	//Standard comment definition
-	_profilesInfo["astm_E1394E97"]['C'].second=true;
+	_profilesInfo["astm_E1394E97"]['C'].second=false;
 	_profilesInfo["astm_E1394E97"]['C'].first.append( PFieldInfo(new FieldInfo(1,0,"11.1.1","type","Record Type ID") ) );
 	_profilesInfo["astm_E1394E97"]['C'].first.append( PFieldInfo(new FieldInfo(2,0,"11.1.2","seq","Sequence Number") ) );
 	_profilesInfo["astm_E1394E97"]['C'].first.append( PFieldInfo(new FieldInfo(3,0,"11.1.3","source","Comment Source") ) );
@@ -166,7 +167,7 @@ void ASTMFactory::init()
 	_profilesInfo["astm_E1394E97"]['C'].first.append( PFieldInfo(new FieldInfo(5,0,"11.1.5","ctype","Comment Type") ) );
 
 	//Standard request definition
-	_profilesInfo["astm_E1394E97"]['Q'].second=true;
+	_profilesInfo["astm_E1394E97"]['Q'].second=false;
 	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(1,0,"12.1.1","type","Record Type ID") ) );
 	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(2,0,"12.1.2","seq","Sequence Number") ) );
 	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(3,0,"12.1.3","srangeid","Starting Range ID Number") ) );
@@ -182,18 +183,18 @@ void ASTMFactory::init()
 	_profilesInfo["astm_E1394E97"]['Q'].first.append( PFieldInfo(new FieldInfo(5,0,"12.1.13","utestid","Request Information Status Codes","","/[CPFXISMRANOD]/") ) );
 
 	//Standard termination definition
-	_profilesInfo["astm_E1394E97"]['L'].second=true;
+	_profilesInfo["astm_E1394E97"]['L'].second=false;
 	_profilesInfo["astm_E1394E97"]['L'].first.append( PFieldInfo(new FieldInfo(1,0,"13.1.1","type","Record Type ID") ) );
 	_profilesInfo["astm_E1394E97"]['L'].first.append( PFieldInfo(new FieldInfo(2,0,"13.1.2","seq","Sequence Number") ) );
 	_profilesInfo["astm_E1394E97"]['L'].first.append( PFieldInfo(new FieldInfo(3,0,"13.1.3","code","Termination Code") ) );
 
 	//Standard manufacturer definition
-	_profilesInfo["astm_E1394E97"]['M'].second=true;
+	_profilesInfo["astm_E1394E97"]['M'].second=false;
 	_profilesInfo["astm_E1394E97"]['M'].first.append( PFieldInfo(new FieldInfo(1,0,"15.1.1","type","Record Type ID") ) );
 	_profilesInfo["astm_E1394E97"]['M'].first.append( PFieldInfo(new FieldInfo(2,0,"15.1.2","seq","Sequence Number") ) );
 
 	//Standard scientific definition
-	_profilesInfo["astm_E1394E97"]['S'].second=true;
+	_profilesInfo["astm_E1394E97"]['S'].second=false;
 	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(1,0,"14.1.1","type","Record Type ID") ) );
 	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.2","seq","Sequence Number") ) );
 	_profilesInfo["astm_E1394E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.3","anmeth","Analytical Method") ) );
@@ -294,6 +295,22 @@ bool ASTMFactory::setRecordVisible( const QString & profile, char rt, bool visib
 	return false;
 }
 
+
+bool ASTMFactory::isRecordVisible( const QString & profile, char rt )
+{
+	TProfileInfo::iterator prit = _profilesInfo.end();
+	TRecordsInfo::Iterator riit;
+	if ( (prit = _profilesInfo.find(profile)) != _profilesInfo.end()  )
+	{
+		if( (riit = prit->find( rt ) ) != prit.value().end()  )
+		{
+			return riit->second;
+		}
+	}		
+
+	return false; //TODO error message
+}
+
 QString ASTMFactory::exportProfiles( /*todo regexp or name*/ ) const
 {
 	QString out;
@@ -302,15 +319,19 @@ QString ASTMFactory::exportProfiles( /*todo regexp or name*/ ) const
 		out += QString("PROFILES BEGIN\n");
 		for (TRecordsInfo::const_iterator rit = pit.value().constBegin(), rend =  pit.value().constEnd(); rit != rend; ++rit )
 		{
-			for (QList<PFieldInfo>::const_iterator fit = rit.value().first.constBegin(), fend =  rit.value().first.constEnd(); fit != fend; ++fit )
+
+			if(rit.value().second == true)// record visible
 			{
-				out  += QString( "%1\t%2\t%3\n" ).arg(pit.key()).arg(rit.key()).arg(rit.value().second)
-					.arg((*fit)->_recIdx)
-					.arg((*fit)->_isList?1:0)					
-					.arg((*fit)->_stdVisible)
-					.arg((*fit)->_stdValue)
-					.arg((*fit)->_validation)
-					;
+				for (QList<PFieldInfo>::const_iterator fit = rit.value().first.constBegin(), fend =  rit.value().first.constEnd(); fit != fend; ++fit )
+				{
+					out  += QString( "%1\t%2\t%3\n" ).arg(pit.key()).arg(rit.key()).arg(rit.value().second)
+						.arg((*fit)->_recIdx)
+						.arg((*fit)->_isList?1:0)					
+						.arg((*fit)->_stdVisible)
+						.arg((*fit)->_stdValue)
+						.arg((*fit)->_validation)
+						;
+				}
 			}
 		}
 		out += QString("PROFILES END\n");

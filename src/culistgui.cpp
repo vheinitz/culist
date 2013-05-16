@@ -1119,6 +1119,16 @@ void CulistGui::on_actionSend_Data_triggered()
 		QTimer::singleShot(10,this, SLOT(processDataToSend()) );
 }
 
+void CulistGui::updateRecordView()
+{
+	for( int r = 0; r < _profileRecords.rowCount(); ++r )
+	{		
+		char recType = _profileRecords.item(r, 0)->data(Qt::UserRole+1 ).toChar().toAscii();
+		bool isVisible = ASTMFactory::instance().isRecordVisible( _projectData._profile, recType );
+		_profileRecords.item(r, 0)->setCheckState( isVisible?Qt::Checked:Qt::Unchecked);		
+	}	
+}
+
 bool CulistGui::createSendData()
 {
 	_messagesToSend.clear();
@@ -1317,12 +1327,15 @@ void CulistGui::on_actionNew_Project_triggered()
 	QString fn = QFileDialog::getSaveFileName( this, tr("Define New Project's File") );
     if (fn.isEmpty())
             return;
+	ASTMFactory::instance().init();
 	_projectData.reset();
 	_projectData._fn = fn;
+	_projectData._profile = "astm_E1394E97";
 	on_actionClear_All_triggered();	
 
 	ui->actionSave_Project_As->setEnabled(true);
 	ui->actionSave_Project->setEnabled(true);
+	updateRecordView();
 }
 
 void CulistGui::on_actionSave_Project_triggered()
@@ -1338,6 +1351,7 @@ void CulistGui::saveProject()
 	if ( pf.open(QIODevice::WriteOnly) )
 	{
 		QTextStream ts(&pf);
+		on_bSaveProfile_clicked();
 
 		ts << "ServerModePort="<<_projectData._serverModePort<<"\n";
 		ts << "ClientModeServerPort="<<_projectData._clientModeServerPort<<"\n";
@@ -1346,17 +1360,6 @@ void CulistGui::saveProject()
 		ts << "CurrentProfile="<<_projectData._profile<<"\n";
 		ts << ASTMFactory::instance().exportProfiles();
 		ts << "DATA\n";
-		
-
-		/*if ( _currentEditItem.data(Qt::UserRole+1).toInt() == EMessage)
-		{
-			ts << "Message=Message\n";
-		}
-		else if ( _currentEditItem.data(Qt::UserRole+1).toInt() == ESession)
-		{					
-			ts << "Session=Session\n";
-		}
-		else*/
 		{
 			int s=0;
 			while ( QStandardItem *msg = _editRecords.item(s++,0) )
@@ -1411,7 +1414,9 @@ void CulistGui::on_actionLoad_Project_triggered()
 	if (fn.isEmpty())
             return;
 	
-	_projectData._fn = fn;
+	_projectData.reset();
+	_projectData._fn = fn;	
+	ASTMFactory::instance().init();
     QFile pf( _projectData._fn );
 	if ( pf.open(QIODevice::ReadOnly) )
 	{
@@ -1428,10 +1433,38 @@ void CulistGui::on_actionLoad_Project_triggered()
 			if(l.isEmpty() || l.at(0) == '#')
 				continue;
 
-			if ( readProfiles )
+			if (l=="DATA")
+			{
+				readData=true;
+			}
+			else if (l=="PROFILES BEGIN")
+			{
+				readData=false;
+				readProfiles=true;
+			}
+			else if (l=="PROFILES END")
+			{
+				readData=false;
+				readProfiles=false;
+			}
+			else if ( readProfiles )
 			{	
 				QStringList items = l.split("\t");
-				//if (items.size()<3)
+				if (items.size()>3)
+				{
+					
+					ASTMFactory::instance().setFieldVisible( items.at(0), items.at(1).at(0).toAscii(), items.at(2).toInt(),
+						items.at(3).toInt()?Qt::Checked : Qt::Unchecked );
+
+/*					ASTMFactory::instance().setFieldStdValue( _projectData._profile, _currentRt, r, 
+						_profileFields.item( r, 2)->data(Qt::DisplayRole ).toString()
+						);
+
+					ASTMFactory::instance().setFieldValidator( _projectData._profile, _currentRt, r, 
+						_profileFields.item( r, 3)->data(Qt::DisplayRole ).toString()
+						);*/
+				}
+				ASTMFactory::instance().setRecordVisible( items.at(0), items.at(1).at(0).toAscii(),true );
 				
 			}
 			else if ( readData )
@@ -1453,7 +1486,7 @@ void CulistGui::on_actionLoad_Project_triggered()
 					if (prec.isNull())
 					{
 						//TODO error
-						return;
+						//return;
 					}
 					setRecord( prec );
 				}
@@ -1466,20 +1499,8 @@ void CulistGui::on_actionLoad_Project_triggered()
 				_projectData._clientModeServer = l.section("=",1);
 			else if (l.contains(QRegExp("\\s*ProxyMode\\s*=")) )
 				_projectData._proxyMode = l.section("=",1).toInt();
-			else if (l.contains(QRegExp("\\s*Profile\\s*=")) )
-				_projectData._profile = l.section("=",1);
-			else if (l=="DATA")
-				readData=true;
-			else if (l=="PROFILES BEGIN")
-			{
-				readData=false;
-				readProfiles=true;
-			}
-			else if (l=="PROFILES END")
-			{
-				readData=false;
-				readProfiles=false;
-			}
+			else if (l.contains(QRegExp("\\s*CurrentProfile\\s*=")) )
+				_projectData._profile = l.section("=",1);			
 
 		}
 		ui->actionSave_Project_As->setEnabled(true);
@@ -1490,6 +1511,7 @@ void CulistGui::on_actionLoad_Project_triggered()
 	{
 		//TODO error
 	}
+	updateRecordView();
 }
 
 void CulistGui::on_actionSave_Trace_As_triggered() //export trace
@@ -1568,4 +1590,11 @@ void CulistGui::on_bSaveProfile_clicked()
 			_profileFields.item( r, 3)->data(Qt::DisplayRole ).toString()
 			);
 	}
+
+	for( int r = 0; r < _profileRecords.rowCount(); ++r )
+	{
+		bool isUsed = _profileRecords.item(r, 0)->checkState() == Qt::Checked;
+		char recType = _profileRecords.item(r, 0)->data(Qt::UserRole+1 ).toChar().toAscii();
+		ASTMFactory::instance().setRecordVisible( _projectData._profile, recType, isUsed );
+	}	
 }

@@ -43,7 +43,7 @@ public:
 		_profile.clear();
 		_serverModePort = 0;
 		_clientModeServer.clear();
-		_clientModeServerPort.clear();
+		_clientModeServerPort="0";
 		_proxyMode=false;
 
 	}
@@ -149,6 +149,7 @@ private:
 	void saveProject();
 	bool dataFromMessage( QStandardItem *mesg, QList<QByteArray> &outData );
 	bool createSendData();
+	void updateRecordView();
 	QTcpSocket * getSendSocket( );
 public:
 	QStandardItem * addRecord( RecordType rt );
