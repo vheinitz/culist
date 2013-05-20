@@ -19,9 +19,6 @@
 #include "persistence.h"
 
 
-typedef QMap<RecordType,QString> TTypeToName;
-TTypeToName _recordNames;
-
 CulistGui::CulistGui(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::CulistGui),
@@ -40,15 +37,7 @@ CulistGui::CulistGui(QWidget *parent) :
 	PERSISTENT("ServerModeServerHost", ui->eServerModeSrvPort, "text");
 
 
-	_recordNames[EPatient] = tr("Patient");
-	_recordNames[ERequest] = tr("Request");
-	_recordNames[EScientific] = tr("Scientific");
-	_recordNames[EOrder] = tr("Order");
-	_recordNames[EResult] = tr("Result");
-	_recordNames[EComment] = tr("Comment");
-	_recordNames[EHeader] = tr("Header");
-	_recordNames[ETerminator] = tr("Terminator");
-	_recordNames[EManufacturer] = tr("Manufacturer");
+	
 	on_actionClear_All_triggered();
 	
 	ui->actionStop_Listening->setEnabled(false);
@@ -56,17 +45,54 @@ CulistGui::CulistGui(QWidget *parent) :
 	ui->actionSave_Project->setEnabled(false);
 	ui->actionSave_Project_As->setEnabled(false);
 
-	ui->lvProfileRecords->setModel(&_profileRecords);
+	
+	/*ui->lvProfileRecords->setModel(&_profileRecords);
 	_profileRecords.setColumnCount(1);
 	_profileRecords.setHorizontalHeaderLabels(QStringList()<<tr("Include/Exclude Record Names"));
+	*/
 
+	_projectData._profile = "astm_E1394E97";
+	ASTMFactory::instance().init();
 
-	for ( TTypeToName::iterator it = _recordNames.begin(); it != _recordNames.end(); ++it )
+	for ( TTypeToName::iterator it = ASTMFactory::instance()._recordNames.begin(); it != ASTMFactory::instance()._recordNames.end(); ++it )
 	{
-		_profileRecords.insertRow(0);
-		_profileRecords.setItem(0,0, new QStandardItem(it.value() ) );
-		_profileRecords.item(0,0)->setCheckable(true);
-		_profileRecords.item(0,0)->setData(it.key(), Qt::UserRole+1);
+		_profileFields.insertRow(0);
+		_profileFields.setItem(0,0, new QStandardItem(it.value() ) );
+		_profileFields.item(0,0)->setCheckable(true);
+		_profileFields.item(0,0)->setData(it.key(), Qt::UserRole+1);
+		TRecordInfo recInfo = ASTMFactory::instance().recordInfo( _projectData._profile,  it.key() );		
+
+		QStandardItem *curRec = _profileFields.item(0,0) ;
+		int r=0;		
+		foreach( PFieldInfo fi, recInfo.first )
+		{			
+			
+			QStandardItem *field = new QStandardItem(fi->_userName);
+			field->setCheckable(true);
+			curRec->appendRow( field );
+			/*child->setData( rt, Qt::UserRole+1 );
+			TRecordInfo recInfo = ASTMFactory::instance().recordInfo( _projectData._profile, rt );
+			QMap<QString,QVariant> vals;
+			foreach( PFieldInfo fi, recInfo.first )
+			{
+				vals[fi->_shortName] = fi->_stdValue;
+			}
+			child->setEditable(false);
+			child->setData(vals,Qt::UserRole+2);
+			cur->appendRow(child);
+			_currentEditItem = _editRecords.indexFromItem(child);
+			cur = child;
+
+			/*_profileFields.setItem(r,0, new QStandardItem( fi->_userName ) );
+			_profileFields.setItem(r,1, new QStandardItem( " " ) );
+			_profileFields.item(r,1)->setCheckable(true);
+			_profileFields.item(r,1)->setCheckState(fi->_stdVisible?Qt::Checked:Qt::Unchecked);
+			_profileFields.setItem(r,2, new QStandardItem( fi->_stdValue ) );
+			_profileFields.setItem(r,3, new QStandardItem( fi->_validation ) );
+			_profileFields.setItem(r,4, new QStandardItem( fi->_isList ) );
+			*/
+			++r;
+		}
 	}
 
 	
@@ -75,10 +101,10 @@ CulistGui::CulistGui(QWidget *parent) :
 	_sendDataTimer->setSingleShot(true);
 	_sendDataTimer->setInterval(3000);//TODO configurable
 	connect( _sendDataTimer, SIGNAL(timeout()), this, SLOT(processSendDataTimeout()) );
-
-	_projectData._profile = "astm_E1394E97";
 	
-	ASTMFactory::instance().init();
+	ui->tvProfileFields->setModel( &_profileFields );
+	
+	
 	createToolBars();
 	_winTitleBase = "CULIST. Version:"CULIST_VERSION"; Copyright 2013, Valentin Heinitz";
 	this->setWindowTitle(_winTitleBase);
@@ -894,7 +920,7 @@ QStandardItem * CulistGui::addRecord( RecordType rt )
 
 		if( cur )
 		{
-			QStandardItem *child = new QStandardItem(_recordNames[rt]);
+			QStandardItem *child = new QStandardItem(ASTMFactory::instance()._recordNames[rt]);
 			child->setData( rt, Qt::UserRole+1 );
 			TRecordInfo recInfo = ASTMFactory::instance().recordInfo( _projectData._profile, rt );
 			QMap<QString,QVariant> vals;
@@ -1121,12 +1147,14 @@ void CulistGui::on_actionSend_Data_triggered()
 
 void CulistGui::updateRecordView()
 {
+/*
 	for( int r = 0; r < _profileRecords.rowCount(); ++r )
 	{		
 		char recType = _profileRecords.item(r, 0)->data(Qt::UserRole+1 ).toChar().toAscii();
 		bool isVisible = ASTMFactory::instance().isRecordVisible( _projectData._profile, recType );
 		_profileRecords.item(r, 0)->setCheckState( isVisible?Qt::Checked:Qt::Unchecked);		
 	}	
+	*/
 }
 
 bool CulistGui::createSendData()
@@ -1530,6 +1558,7 @@ void CulistGui::on_actionExport_triggered()
 
 RecordType _currentRt=ESession;
 
+/*
 void CulistGui::on_lvProfileRecords_clicked(const QModelIndex &index)
 {
 	_profileFields.clear();
@@ -1568,6 +1597,7 @@ void CulistGui::on_lvProfileRecords_clicked(const QModelIndex &index)
 		}
 	}
 }
+*/
 
 void CulistGui::on_bExportProfile_clicked()
 {
@@ -1591,10 +1621,12 @@ void CulistGui::on_bSaveProfile_clicked()
 			);
 	}
 
+	/*
 	for( int r = 0; r < _profileRecords.rowCount(); ++r )
 	{
 		bool isUsed = _profileRecords.item(r, 0)->checkState() == Qt::Checked;
 		char recType = _profileRecords.item(r, 0)->data(Qt::UserRole+1 ).toChar().toAscii();
 		ASTMFactory::instance().setRecordVisible( _projectData._profile, recType, isUsed );
-	}	
+	}
+	*/
 }

@@ -139,7 +139,7 @@ private slots:
 
     void on_actionExport_triggered();
 
-    void on_lvProfileRecords_clicked(const QModelIndex &index);
+    //void on_lvProfileRecords_clicked(const QModelIndex &index);
 
     void on_bExportProfile_clicked();
 
@@ -185,7 +185,7 @@ private:
 	QToolBar *_fileToolBar;
 	QString _winTitleBase;
 	QStandardItemModel _profileFields;
-	QStandardItemModel _profileRecords;
+	//QStandardItemModel _profileRecords;
 };
 
 #endif // LISTRAQGUI_H

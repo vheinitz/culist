@@ -51,6 +51,8 @@ C, P, F, X, I, O result status
 
 typedef QMap<QString, QString> TRecordValues;
 
+
+
 enum RecordType{
 	ESession='X', 
 	EMessage='Y', 
@@ -64,6 +66,9 @@ enum RecordType{
 	EScientific='S',
 	ETerminator='L'
 };
+
+//usare readable names (may be displayed locale-dependant, todo)
+typedef QMap<RecordType,QString> TTypeToName;
 
 
 class Helpers
@@ -337,7 +342,7 @@ public:
 };
 
 typedef QSharedPointer<FieldInfo> PFieldInfo;
-typedef QPair< QList<PFieldInfo>,bool > TRecordInfo;
+typedef QPair< QList<PFieldInfo>,bool > TRecordInfo; 
 typedef QMap<char, TRecordInfo> TRecordsInfo;
 typedef QMap< QString, TRecordsInfo> TProfileInfo;
 
@@ -352,6 +357,8 @@ class ASTMFactory
 			return inst;
 		}
 		void init();
+
+		TTypeToName _recordNames;
 
 		PAstm parse( const QString & sdata );
 		QString userName( const QString & profile, char rt, int idx );

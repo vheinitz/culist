@@ -7,6 +7,7 @@
 
 #include "astm.h"
 #include <QVariant>
+#include <QApplication>
 
 Separators  Astm::_sep;
 
@@ -64,8 +65,21 @@ QByteArray Helpers::toLIS2_A2( QByteArray lis01_A2data)
 	return  lis2;
 }
 
+#define tr(s) QString(s)
+
 void ASTMFactory::init()
 {
+	_recordNames.clear();
+	_recordNames[EPatient] = tr("Patient");
+	_recordNames[ERequest] = tr("Request");
+	_recordNames[EScientific] = tr("Scientific");
+	_recordNames[EOrder] = tr("Order");
+	_recordNames[EResult] = tr("Result");
+	_recordNames[EComment] = tr("Comment");
+	_recordNames[EHeader] = tr("Header");
+	_recordNames[ETerminator] = tr("Terminator");
+	_recordNames[EManufacturer] = tr("Manufacturer");
+
 	_profilesInfo.clear();
 	_profilesInfo["astm_E1394E97"]['H'].second=false;
 	_profilesInfo["astm_E1394E97"]['H'].first.append( PFieldInfo(new FieldInfo(1,0,"7.1.1","type","Record Type ID") ) );
