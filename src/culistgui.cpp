@@ -56,19 +56,20 @@ CulistGui::CulistGui(QWidget *parent) :
 
 	for ( TTypeToName::iterator it = ASTMFactory::instance()._recordNames.begin(); it != ASTMFactory::instance()._recordNames.end(); ++it )
 	{
-		_profileFields.insertRow(0);
-		_profileFields.setItem(0,0, new QStandardItem(it.value() ) );
-		_profileFields.item(0,0)->setCheckable(true);
-		_profileFields.item(0,0)->setData(it.key(), Qt::UserRole+1);
+		_profileFields.insertRow(_profileFields.rowCount());		
+		_profileFields.setItem(_profileFields.rowCount()-1,0, new QStandardItem(it.value() ) );
+		QStandardItem *curRec = _profileFields.item( _profileFields.rowCount()-1 ) ;
+		curRec->setCheckable(true);
+		curRec->setData(it.key(), Qt::UserRole+1);
 		TRecordInfo recInfo = ASTMFactory::instance().recordInfo( _projectData._profile,  it.key() );		
-
-		QStandardItem *curRec = _profileFields.item(0,0) ;
+		
 		int r=0;		
 		foreach( PFieldInfo fi, recInfo.first )
-		{			
-			
-			QStandardItem *field = new QStandardItem(fi->_userName);
+		{		
+			QString un = fi->_userName;
+			QStandardItem *field = new QStandardItem();
 			field->setCheckable(true);
+			field->setData( un, Qt::DisplayRole ); 
 			curRec->appendRow( field );
 			/*child->setData( rt, Qt::UserRole+1 );
 			TRecordInfo recInfo = ASTMFactory::instance().recordInfo( _projectData._profile, rt );
@@ -102,7 +103,7 @@ CulistGui::CulistGui(QWidget *parent) :
 	_sendDataTimer->setInterval(3000);//TODO configurable
 	connect( _sendDataTimer, SIGNAL(timeout()), this, SLOT(processSendDataTimeout()) );
 	
-	ui->tvProfileFields->setModel( &_profileFields );
+	ui->trvEditProfile->setModel( &_profileFields );
 	
 	
 	createToolBars();
@@ -1280,7 +1281,8 @@ void CulistGui::on_actionClear_All_triggered()
     clearMessages();
     clearLog();
 	_currentEditItem = QModelIndex();
-	ui->trvEditRecords->setModel( &_editRecords );
+	ui->trvEditRecords->setModel( &_editRecords );	
+	
 	connect( ui->trvEditRecords->selectionModel() ,SIGNAL( currentRowChanged ( QModelIndex,QModelIndex))
 			, this, SLOT(processCurrentRowChanged ( QModelIndex,QModelIndex)) );
 	_editRecords.setColumnCount(1);
@@ -1608,8 +1610,14 @@ void CulistGui::on_bSaveProfile_clicked()
 {
 	for( int r = 0; r < _profileFields.rowCount(); ++r )
 	{
+		ASTMFactory::instance().setRecordVisible( 
+			ui->eProfileName->text(), 
+			_profileFields.item(r,0)->data(Qt::UserRole+1).toChar().toAscii(),
+			_profileFields.item(r, 0)->checkState() == Qt::Checked
+			);
+/*
 		ASTMFactory::instance().setFieldVisible( _projectData._profile, _currentRt, r, 
-			_profileFields.item(r, 1)->checkState() == Qt::Checked
+			_profileFields.item(r, 0)->checkState() == Qt::Checked
 			);
 
 		ASTMFactory::instance().setFieldStdValue( _projectData._profile, _currentRt, r, 
@@ -1619,7 +1627,27 @@ void CulistGui::on_bSaveProfile_clicked()
 		ASTMFactory::instance().setFieldValidator( _projectData._profile, _currentRt, r, 
 			_profileFields.item( r, 3)->data(Qt::DisplayRole ).toString()
 			);
+			*/
 	}
+/*
+for ( TTypeToName::iterator it = ASTMFactory::instance()._recordNames.begin(); it != ASTMFactory::instance()._recordNames.end(); ++it )
+	{
+		_profileFields.insertRow(_profileFields.rowCount());		
+		_profileFields.setItem(_profileFields.rowCount()-1,0, new QStandardItem(it.value() ) );
+		QStandardItem *curRec = _profileFields.item( _profileFields.rowCount()-1 ) ;
+		curRec->setCheckable(true);
+		curRec->setData(it.key(), Qt::UserRole+1);
+		TRecordInfo recInfo = ASTMFactory::instance().recordInfo( _projectData._profile,  it.key() );		
+		
+		int r=0;		
+		foreach( PFieldInfo fi, recInfo.first )
+		{		
+			QString un = fi->_userName;
+			QStandardItem *field = new QStandardItem();
+			field->setCheckable(true);
+			field->setData( un, Qt::DisplayRole ); 
+			curRec->appendRow( field );
+*/
 
 	/*
 	for( int r = 0; r < _profileRecords.rowCount(); ++r )
