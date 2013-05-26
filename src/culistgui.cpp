@@ -1608,27 +1608,32 @@ void CulistGui::on_bExportProfile_clicked()
 
 void CulistGui::on_bSaveProfile_clicked()
 {
-	for( int r = 0; r < _profileFields.rowCount(); ++r )
+	if ( !ui->eProfileName->text().isEmpty() )
 	{
-		ASTMFactory::instance().setRecordVisible( 
-			ui->eProfileName->text(), 
-			_profileFields.item(r,0)->data(Qt::UserRole+1).toChar().toAscii(),
-			_profileFields.item(r, 0)->checkState() == Qt::Checked
-			);
-/*
-		ASTMFactory::instance().setFieldVisible( _projectData._profile, _currentRt, r, 
-			_profileFields.item(r, 0)->checkState() == Qt::Checked
-			);
+		_projectData._profile = ui->eProfileName->text();
+		for( int r = 0; r < _profileFields.rowCount(); ++r )
+		{
+			ASTMFactory::instance().setRecordVisible( 
+				_projectData._profile, 
+				_profileFields.item(r,0)->data(Qt::UserRole+1).toChar().toAscii(),
+				_profileFields.item(r, 0)->checkState() == Qt::Checked
+				);
+	/*
+			ASTMFactory::instance().setFieldVisible( _projectData._profile, _currentRt, r, 
+				_profileFields.item(r, 0)->checkState() == Qt::Checked
+				);
 
-		ASTMFactory::instance().setFieldStdValue( _projectData._profile, _currentRt, r, 
-			_profileFields.item( r, 2)->data(Qt::DisplayRole ).toString()
-			);
+			ASTMFactory::instance().setFieldStdValue( _projectData._profile, _currentRt, r, 
+				_profileFields.item( r, 2)->data(Qt::DisplayRole ).toString()
+				);
 
-		ASTMFactory::instance().setFieldValidator( _projectData._profile, _currentRt, r, 
-			_profileFields.item( r, 3)->data(Qt::DisplayRole ).toString()
-			);
-			*/
+			ASTMFactory::instance().setFieldValidator( _projectData._profile, _currentRt, r, 
+				_profileFields.item( r, 3)->data(Qt::DisplayRole ).toString()
+				);
+				*/
+		}
 	}
+
 /*
 for ( TTypeToName::iterator it = ASTMFactory::instance()._recordNames.begin(); it != ASTMFactory::instance()._recordNames.end(); ++it )
 	{
