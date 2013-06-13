@@ -23,6 +23,31 @@ namespace Ui {
 class CulistGui;
 }
 
+class AstmFieldInfo
+{
+public:
+	QString _name;
+	QString _defaultValue;
+	bool _used;
+	QString _constaints;
+	AstmFieldInfo():_visible(true){}
+};
+
+class AstmRecordInfo
+{
+public:
+	QMap<QString, AstmFieldInfo> _fields;
+	bool _used;
+	AstmRecordInfo():_used(true){}
+};
+
+class AstmProfile
+{
+public:
+	QString _name;
+
+};
+
 class ProjectData
 {
 public:
@@ -144,6 +169,14 @@ private slots:
     void on_bExportProfile_clicked();
 
     void on_bSaveProfile_clicked();
+
+    void on_cbCurrentProfile_currentIndexChanged(int index);
+
+    void on_bCloneProfile_clicked();
+
+    void on_bNewProfile_clicked();
+
+    void on_bDeleteProfile_clicked();
 
 private:
 	void saveProject();

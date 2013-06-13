@@ -51,7 +51,7 @@ CulistGui::CulistGui(QWidget *parent) :
 	_profileRecords.setHorizontalHeaderLabels(QStringList()<<tr("Include/Exclude Record Names"));
 	*/
 
-	_projectData._profile = "astm_E1394E97";
+	_projectData._profile = "ASTM_E1394_E97";
 	ASTMFactory::instance().init();
 
 	for ( TTypeToName::iterator it = ASTMFactory::instance()._recordNames.begin(); it != ASTMFactory::instance()._recordNames.end(); ++it )
@@ -1608,7 +1608,7 @@ void CulistGui::on_bExportProfile_clicked()
 
 void CulistGui::on_bSaveProfile_clicked()
 {
-	if ( !ui->eProfileName->text().isEmpty() )
+	//if ( !ui->cbProfileName->text().isEmpty() )
 	{
 		_projectData._profile = ui->eProfileName->text();
 		for( int r = 0; r < _profileFields.rowCount(); ++r )
@@ -1662,4 +1662,24 @@ for ( TTypeToName::iterator it = ASTMFactory::instance()._recordNames.begin(); i
 		ASTMFactory::instance().setRecordVisible( _projectData._profile, recType, isUsed );
 	}
 	*/
+}
+
+void CulistGui::on_cbCurrentProfile_currentIndexChanged(int index)
+{
+
+}
+
+void CulistGui::on_bCloneProfile_clicked()
+{
+
+}
+
+void CulistGui::on_bNewProfile_clicked()
+{
+
+}
+
+void CulistGui::on_bDeleteProfile_clicked()
+{
+
 }

@@ -75,8 +75,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>63</width>
-             <height>26</height>
+             <width>594</width>
+             <height>510</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -143,12 +143,53 @@
           <item>
            <widget class="QLabel" name="label">
             <property name="text">
-             <string>Name</string>
+             <string>Current profile</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="eProfileName"/>
+           <widget class="QComboBox" name="cbCurrentProfile">
+            <property name="minimumSize">
+             <size>
+              <width>200</width>
+              <height>0</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="bCloneProfile">
+            <property name="text">
+             <string>Clone</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="bNewProfile">
+            <property name="text">
+             <string>New</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="bDeleteProfile">
+            <property name="text">
+             <string>Delete</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_10">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
           </item>
          </layout>
         </item>
@@ -211,13 +252,6 @@
            <widget class="QPushButton" name="bExportProfile">
             <property name="text">
              <string>Export</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="bSaveProfile">
-            <property name="text">
-             <string>TODO:remove Save</string>
             </property>
            </widget>
           </item>
