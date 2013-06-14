@@ -1629,18 +1629,20 @@ void CulistGui::on_bSaveProfile_clicked()
 				_profileFields.item(r,0)->data(Qt::UserRole+1).toChar().toAscii(),
 				_profileFields.item(r, 0)->checkState() == Qt::Checked
 				);
-	/*
-			ASTMFactory::instance().setFieldVisible( _projectData._profile, _currentRt, r, 
+	
+			ASTMFactory::instance().setFieldVisible( 
+				_projectData._currentProfile, 
+				_currentRt, r, 
 				_profileFields.item(r, 0)->checkState() == Qt::Checked
 				);
-
+/*
 			ASTMFactory::instance().setFieldStdValue( _projectData._profile, _currentRt, r, 
 				_profileFields.item( r, 2)->data(Qt::DisplayRole ).toString()
 				);
 
 			ASTMFactory::instance().setFieldValidator( _projectData._profile, _currentRt, r, 
 				_profileFields.item( r, 3)->data(Qt::DisplayRole ).toString()
-				);
+				);				
 				*/
 		}
 	}
@@ -1682,6 +1684,7 @@ void CulistGui::on_cbCurrentProfile_currentIndexChanged(int index)
 
 void CulistGui::on_bCloneProfile_clicked()
 {
+	on_bSaveProfile_clicked();
 	QString orig = ui->cbCurrentProfile->currentText();
 	QString cloned = QInputDialog::getText(this,tr("Clone Profile"),tr("Input profile name"));
 	if ( !cloned.isEmpty() )
