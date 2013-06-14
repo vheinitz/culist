@@ -358,10 +358,16 @@ class ASTMFactory
 		}
 		void init();
 
+		QStringList profiles()const
+		{
+			return _profilesInfo.keys();
+		}
+
 		TTypeToName _recordNames;
 
 		PAstm parse( const QString & sdata );
 		QString userName( const QString & profile, char rt, int idx );
+		bool cloneProfile( const QString &orig, const QString &cloned );
 		bool setFieldVisible( const QString & profile, char rt, int idx, bool visible=true );
 		bool setFieldStdValue( const QString & profile, char rt, int idx, QVariant value );
 		bool setFieldValidator( const QString & profile, char rt, int idx, QString value );

@@ -30,7 +30,7 @@ public:
 	QString _defaultValue;
 	bool _used;
 	QString _constaints;
-	AstmFieldInfo():_visible(true){}
+	AstmFieldInfo():_used(true){}
 };
 
 class AstmRecordInfo
@@ -45,14 +45,15 @@ class AstmProfile
 {
 public:
 	QString _name;
-
+	QMap<QString, AstmRecordInfo> _records;
 };
 
 class ProjectData
 {
 public:
 	QString _fn;
-	QString _profile;
+	QString _currentProfile;
+	QMap<QString, AstmProfile> _profiles;
 	unsigned short _serverModePort;
 	QString _clientModeServer;
 	QString _clientModeServerPort;	
@@ -65,7 +66,8 @@ public:
 	void reset()
 	{
 		_fn.clear();
-		_profile.clear();
+		_currentProfile="ASTM_E1394_E97";
+		_profiles.clear();
 		_serverModePort = 0;
 		_clientModeServer.clear();
 		_clientModeServerPort="0";
@@ -179,6 +181,7 @@ private slots:
     void on_bDeleteProfile_clicked();
 
 private:
+	void setCurrentProfile( QString );
 	void saveProject();
 	bool dataFromMessage( QStandardItem *mesg, QList<QByteArray> &outData );
 	bool createSendData();

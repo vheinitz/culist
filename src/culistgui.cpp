@@ -16,6 +16,7 @@
 #include <QLineEdit>
 #include <QToolBar>
 #include <QMessageBox>
+#include <QInputDialog>
 #include "persistence.h"
 
 
@@ -51,17 +52,42 @@ CulistGui::CulistGui(QWidget *parent) :
 	_profileRecords.setHorizontalHeaderLabels(QStringList()<<tr("Include/Exclude Record Names"));
 	*/
 
-	_projectData._profile = "ASTM_E1394_E97";
+	
 	ASTMFactory::instance().init();
+	ui->cbCurrentProfile->addItems( ASTMFactory::instance().profiles() );
+	setCurrentProfile( "ASTM_E1394_E97" );
 
+	
+	_sendDataTimer = new QTimer(this);
+	_sendDataTimer->setSingleShot(true);
+	_sendDataTimer->setInterval(3000);//TODO configurable
+	connect( _sendDataTimer, SIGNAL(timeout()), this, SLOT(processSendDataTimeout()) );
+	
+	ui->trvEditProfile->setModel( &_profileFields );
+	
+	
+	createToolBars();
+	_winTitleBase = "CULIST. Version:"CULIST_VERSION"; Copyright 2013, Valentin Heinitz";
+	this->setWindowTitle(_winTitleBase);
+
+	
+}
+
+
+void CulistGui::setCurrentProfile( QString profile )
+{
+	_projectData._currentProfile = profile;
+	_profileFields.clear();
 	for ( TTypeToName::iterator it = ASTMFactory::instance()._recordNames.begin(); it != ASTMFactory::instance()._recordNames.end(); ++it )
 	{
+		TRecordInfo recInfo = ASTMFactory::instance().recordInfo( _projectData._currentProfile,  it.key() );
 		_profileFields.insertRow(_profileFields.rowCount());		
 		_profileFields.setItem(_profileFields.rowCount()-1,0, new QStandardItem(it.value() ) );
 		QStandardItem *curRec = _profileFields.item( _profileFields.rowCount()-1 ) ;
 		curRec->setCheckable(true);
+		curRec->setCheckState( recInfo.second ? Qt::Checked : Qt::Unchecked );
 		curRec->setData(it.key(), Qt::UserRole+1);
-		TRecordInfo recInfo = ASTMFactory::instance().recordInfo( _projectData._profile,  it.key() );		
+				
 		
 		int r=0;		
 		foreach( PFieldInfo fi, recInfo.first )
@@ -69,6 +95,7 @@ CulistGui::CulistGui(QWidget *parent) :
 			QString un = fi->_userName;
 			QStandardItem *field = new QStandardItem();
 			field->setCheckable(true);
+			field->setCheckState( fi->_stdVisible ? Qt::Checked : Qt::Unchecked );
 			field->setData( un, Qt::DisplayRole ); 
 			curRec->appendRow( field );
 			/*child->setData( rt, Qt::UserRole+1 );
@@ -95,22 +122,6 @@ CulistGui::CulistGui(QWidget *parent) :
 			++r;
 		}
 	}
-
-	
-
-	_sendDataTimer = new QTimer(this);
-	_sendDataTimer->setSingleShot(true);
-	_sendDataTimer->setInterval(3000);//TODO configurable
-	connect( _sendDataTimer, SIGNAL(timeout()), this, SLOT(processSendDataTimeout()) );
-	
-	ui->trvEditProfile->setModel( &_profileFields );
-	
-	
-	createToolBars();
-	_winTitleBase = "CULIST. Version:"CULIST_VERSION"; Copyright 2013, Valentin Heinitz";
-	this->setWindowTitle(_winTitleBase);
-
-	
 }
 
 CulistGui::~CulistGui()
@@ -546,7 +557,7 @@ void CulistGui::processRecordSelected( const QModelIndex & index )
 			_recordEditViews.append( hboxLayout );
 			//QSpacerItem *spacerItem = new QSpacerItem(;
 			ui->ltRecordFlds->addLayout( hboxLayout);
-			QLabel * fn= new QLabel(ASTMFactory::instance().userName("astm_E1394E97",rectype,fi) );
+			QLabel * fn= new QLabel(ASTMFactory::instance().userName("ASTM_E1394_E97",rectype,fi) );
 			fn->setMinimumWidth(150);
 			hboxLayout->addWidget( fn );
 			QLineEdit * fv = new QLineEdit;
@@ -923,7 +934,7 @@ QStandardItem * CulistGui::addRecord( RecordType rt )
 		{
 			QStandardItem *child = new QStandardItem(ASTMFactory::instance()._recordNames[rt]);
 			child->setData( rt, Qt::UserRole+1 );
-			TRecordInfo recInfo = ASTMFactory::instance().recordInfo( _projectData._profile, rt );
+			TRecordInfo recInfo = ASTMFactory::instance().recordInfo( _projectData._currentProfile, rt );
 			QMap<QString,QVariant> vals;
 			foreach( PFieldInfo fi, recInfo.first )
 			{
@@ -1360,7 +1371,7 @@ void CulistGui::on_actionNew_Project_triggered()
 	ASTMFactory::instance().init();
 	_projectData.reset();
 	_projectData._fn = fn;
-	_projectData._profile = "astm_E1394E97";
+	_projectData.reset();
 	on_actionClear_All_triggered();	
 
 	ui->actionSave_Project_As->setEnabled(true);
@@ -1387,7 +1398,7 @@ void CulistGui::saveProject()
 		ts << "ClientModeServerPort="<<_projectData._clientModeServerPort<<"\n";
 		ts << "ClientModeServer="<<_projectData._clientModeServer<<"\n";
 		ts << "ProxyMode="<<_projectData._proxyMode<<"\n";
-		ts << "CurrentProfile="<<_projectData._profile<<"\n";
+		ts << "CurrentProfile="<<_projectData._currentProfile<<"\n";
 		ts << ASTMFactory::instance().exportProfiles();
 		ts << "DATA\n";
 		{
@@ -1530,7 +1541,7 @@ void CulistGui::on_actionLoad_Project_triggered()
 			else if (l.contains(QRegExp("\\s*ProxyMode\\s*=")) )
 				_projectData._proxyMode = l.section("=",1).toInt();
 			else if (l.contains(QRegExp("\\s*CurrentProfile\\s*=")) )
-				_projectData._profile = l.section("=",1);			
+				_projectData._currentProfile = l.section("=",1);			
 
 		}
 		ui->actionSave_Project_As->setEnabled(true);
@@ -1610,11 +1621,11 @@ void CulistGui::on_bSaveProfile_clicked()
 {
 	//if ( !ui->cbProfileName->text().isEmpty() )
 	{
-		_projectData._profile = ui->eProfileName->text();
+		_projectData._currentProfile = ui->cbCurrentProfile->currentText();
 		for( int r = 0; r < _profileFields.rowCount(); ++r )
 		{
 			ASTMFactory::instance().setRecordVisible( 
-				_projectData._profile, 
+				_projectData._currentProfile, 
 				_profileFields.item(r,0)->data(Qt::UserRole+1).toChar().toAscii(),
 				_profileFields.item(r, 0)->checkState() == Qt::Checked
 				);
@@ -1666,12 +1677,20 @@ for ( TTypeToName::iterator it = ASTMFactory::instance()._recordNames.begin(); i
 
 void CulistGui::on_cbCurrentProfile_currentIndexChanged(int index)
 {
-
+	setCurrentProfile( ui->cbCurrentProfile->currentText() );
 }
 
 void CulistGui::on_bCloneProfile_clicked()
 {
-
+	QString orig = ui->cbCurrentProfile->currentText();
+	QString cloned = QInputDialog::getText(this,tr("Clone Profile"),tr("Input profile name"));
+	if ( !cloned.isEmpty() )
+	{
+		ASTMFactory::instance().cloneProfile( orig, cloned );
+		ui->cbCurrentProfile->clear();
+		ui->cbCurrentProfile->addItems( ASTMFactory::instance().profiles() );
+		setCurrentProfile( cloned );
+	}
 }
 
 void CulistGui::on_bNewProfile_clicked()
