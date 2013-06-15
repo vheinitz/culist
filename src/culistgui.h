@@ -23,6 +23,7 @@ namespace Ui {
 class CulistGui;
 }
 
+/*
 class AstmFieldInfo
 {
 public:
@@ -47,13 +48,14 @@ public:
 	QString _name;
 	QMap<QString, AstmRecordInfo> _records;
 };
+*/
 
 class ProjectData
 {
 public:
 	QString _fn;
 	QString _currentProfile;
-	QMap<QString, AstmProfile> _profiles;
+	//QMap<QString, AstmProfile> _profiles;
 	unsigned short _serverModePort;
 	QString _clientModeServer;
 	QString _clientModeServerPort;	
@@ -67,7 +69,7 @@ public:
 	{
 		_fn.clear();
 		_currentProfile="ASTM_E1394_E97";
-		_profiles.clear();
+		
 		_serverModePort = 0;
 		_clientModeServer.clear();
 		_clientModeServerPort="0";
@@ -172,13 +174,13 @@ private slots:
 
     void on_bSaveProfile_clicked();
 
-    void on_cbCurrentProfile_currentIndexChanged(int index);
-
     void on_bCloneProfile_clicked();
 
     void on_bNewProfile_clicked();
 
     void on_bDeleteProfile_clicked();
+
+    void on_cbCurrentProfile_currentIndexChanged(const QString &arg1);
 
 private:
 	void setCurrentProfile( QString );

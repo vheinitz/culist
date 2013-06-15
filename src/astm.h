@@ -368,13 +368,16 @@ class ASTMFactory
 		PAstm parse( const QString & sdata );
 		QString userName( const QString & profile, char rt, int idx );
 		bool cloneProfile( const QString &orig, const QString &cloned );
+		bool clearFields( const QString &profile ); ///>clears all visibility flags. used foe loading profile
+		bool createProfile( const QString &newprof ){ return cloneProfile( "ASTM_E1394_E97", newprof ); }
+		bool removeProfile( const QString &remprof ){ if (!_profilesInfo.contains( "ASTM_E1394_E97")) return false;  _profilesInfo.remove(remprof); return true; }
 		bool setFieldVisible( const QString & profile, char rt, int idx, bool visible=true );
 		bool setFieldStdValue( const QString & profile, char rt, int idx, QVariant value );
 		bool setFieldValidator( const QString & profile, char rt, int idx, QString value );
 		bool setRecordVisible( const QString & profile, char rt, bool visible=true );
 		bool isRecordVisible( const QString & profile, char rt );
 		QString stdRef( const QString & profile, char rt, int idx );
-		TRecordInfo recordInfo( const QString & profile, char rt ){ return _profilesInfo[profile][rt]; };
+		TRecordInfo recordInfo( const QString & profile, char rt ){ return _profilesInfo[profile][rt]; }
 		QString exportProfiles() const;
 };
 

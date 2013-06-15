@@ -1368,15 +1368,19 @@ void CulistGui::on_actionNew_Project_triggered()
 	QString fn = QFileDialog::getSaveFileName( this, tr("Define New Project's File") );
     if (fn.isEmpty())
             return;
+	on_actionClear_All_triggered();	
+	ui->cbCurrentProfile->clear();	
 	ASTMFactory::instance().init();
 	_projectData.reset();
 	_projectData._fn = fn;
-	_projectData.reset();
-	on_actionClear_All_triggered();	
+	setCurrentProfile( "ASTM_E1394_E97" );
+	
 
 	ui->actionSave_Project_As->setEnabled(true);
 	ui->actionSave_Project->setEnabled(true);
 	updateRecordView();
+
+	
 }
 
 void CulistGui::on_actionSave_Project_triggered()
@@ -1455,8 +1459,12 @@ void CulistGui::on_actionLoad_Project_triggered()
 	if (fn.isEmpty())
             return;
 	
+	on_actionClear_All_triggered();	
+	ui->cbCurrentProfile->clear();	
+	ASTMFactory::instance().init();
 	_projectData.reset();
 	_projectData._fn = fn;	
+
 	ASTMFactory::instance().init();
     QFile pf( _projectData._fn );
 	if ( pf.open(QIODevice::ReadOnly) )
@@ -1490,12 +1498,18 @@ void CulistGui::on_actionLoad_Project_triggered()
 			}
 			else if ( readProfiles )
 			{	
-				QStringList items = l.split("\t");
-				if (items.size()>3)
+				QStringList items = l.split("\t",QString::SkipEmptyParts);				
+				if (items.size()>2)
 				{
-					
+					QString profile = items.at(0);
+					if ( !ASTMFactory::instance().profiles().contains(profile) )
+					{
+						ASTMFactory::instance().createProfile( profile );
+						ASTMFactory::instance().clearFields( profile );
+					}
+
 					ASTMFactory::instance().setFieldVisible( items.at(0), items.at(1).at(0).toAscii(), items.at(2).toInt(),
-						items.at(3).toInt()?Qt::Checked : Qt::Unchecked );
+						/*items.at(3).toInt()?Qt::Checked : Qt::Unchecked*/true );
 
 /*					ASTMFactory::instance().setFieldStdValue( _projectData._profile, _currentRt, r, 
 						_profileFields.item( r, 2)->data(Qt::DisplayRole ).toString()
@@ -1546,7 +1560,9 @@ void CulistGui::on_actionLoad_Project_triggered()
 		}
 		ui->actionSave_Project_As->setEnabled(true);
 		ui->actionSave_Project->setEnabled(true);
-	
+		ui->cbCurrentProfile->addItems( ASTMFactory::instance().profiles() );
+		setCurrentProfile( _projectData._currentProfile );
+		
 	}
 	else
 	{
@@ -1619,22 +1635,27 @@ void CulistGui::on_bExportProfile_clicked()
 
 void CulistGui::on_bSaveProfile_clicked()
 {
-	//if ( !ui->cbProfileName->text().isEmpty() )
+	if ( !_projectData._currentProfile.isEmpty() )
 	{
-		_projectData._currentProfile = ui->cbCurrentProfile->currentText();
+		//_projectData._currentProfile = ui->cbCurrentProfile->currentText();
 		for( int r = 0; r < _profileFields.rowCount(); ++r )
 		{
+			QStandardItem *recItem = _profileFields.item(r,0);
 			ASTMFactory::instance().setRecordVisible( 
 				_projectData._currentProfile, 
-				_profileFields.item(r,0)->data(Qt::UserRole+1).toChar().toAscii(),
-				_profileFields.item(r, 0)->checkState() == Qt::Checked
+				recItem->data(Qt::UserRole+1).toChar().toAscii(),
+				recItem->checkState() == Qt::Checked
 				);
-	
-			ASTMFactory::instance().setFieldVisible( 
-				_projectData._currentProfile, 
-				_currentRt, r, 
-				_profileFields.item(r, 0)->checkState() == Qt::Checked
-				);
+			int fidx=0;
+			while( QStandardItem *fieldItem = recItem->child(fidx,0) )
+			{
+				ASTMFactory::instance().setFieldVisible( 
+					_projectData._currentProfile, 
+					recItem->data(Qt::UserRole+1).toChar().toAscii(), 
+					fidx++, 
+					fieldItem->checkState() == Qt::Checked
+					);
+			}
 /*
 			ASTMFactory::instance().setFieldStdValue( _projectData._profile, _currentRt, r, 
 				_profileFields.item( r, 2)->data(Qt::DisplayRole ).toString()
@@ -1677,11 +1698,6 @@ for ( TTypeToName::iterator it = ASTMFactory::instance()._recordNames.begin(); i
 	*/
 }
 
-void CulistGui::on_cbCurrentProfile_currentIndexChanged(int index)
-{
-	setCurrentProfile( ui->cbCurrentProfile->currentText() );
-}
-
 void CulistGui::on_bCloneProfile_clicked()
 {
 	on_bSaveProfile_clicked();
@@ -1698,10 +1714,29 @@ void CulistGui::on_bCloneProfile_clicked()
 
 void CulistGui::on_bNewProfile_clicked()
 {
-
+	on_bSaveProfile_clicked();
+	QString newprof = QInputDialog::getText(this,tr("New Profile"),tr("Input profile name"));
+	if ( !newprof.isEmpty() )
+	{
+		ASTMFactory::instance().createProfile( newprof );
+		ui->cbCurrentProfile->clear();
+		ui->cbCurrentProfile->addItems( ASTMFactory::instance().profiles() );
+		setCurrentProfile( newprof );
+	}
 }
 
 void CulistGui::on_bDeleteProfile_clicked()
 {
+	QString remprof = ui->cbCurrentProfile->currentText();
+	ASTMFactory::instance().removeProfile( remprof );
+	ui->cbCurrentProfile->clear();
+	ui->cbCurrentProfile->addItems( ASTMFactory::instance().profiles() );
+	ui->cbCurrentProfile->setCurrentIndex(0);
+	setCurrentProfile( ui->cbCurrentProfile->currentText() );
+}
 
+void CulistGui::on_cbCurrentProfile_currentIndexChanged(const QString &profile)
+{
+    on_bSaveProfile_clicked();
+    setCurrentProfile( profile );
 }

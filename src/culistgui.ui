@@ -211,7 +211,7 @@
            <enum>Qt::CustomContextMenu</enum>
           </property>
           <property name="dragEnabled">
-           <bool>true</bool>
+           <bool>false</bool>
           </property>
           <property name="dragDropMode">
            <enum>QAbstractItemView::InternalMove</enum>

@@ -78,6 +78,21 @@ bool ASTMFactory::cloneProfile( const QString &orig, const QString &cloned )
 	return false;
 }
 
+bool ASTMFactory::clearFields( const QString &profile )
+{
+	TProfileInfo::iterator  prit = _profilesInfo.find( profile );
+	if ( prit !=_profilesInfo.end()  )
+	{
+		for( TRecordsInfo::Iterator riit =prit->begin();  riit != prit->end(); riit++ )
+		{
+			riit->second = false;
+		}
+			return true;
+	}
+	return false;
+}
+
+
 void ASTMFactory::init()
 {
 	_recordNames.clear();
@@ -263,6 +278,7 @@ QString ASTMFactory::stdRef( const QString & profile, char rt, int idx )
 
 bool ASTMFactory::setFieldVisible( const QString & profile, char rt, int idx, bool visible )
 {
+	if ( profile == "ASTM_E1394_E97" ) return true; //TODO defauld not changeable. Make in a more efficient way!
 	TProfileInfo::iterator prit = _profilesInfo.end();
 	TRecordsInfo::Iterator riit;
 	if ( (prit = _profilesInfo.find(profile)) != _profilesInfo.end()  )
@@ -278,6 +294,7 @@ bool ASTMFactory::setFieldVisible( const QString & profile, char rt, int idx, bo
 
 bool ASTMFactory::setFieldStdValue( const QString & profile, char rt, int idx, QVariant value )
 {
+	if ( profile == "ASTM_E1394_E97" ) return true; //TODO defauld not changeable. Make in a more efficient way!
 	TProfileInfo::iterator prit = _profilesInfo.end();
 	TRecordsInfo::Iterator riit;
 	if ( (prit = _profilesInfo.find(profile)) != _profilesInfo.end()  )
@@ -293,6 +310,7 @@ bool ASTMFactory::setFieldStdValue( const QString & profile, char rt, int idx, Q
 
 bool ASTMFactory::setFieldValidator( const QString & profile, char rt, int idx, QString value )
 {
+	if ( profile == "ASTM_E1394_E97" ) return true; //TODO defauld not changeable. Make in a more efficient way!
 	TProfileInfo::iterator prit = _profilesInfo.end();
 	TRecordsInfo::Iterator riit;
 	if ( (prit = _profilesInfo.find(profile)) != _profilesInfo.end()  )
@@ -308,6 +326,7 @@ bool ASTMFactory::setFieldValidator( const QString & profile, char rt, int idx, 
 
 bool ASTMFactory::setRecordVisible( const QString & profile, char rt, bool visible )
 {
+	if ( profile == "ASTM_E1394_E97" ) return true; //TODO defauld not changeable. Make in a more efficient way!
 	TProfileInfo::iterator prit = _profilesInfo.end();
 	TRecordsInfo::Iterator riit;
 	if ( (prit = _profilesInfo.find(profile)) != _profilesInfo.end()  )
@@ -323,6 +342,7 @@ bool ASTMFactory::setRecordVisible( const QString & profile, char rt, bool visib
 
 bool ASTMFactory::isRecordVisible( const QString & profile, char rt )
 {
+	if ( profile == "ASTM_E1394_E97" ) return true; //TODO defauld not changeable. Make in a more efficient way!
 	TProfileInfo::iterator prit = _profilesInfo.end();
 	TRecordsInfo::Iterator riit;
 	if ( (prit = _profilesInfo.find(profile)) != _profilesInfo.end()  )
