@@ -1499,7 +1499,7 @@ void CulistGui::on_actionLoad_Project_triggered()
 			else if ( readProfiles )
 			{	
 				QStringList items = l.split("\t",QString::SkipEmptyParts);				
-				if (items.size()>2)
+				if (items.size()>3)
 				{
 					QString profile = items.at(0);
 					if ( !ASTMFactory::instance().profiles().contains(profile) )
@@ -1507,8 +1507,8 @@ void CulistGui::on_actionLoad_Project_triggered()
 						ASTMFactory::instance().createProfile( profile );
 						ASTMFactory::instance().clearFields( profile );
 					}
-
-					ASTMFactory::instance().setFieldVisible( items.at(0), items.at(1).at(0).toAscii(), items.at(2).toInt(),
+					ASTMFactory::instance().setRecordVisible( items.at(0), items.at(1).at(0).toAscii(),true );
+					ASTMFactory::instance().setFieldVisible( items.at(0), items.at(1).at(0).toAscii(), items.at(3).toInt(),
 						/*items.at(3).toInt()?Qt::Checked : Qt::Unchecked*/true );
 
 /*					ASTMFactory::instance().setFieldStdValue( _projectData._profile, _currentRt, r, 
@@ -1519,7 +1519,7 @@ void CulistGui::on_actionLoad_Project_triggered()
 						_profileFields.item( r, 3)->data(Qt::DisplayRole ).toString()
 						);*/
 				}
-				ASTMFactory::instance().setRecordVisible( items.at(0), items.at(1).at(0).toAscii(),true );
+				
 				
 			}
 			else if ( readData )

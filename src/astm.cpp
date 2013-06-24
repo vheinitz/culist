@@ -80,6 +80,9 @@ bool ASTMFactory::cloneProfile( const QString &orig, const QString &cloned )
 
 bool ASTMFactory::clearFields( const QString &profile )
 {
+	//if ( profile == "ASTM_E1394_E97" ) 
+		return true; //TODO defauld not changeable. Make in a more efficient way!
+
 	TProfileInfo::iterator  prit = _profilesInfo.find( profile );
 	if ( prit !=_profilesInfo.end()  )
 	{
@@ -237,25 +240,25 @@ void ASTMFactory::init()
 	_profilesInfo["ASTM_E1394_E97"]['S'].second=true;
 	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(1,0,"14.1.1","type","Record Type ID") ) );
 	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.2","seq","Sequence Number") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.3","anmeth","Analytical Method") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.4","instr","Instrumentation") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.5","reagents","Reagents") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.6","unitofmeas","Units of Measure") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.7","qc","Quality Control") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.8","spcmdescr","Specimen Descriptor") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.9","resrvd","Reserved Field") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.10","container","Container") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.11","spcmid","Specimen ID") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.12","analyte","Analyte") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.13","result","Result") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.14","resunts","Result Units") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.15","collctdt","Collection Date and Time") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.16","resdt","Result Date and Time") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.17","anlprocstp","Analytical Preprocessing Steps") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.18","patdiagn","Patient Diagnosis") ) ); //TODO validate as IDC-9-CM
-	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.19","patbd","Patient Birthdate") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.20","patsex","Patient Sex") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(2,0,"14.1.21","patrace","Patient Race") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(3,0,"14.1.3","anmeth","Analytical Method") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(4,0,"14.1.4","instr","Instrumentation") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(5,0,"14.1.5","reagents","Reagents") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(6,0,"14.1.6","unitofmeas","Units of Measure") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(7,0,"14.1.7","qc","Quality Control") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(8,0,"14.1.8","spcmdescr","Specimen Descriptor") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(9,0,"14.1.9","resrvd","Reserved Field") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(10,0,"14.1.10","container","Container") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(11,0,"14.1.11","spcmid","Specimen ID") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(12,0,"14.1.12","analyte","Analyte") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(13,0,"14.1.13","result","Result") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(14,0,"14.1.14","resunts","Result Units") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(15,0,"14.1.15","collctdt","Collection Date and Time") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(16,0,"14.1.16","resdt","Result Date and Time") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(17,0,"14.1.17","anlprocstp","Analytical Preprocessing Steps") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(18,0,"14.1.18","patdiagn","Patient Diagnosis") ) ); //TODO validate as IDC-9-CM
+	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(19,0,"14.1.19","patbd","Patient Birthdate") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(20,0,"14.1.20","patsex","Patient Sex") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S'].first.append( PFieldInfo(new FieldInfo(21,0,"14.1.21","patrace","Patient Race") ) );
 
 }
 
@@ -278,7 +281,8 @@ QString ASTMFactory::stdRef( const QString & profile, char rt, int idx )
 
 bool ASTMFactory::setFieldVisible( const QString & profile, char rt, int idx, bool visible )
 {
-	if ( profile == "ASTM_E1394_E97" ) return true; //TODO defauld not changeable. Make in a more efficient way!
+	if ( profile == "ASTM_E1394_E97" ) 
+		return true; //TODO defauld not changeable. Make in a more efficient way!
 	TProfileInfo::iterator prit = _profilesInfo.end();
 	TRecordsInfo::Iterator riit;
 	if ( (prit = _profilesInfo.find(profile)) != _profilesInfo.end()  )
@@ -294,7 +298,8 @@ bool ASTMFactory::setFieldVisible( const QString & profile, char rt, int idx, bo
 
 bool ASTMFactory::setFieldStdValue( const QString & profile, char rt, int idx, QVariant value )
 {
-	if ( profile == "ASTM_E1394_E97" ) return true; //TODO defauld not changeable. Make in a more efficient way!
+	if ( profile == "ASTM_E1394_E97" ) 
+		return true; //TODO defauld not changeable. Make in a more efficient way!
 	TProfileInfo::iterator prit = _profilesInfo.end();
 	TRecordsInfo::Iterator riit;
 	if ( (prit = _profilesInfo.find(profile)) != _profilesInfo.end()  )
@@ -310,7 +315,8 @@ bool ASTMFactory::setFieldStdValue( const QString & profile, char rt, int idx, Q
 
 bool ASTMFactory::setFieldValidator( const QString & profile, char rt, int idx, QString value )
 {
-	if ( profile == "ASTM_E1394_E97" ) return true; //TODO defauld not changeable. Make in a more efficient way!
+	if ( profile == "ASTM_E1394_E97" ) 
+		return true; //TODO defauld not changeable. Make in a more efficient way!
 	TProfileInfo::iterator prit = _profilesInfo.end();
 	TRecordsInfo::Iterator riit;
 	if ( (prit = _profilesInfo.find(profile)) != _profilesInfo.end()  )
@@ -326,7 +332,8 @@ bool ASTMFactory::setFieldValidator( const QString & profile, char rt, int idx, 
 
 bool ASTMFactory::setRecordVisible( const QString & profile, char rt, bool visible )
 {
-	if ( profile == "ASTM_E1394_E97" ) return true; //TODO defauld not changeable. Make in a more efficient way!
+	//if ( profile == "ASTM_E1394_E97" ) 
+		return true; //TODO defauld not changeable. Make in a more efficient way!
 	TProfileInfo::iterator prit = _profilesInfo.end();
 	TRecordsInfo::Iterator riit;
 	if ( (prit = _profilesInfo.find(profile)) != _profilesInfo.end()  )
@@ -342,7 +349,8 @@ bool ASTMFactory::setRecordVisible( const QString & profile, char rt, bool visib
 
 bool ASTMFactory::isRecordVisible( const QString & profile, char rt )
 {
-	if ( profile == "ASTM_E1394_E97" ) return true; //TODO defauld not changeable. Make in a more efficient way!
+	if ( profile == "ASTM_E1394_E97" ) 
+		return true; //TODO defauld not changeable. Make in a more efficient way!
 	TProfileInfo::iterator prit = _profilesInfo.end();
 	TRecordsInfo::Iterator riit;
 	if ( (prit = _profilesInfo.find(profile)) != _profilesInfo.end()  )
@@ -369,7 +377,10 @@ QString ASTMFactory::exportProfiles( /*todo regexp or name*/ ) const
 			{
 				for (QList<PFieldInfo>::const_iterator fit = rit.value().first.constBegin(), fend =  rit.value().first.constEnd(); fit != fend; ++fit )
 				{
-					out  += QString( "%1\t%2\t%3\n" ).arg(pit.key()).arg(rit.key()).arg(rit.value().second)
+					out  += QString( "%1\t%2\t%3\t%4\t%5\t%6\t%7\t%8\n" )
+						.arg(pit.key())
+						.arg(rit.key())
+						.arg(rit.value().second)
 						.arg((*fit)->_recIdx)
 						.arg((*fit)->_isList?1:0)					
 						.arg((*fit)->_stdVisible)
