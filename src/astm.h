@@ -14,7 +14,7 @@
 #include <QDateTime>
 #include <QSharedPointer>
 #include <QPair>
-
+#include <QStringListModel>
 
 
 static const char ASTM_STX = 0x02;
@@ -377,7 +377,7 @@ class ASTMFactory
 		bool setRecordVisible( const QString & profile, char rt, bool visible=true );
 		bool isRecordVisible( const QString & profile, char rt );
 		QString stdRef( const QString & profile, char rt, int idx );
-		TRecordInfo recordInfo( const QString & profile, char rt ){ return _profilesInfo[profile][rt]; }
+		TRecordInfo recordInfo( const QString & profile, char rt );
 		QString exportProfiles() const;
 };
 

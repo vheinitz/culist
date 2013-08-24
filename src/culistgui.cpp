@@ -76,6 +76,19 @@ CulistGui::CulistGui(QWidget *parent) :
 
 void CulistGui::setCurrentProfile( QString profile )
 {
+	//if set not in GUI
+	int cnt = ui->cbCurrentProfile->count();
+	for(int i=0; i<cnt; ++i)
+	{
+		if ( ui->cbCurrentProfile->itemText(i) == profile 
+			&& ui->cbCurrentProfile->currentIndex() != i )
+		{
+				ui->cbCurrentProfile->setCurrentIndex(i);
+			break;
+		}
+	}
+	//end if set not in GUI
+	
 	_projectData._currentProfile = profile;
 	_profileFields.clear();
 	for ( TTypeToName::iterator it = ASTMFactory::instance()._recordNames.begin(); it != ASTMFactory::instance()._recordNames.end(); ++it )
@@ -1371,6 +1384,7 @@ void CulistGui::on_actionNew_Project_triggered()
 	on_actionClear_All_triggered();	
 	ui->cbCurrentProfile->clear();	
 	ASTMFactory::instance().init();
+	ui->cbCurrentProfile->addItems( ASTMFactory::instance().profiles() ); //TODO: use model
 	_projectData.reset();
 	_projectData._fn = fn;
 	setCurrentProfile( "ASTM_E1394_E97" );
@@ -1390,6 +1404,8 @@ void CulistGui::on_actionSave_Project_triggered()
 	saveProject();
 }
 
+
+TODO here - index mismatch for field while saving and loading
 void CulistGui::saveProject()
 {   
 	QFile pf( _projectData._fn );
@@ -1498,7 +1514,7 @@ void CulistGui::on_actionLoad_Project_triggered()
 			}
 			else if ( readProfiles )
 			{	
-				QStringList items = l.split("\t",QString::SkipEmptyParts);				
+				QStringList items = l.split("\t");//,QString::SkipEmptyParts);				
 				if (items.size()>3)
 				{
 					QString profile = items.at(0);
@@ -1507,9 +1523,10 @@ void CulistGui::on_actionLoad_Project_triggered()
 						ASTMFactory::instance().createProfile( profile );
 						ASTMFactory::instance().clearFields( profile );
 					}
-					ASTMFactory::instance().setRecordVisible( items.at(0), items.at(1).at(0).toAscii(),true );
-					ASTMFactory::instance().setFieldVisible( items.at(0), items.at(1).at(0).toAscii(), items.at(3).toInt(),
-						/*items.at(3).toInt()?Qt::Checked : Qt::Unchecked*/true );
+					ASTMFactory::instance().setRecordVisible( items.at(0), items.at(1).at(0).toAscii(), items.at(2).toInt() );
+
+					ASTMFactory::instance().setFieldVisible( items.at(0), items.at(1).at(0).toAscii(), items.at(4).toInt(),
+						items.at(6).toInt()?Qt::Checked : Qt::Unchecked );
 
 /*					ASTMFactory::instance().setFieldStdValue( _projectData._profile, _currentRt, r, 
 						_profileFields.item( r, 2)->data(Qt::DisplayRole ).toString()

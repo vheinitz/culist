@@ -332,7 +332,7 @@ bool ASTMFactory::setFieldValidator( const QString & profile, char rt, int idx, 
 
 bool ASTMFactory::setRecordVisible( const QString & profile, char rt, bool visible )
 {
-	//if ( profile == "ASTM_E1394_E97" ) 
+	if ( profile == "ASTM_E1394_E97" ) 
 		return true; //TODO defauld not changeable. Make in a more efficient way!
 	TProfileInfo::iterator prit = _profilesInfo.end();
 	TRecordsInfo::Iterator riit;
@@ -346,6 +346,12 @@ bool ASTMFactory::setRecordVisible( const QString & profile, char rt, bool visib
 	return false;
 }
 
+TRecordInfo ASTMFactory::recordInfo( const QString & profile, char rt )
+{ 
+	if ( !_profilesInfo.contains(profile) )
+		return( TRecordInfo (QList<PFieldInfo>() ,false ) );
+	return _profilesInfo[profile][rt]; 
+}
 
 bool ASTMFactory::isRecordVisible( const QString & profile, char rt )
 {
@@ -373,17 +379,18 @@ QString ASTMFactory::exportProfiles( /*todo regexp or name*/ ) const
 		for (TRecordsInfo::const_iterator rit = pit.value().constBegin(), rend =  pit.value().constEnd(); rit != rend; ++rit )
 		{
 
-			if(rit.value().second == true)// record visible
+			//if(rit.value().second == true)// record visible
 			{
 				for (QList<PFieldInfo>::const_iterator fit = rit.value().first.constBegin(), fend =  rit.value().first.constEnd(); fit != fend; ++fit )
 				{
-					out  += QString( "%1\t%2\t%3\t%4\t%5\t%6\t%7\t%8\n" )
-						.arg(pit.key())
-						.arg(rit.key())
+					out  += QString( "%1\t%2\t%3\t%4\t%5\t%6\t%7\t%8\n" )						
+						.arg(pit.key())                    //prof. name  
+						.arg(rit.key())					   // rec. name	
+						.arg( rit.value().second ? 1 : 0 ) //Record is visible
 						.arg(rit.value().second)
 						.arg((*fit)->_recIdx)
-						.arg((*fit)->_isList?1:0)					
-						.arg((*fit)->_stdVisible)
+						.arg((*fit)->_isList?1:0)		   //Field is list			
+						.arg((*fit)->_stdVisible)          //Visible
 						.arg((*fit)->_stdValue)
 						.arg((*fit)->_validation)
 						;
