@@ -81,7 +81,7 @@ bool ASTMFactory::cloneProfile( const QString &orig, const QString &cloned )
 bool ASTMFactory::clearFields( const QString &profile )
 {
 	//if ( profile == "ASTM_E1394_E97" ) 
-		return true; //TODO defauld not changeable. Make in a more efficient way!
+		return true; //TODO default not changeable. Make in a more efficient way!
 
 	TProfileInfo::iterator  prit = _profilesInfo.find( profile );
 	if ( prit !=_profilesInfo.end()  )
@@ -262,68 +262,73 @@ void ASTMFactory::init()
 
 }
 
-QString ASTMFactory::userName( const QString & profile, char rt, int idx )
+QString ASTMFactory::userName( const QString & profile, char rt, int fidx )
 {
 	TProfileInfo::iterator prit = _profilesInfo.end();
 	TRecordsInfo::ConstIterator riit;
 	if ( (prit = _profilesInfo.find(profile)) != _profilesInfo.end()  )
 		if( (riit = prit->find( rt ) ) != prit.value().end()  )
-			if ( riit.value().first.size() > idx && idx>=0 )
-				return riit.value().first.at(idx)->_userName;
+			if ( riit.value().first.size() > fidx && fidx>0 )
+				return riit.value().first.at(fidx-1)->_userName;
 
 	return QString::null;
 }
 
-QString ASTMFactory::stdRef( const QString & profile, char rt, int idx )
+QString ASTMFactory::stdRef( const QString & profile, char rt, int fidx )
 {
 	return QString::null;
 }
 
-bool ASTMFactory::setFieldVisible( const QString & profile, char rt, int idx, bool visible )
+bool ASTMFactory::setFieldVisible( const QString & profile, char rt, int fidx, bool visible )
 {
+
 	if ( profile == "ASTM_E1394_E97" ) 
-		return true; //TODO defauld not changeable. Make in a more efficient way!
+		return true; //TODO default not changeable. Make in a more efficient way!
 	TProfileInfo::iterator prit = _profilesInfo.end();
 	TRecordsInfo::Iterator riit;
 	if ( (prit = _profilesInfo.find(profile)) != _profilesInfo.end()  )
 		if( (riit = prit->find( rt ) ) != prit.value().end()  )
-			if ( riit.value().first.size() > idx && idx>=0 )
+			if ( riit.value().first.size() < fidx || fidx<=0 )
 			{
-				riit->first.at(idx)->_stdVisible = visible;
+				return false;
+			}
+			else
+			{
+				riit->first.at(fidx-1)->_stdVisible = visible;
 				return true;
 			}
 			
 	return false;
 }
 
-bool ASTMFactory::setFieldStdValue( const QString & profile, char rt, int idx, QVariant value )
+bool ASTMFactory::setFieldStdValue( const QString & profile, char rt, int fidx, QVariant value )
 {
 	if ( profile == "ASTM_E1394_E97" ) 
-		return true; //TODO defauld not changeable. Make in a more efficient way!
+		return true; //TODO default not changeable. Make in a more efficient way!
 	TProfileInfo::iterator prit = _profilesInfo.end();
 	TRecordsInfo::Iterator riit;
 	if ( (prit = _profilesInfo.find(profile)) != _profilesInfo.end()  )
 		if( (riit = prit->find( rt ) ) != prit.value().end()  )
-			if ( riit.value().first.size() > idx && idx>=0 )
+			if ( riit.value().first.size() > fidx && fidx>0 )
 			{
-				riit->first.at(idx)->_stdValue = value.toString();
+				riit->first.at(fidx-1)->_stdValue = value.toString();
 				return true;
 			}
 			
 	return false;
 }
 
-bool ASTMFactory::setFieldValidator( const QString & profile, char rt, int idx, QString value )
+bool ASTMFactory::setFieldValidator( const QString & profile, char rt, int fidx, QString value )
 {
 	if ( profile == "ASTM_E1394_E97" ) 
-		return true; //TODO defauld not changeable. Make in a more efficient way!
+		return true; //TODO default not changeable. Make in a more efficient way!
 	TProfileInfo::iterator prit = _profilesInfo.end();
 	TRecordsInfo::Iterator riit;
 	if ( (prit = _profilesInfo.find(profile)) != _profilesInfo.end()  )
 		if( (riit = prit->find( rt ) ) != prit.value().end()  )
-			if ( riit.value().first.size() > idx && idx>=0 )
+			if ( riit.value().first.size() > fidx && fidx>0 )
 			{
-				riit->first.at(idx)->_validation = value;
+				riit->first.at(fidx-1)->_validation = value;
 				return true;
 			}
 			
@@ -333,7 +338,7 @@ bool ASTMFactory::setFieldValidator( const QString & profile, char rt, int idx, 
 bool ASTMFactory::setRecordVisible( const QString & profile, char rt, bool visible )
 {
 	if ( profile == "ASTM_E1394_E97" ) 
-		return true; //TODO defauld not changeable. Make in a more efficient way!
+		return true; //TODO default not changeable. Make in a more efficient way!
 	TProfileInfo::iterator prit = _profilesInfo.end();
 	TRecordsInfo::Iterator riit;
 	if ( (prit = _profilesInfo.find(profile)) != _profilesInfo.end()  )
@@ -342,7 +347,7 @@ bool ASTMFactory::setRecordVisible( const QString & profile, char rt, bool visib
 			riit->second = visible;
 			return true;
 		}
-			
+
 	return false;
 }
 
@@ -356,7 +361,7 @@ TRecordInfo ASTMFactory::recordInfo( const QString & profile, char rt )
 bool ASTMFactory::isRecordVisible( const QString & profile, char rt )
 {
 	if ( profile == "ASTM_E1394_E97" ) 
-		return true; //TODO defauld not changeable. Make in a more efficient way!
+		return true; //TODO default not changeable. Make in a more efficient way!
 	TProfileInfo::iterator prit = _profilesInfo.end();
 	TRecordsInfo::Iterator riit;
 	if ( (prit = _profilesInfo.find(profile)) != _profilesInfo.end()  )
@@ -387,12 +392,11 @@ QString ASTMFactory::exportProfiles( /*todo regexp or name*/ ) const
 						.arg(pit.key())                    //prof. name  
 						.arg(rit.key())					   // rec. name	
 						.arg( rit.value().second ? 1 : 0 ) //Record is visible
-						.arg(rit.value().second)
-						.arg((*fit)->_recIdx)
+						.arg((*fit)->_recIdx)			   // Field index
 						.arg((*fit)->_isList?1:0)		   //Field is list			
 						.arg((*fit)->_stdVisible)          //Visible
-						.arg((*fit)->_stdValue)
-						.arg((*fit)->_validation)
+						.arg((*fit)->_stdValue)			   //Standard value
+						.arg((*fit)->_validation)		   //Validation rule
 						;
 				}
 			}

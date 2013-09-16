@@ -91,8 +91,21 @@ void CulistGui::setCurrentProfile( QString profile )
 	
 	_projectData._currentProfile = profile;
 	_profileFields.clear();
+
+	if ( !ASTMFactory::instance().profiles().contains( _projectData._currentProfile ) )
+	{
+		return;
+	}
+	if ( _projectData._currentProfile.isEmpty() )
+	{
+		return;
+	}
+
 	for ( TTypeToName::iterator it = ASTMFactory::instance()._recordNames.begin(); it != ASTMFactory::instance()._recordNames.end(); ++it )
 	{
+		if (profile != "ASTM_E1394_E97") //TODO remove this dev BP
+			profile = profile;
+
 		TRecordInfo recInfo = ASTMFactory::instance().recordInfo( _projectData._currentProfile,  it.key() );
 		_profileFields.insertRow(_profileFields.rowCount());		
 		_profileFields.setItem(_profileFields.rowCount()-1,0, new QStandardItem(it.value() ) );
@@ -102,7 +115,7 @@ void CulistGui::setCurrentProfile( QString profile )
 		curRec->setData(it.key(), Qt::UserRole+1);
 				
 		
-		int r=0;		
+		//int r=0;		
 		foreach( PFieldInfo fi, recInfo.first )
 		{		
 			QString un = fi->_userName;
@@ -132,7 +145,7 @@ void CulistGui::setCurrentProfile( QString profile )
 			_profileFields.setItem(r,3, new QStandardItem( fi->_validation ) );
 			_profileFields.setItem(r,4, new QStandardItem( fi->_isList ) );
 			*/
-			++r;
+			//++r;
 		}
 	}
 }
@@ -1405,10 +1418,10 @@ void CulistGui::on_actionSave_Project_triggered()
 }
 
 
-TODO here - index mismatch for field while saving and loading
+
 void CulistGui::saveProject()
 {   
-	QFile pf( _projectData._fn );
+ 	QFile pf( _projectData._fn );
 	if ( pf.open(QIODevice::WriteOnly) )
 	{
 		QTextStream ts(&pf);
@@ -1514,19 +1527,37 @@ void CulistGui::on_actionLoad_Project_triggered()
 			}
 			else if ( readProfiles )
 			{	
+				/*
+				out  += QString( "%1\t%2\t%3\t%4\t%5\t%6\t%7\t%8\n" )						
+						.arg(pit.key())                    //prof. name  
+						.arg(rit.key())					   // rec. name	
+						.arg( rit.value().second ? 1 : 0 ) //Record is visible
+						.arg((*fit)->_recIdx)			   // Field index
+						.arg((*fit)->_isList?1:0)		   //Field is list			
+						.arg((*fit)->_stdVisible)          //Visible
+						.arg((*fit)->_stdValue)			   //Standard value
+						.arg((*fit)->_validation)		   //Validation rule
+				*/
 				QStringList items = l.split("\t");//,QString::SkipEmptyParts);				
-				if (items.size()>3)
+				if (items.size()==8)
 				{
 					QString profile = items.at(0);
+					char recname = items.at(1).at(0).toAscii();
+					bool recVisible = items.at(2).toInt();
+					int fidx = items.at(3).toInt();
+					bool isList = items.at(4).toInt();
+					bool fVisible = items.at(5).toInt();
+					QString stdVal = items.at(6);
+					QString validRule = items.at(7);
+
 					if ( !ASTMFactory::instance().profiles().contains(profile) )
 					{
 						ASTMFactory::instance().createProfile( profile );
-						ASTMFactory::instance().clearFields( profile );
+						ASTMFactory::instance().clearFields( profile ); //???
 					}
-					ASTMFactory::instance().setRecordVisible( items.at(0), items.at(1).at(0).toAscii(), items.at(2).toInt() );
+					ASTMFactory::instance().setRecordVisible( profile, recname, recVisible );
 
-					ASTMFactory::instance().setFieldVisible( items.at(0), items.at(1).at(0).toAscii(), items.at(4).toInt(),
-						items.at(6).toInt()?Qt::Checked : Qt::Unchecked );
+					ASTMFactory::instance().setFieldVisible( profile, recname, fidx, fVisible );
 
 /*					ASTMFactory::instance().setFieldStdValue( _projectData._profile, _currentRt, r, 
 						_profileFields.item( r, 2)->data(Qt::DisplayRole ).toString()
@@ -1663,7 +1694,7 @@ void CulistGui::on_bSaveProfile_clicked()
 				recItem->data(Qt::UserRole+1).toChar().toAscii(),
 				recItem->checkState() == Qt::Checked
 				);
-			int fidx=0;
+			int fidx=1;
 			while( QStandardItem *fieldItem = recItem->child(fidx,0) )
 			{
 				ASTMFactory::instance().setFieldVisible( 
