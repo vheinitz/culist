@@ -49,7 +49,7 @@ L, H, <, >, N, U, D, B, W result codes
 C, P, F, X, I, O result status
 */
 
-typedef QMap<QString, QString> TRecordValues;
+typedef QMap<int, QVariant> TRecordValues;
 
 
 
@@ -200,9 +200,7 @@ enum ARError{ErrNone, ErrUnexpectedRecord, ErrInvalideDelimiters};
 class Astm : public QObject
 {
 protected:
-	QStringList _ent;
 	TRecordValues _vals;
-	int _seq; //TODO: remove
 	
 public:
 	static Separators _sep; //TODO: make not static - session/message context data
@@ -220,19 +218,27 @@ public:
 	ARError _error;
 	
 
-	bool constructRecord( QStringList  ent);
-	bool setValue( QString ent, QString value);
-	bool setValue( int, QString value);
+	//bool constructRecord( QStringList  ent);
+	bool setValue( int, QString value, const QString & profile = "ASTM_E1394_E97");
+
+	//TODO: check if header, it term, check if >0
+	bool setSeqNum(int sn){
+		if ( _type == EHeader || _type == ETerminator   )
+			return false;
+		_vals[1] = sn;
+		return true;	
+	}
+
 	bool isValide();
 	QString toString(bool allFields=false);
 	QByteArray dataToSend( );
-	QMap<QString, QVariant> values();
+	TRecordValues values();
 
-	QStringList fields() {
-		return _ent;
-	}
+	//QStringList fields() {
+	//	return _ent;
+	//}
 	
-	Astm( int seq=-1 );
+	Astm( );
 	virtual ~Astm(void);
 };
 
@@ -247,49 +253,49 @@ class ASTMHeader: public Astm
 class ASTMManufacturer: public Astm
 {
 	public:
-		ASTMManufacturer( int seq);
+		ASTMManufacturer();
 };
 
 class ASTMScientific: public Astm
 {
 	public:
-		ASTMScientific( int seq);
+		ASTMScientific( );
 };
 
 class ASTMRequest: public Astm
 {
 	public:
-		ASTMRequest( int seq);
+		ASTMRequest( );
 };
 
 class ASTMPatient: public Astm
 {
 	public:
-		ASTMPatient( int seq);
+		ASTMPatient( );
 };
 
 class ASTMOrder: public Astm
 {
 	public:
-		ASTMOrder( int seq);
+		ASTMOrder( );
 };
 
 class ASTMResult: public Astm
 {
 	public:
-		ASTMResult( int seq);
+		ASTMResult();
 };
 
 class ASTMComment: public Astm
 {
 	public:
-		ASTMComment( int seq);
+		ASTMComment( );
 };
 
 class ASTMTerminator: public Astm
 {
 	public:
-		ASTMTerminator(int);
+		ASTMTerminator();
 };
 
 typedef QSharedPointer<Astm> PAstm;
@@ -342,8 +348,28 @@ public:
 };
 
 typedef QSharedPointer<FieldInfo> PFieldInfo;
-typedef QPair< QList<PFieldInfo>,bool > TRecordInfo; 
-typedef QMap<char, TRecordInfo> TRecordsInfo;
+
+class RecordInfo
+{
+	QList<PFieldInfo> _fldInfos;
+public: 
+	
+	RecordInfo():_visible(true){}
+	bool _visible;
+	void append( PFieldInfo fi ){ _fldInfos.append(fi); }
+	int size()const{ return _fldInfos.size(); }
+	const PFieldInfo & at( int i ){ return _fldInfos.at(i); }
+	const QList<PFieldInfo>::const_iterator constBegin() const{ return _fldInfos.constBegin();}
+	const QList<PFieldInfo>::const_iterator constEnd() const{ return _fldInfos.constEnd();}
+	QList<PFieldInfo>::iterator begin() { return _fldInfos.begin();}
+	QList<PFieldInfo>::iterator end() { return _fldInfos.end();}
+};
+
+
+
+typedef RecordInfo TRecordInfo; 
+typedef QSharedPointer< TRecordInfo > PRecordInfo; 
+typedef QMap<char, PRecordInfo> TRecordsInfo;
 typedef QMap< QString, TRecordsInfo> TProfileInfo;
 
 class ASTMFactory
@@ -368,7 +394,6 @@ class ASTMFactory
 		PAstm parse( const QString & sdata );
 		QString userName( const QString & profile, char rt, int idx );
 		bool cloneProfile( const QString &orig, const QString &cloned );
-		bool clearFields( const QString &profile ); ///>clears all visibility flags. used foe loading profile
 		bool createProfile( const QString &newprof ){ return cloneProfile( "ASTM_E1394_E97", newprof ); }
 		bool removeProfile( const QString &remprof ){ if (!_profilesInfo.contains( "ASTM_E1394_E97")) return false;  _profilesInfo.remove(remprof); return true; }
 		bool setFieldVisible( const QString & profile, char rt, int idx, bool visible=true );
@@ -376,8 +401,8 @@ class ASTMFactory
 		bool setFieldValidator( const QString & profile, char rt, int idx, QString value );
 		bool setRecordVisible( const QString & profile, char rt, bool visible=true );
 		bool isRecordVisible( const QString & profile, char rt );
-		QString stdRef( const QString & profile, char rt, int idx );
-		TRecordInfo recordInfo( const QString & profile, char rt );
+		PFieldInfo fieldInfo( const QString & profile, char rt, int idx );
+		PRecordInfo recordInfo( const QString & profile, char rt );
 		QString exportProfiles() const;
 };
 

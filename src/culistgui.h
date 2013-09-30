@@ -123,8 +123,7 @@ private slots:
 	void on_trvEditRecords_clicked( const QModelIndex & index );
 	void on_trvEditRecords_activated( const QModelIndex & index );
 	void processCurrentRowChanged ( const QModelIndex & current, const QModelIndex & previous );
-	void on_trvEditRecords_entered( const QModelIndex & index );
-	void processRecordSelected( const QModelIndex & index );
+	void on_trvEditRecords_entered( const QModelIndex & index );	
 	void clearRecordEditView();
     void on_actionAdd_Session_triggered();
 	void on_actionAdd_Message_triggered();
@@ -193,6 +192,7 @@ public:
 	QStandardItem * addRecord( RecordType rt );
 	bool setRecord( PAstm rec );
 	QList<QByteArray> currentData();
+	void processRecordSelected( const QModelIndex & index, const QString & profile = "ASTM_E1394_E97" );
 
 private:
     Ui::CulistGui *ui;

@@ -4,272 +4,426 @@
 	Version="9,00"
 	Name="culist"
 	ProjectGUID="{5643DFC8-128A-3636-86C3-28252CDB612A}"
-	Keyword="Qt4VSv1.0">
+	Keyword="Qt4VSv1.0"
+	TargetFrameworkVersion="0"
+	>
 	<Platforms>
 		<Platform
-			Name="Win32" />
+			Name="Win32"
+		/>
 	</Platforms>
+	<ToolFiles>
+	</ToolFiles>
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
 			OutputDirectory="debug\"
-			ATLMinimizesCRunTimeLibraryUsage="false"
-			ConfigurationType="1"
 			IntermediateDirectory="debug\"
-			UseOfMfc="0">
+			ConfigurationType="1"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			>
 			<Tool
-				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="&quot;..\..\..\Qt\4.8.4\include\QtCore&quot;,&quot;..\..\..\Qt\4.8.4\include\QtNetwork&quot;,&quot;..\..\..\Qt\4.8.4\include\QtGui&quot;,&quot;..\..\..\Qt\4.8.4\include\QtSql&quot;,&quot;..\..\..\Qt\4.8.4\include&quot;,&quot;..\..\..\Qt\4.8.4\include\ActiveQt&quot;,&quot;debug&quot;,&quot;.&quot;,..\..\..\Qt\4.8.4\mkspecs\default"
-				AdditionalOptions="-Zm200 -w34100 -w34189"
-				AssemblerListingLocation="debug\"
-				BufferSecurityCheck="false"
-				DebugInformationFormat="3"
-				ExceptionHandling="1"
-				GeneratePreprocessedFile="0"
-				ObjectFile="debug\"
-				Optimization ="4"
-				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_DLL,QT_SQL_LIB,QT_GUI_LIB,QT_NETWORK_LIB,QT_CORE_LIB,QT_HAVE_MMX,QT_HAVE_3DNOW,QT_HAVE_SSE,QT_HAVE_MMXEXT,QT_HAVE_SSE2,QT_THREAD_SUPPORT"
-				ProgramDataBaseFileName=".\"
-				RuntimeLibrary="3"
-				RuntimeTypeInfo="true"
-				SuppressStartupBanner="true"
-				TreatWChar_tAsBuiltInType="false"
-				WarningLevel="3" />
+				Name="VCPreBuildEventTool"
+			/>
 			<Tool
-				Name="VCCustomBuildTool" />
+				Name="VCCustomBuildTool"
+			/>
 			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="c:\Qt\4.8.4\lib\qtmaind.lib c:\Qt\4.8.4\lib\QtSqld4.lib c:\Qt\4.8.4\lib\QtGuid4.lib c:\Qt\4.8.4\lib\QtNetworkd4.lib c:\Qt\4.8.4\lib\QtCored4.lib"
-				AdditionalLibraryDirectories="c:\Qt\4.8.4\lib"
-				AdditionalOptions="&quot;/MANIFESTDEPENDENCY:type=&apos;win32&apos; name=&apos;Microsoft.Windows.Common-Controls&apos; version=&apos;6.0.0.0&apos; publicKeyToken=&apos;6595b64144ccf1df&apos; language=&apos;*&apos; processorArchitecture=&apos;*&apos;&quot;"
-				GenerateDebugInformation="true"
-				IgnoreImportLibrary="true"
-				LinkTimeCodeGeneration="0"
-				OutputFile="$(OutDir)\culist.exe"
-				ProgramDatabaseFile=""
-				SubSystem="2"
-				SuppressStartupBanner="true" />
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
 			<Tool
 				Name="VCMIDLTool"
+				WarningLevel="0"
 				DefaultCharType="0"
 				EnableErrorChecks="1"
-				WarningLevel="0" />
+			/>
 			<Tool
-				Name="VCPostBuildEventTool" />
+				Name="VCCLCompilerTool"
+				AdditionalOptions="-Zm200 -w34100 -w34189"
+				Optimization="4"
+				AdditionalIncludeDirectories="&quot;..\..\..\Qt\4.8.4\include\QtCore&quot;,&quot;..\..\..\Qt\4.8.4\include\QtNetwork&quot;,&quot;..\..\..\Qt\4.8.4\include\QtGui&quot;,&quot;..\..\..\Qt\4.8.4\include\QtSql&quot;,&quot;..\..\..\Qt\4.8.4\include&quot;,&quot;..\..\..\Qt\4.8.4\include\ActiveQt&quot;,&quot;debug&quot;,&quot;.&quot;,..\..\..\Qt\4.8.4\mkspecs\default"
+				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_DLL,QT_SQL_LIB,QT_GUI_LIB,QT_NETWORK_LIB,QT_CORE_LIB,QT_HAVE_MMX,QT_HAVE_3DNOW,QT_HAVE_SSE,QT_HAVE_MMXEXT,QT_HAVE_SSE2,QT_THREAD_SUPPORT"
+				GeneratePreprocessedFile="0"
+				ExceptionHandling="1"
+				RuntimeLibrary="3"
+				BufferSecurityCheck="false"
+				TreatWChar_tAsBuiltInType="false"
+				RuntimeTypeInfo="true"
+				AssemblerListingLocation="debug\"
+				ObjectFile="debug\"
+				ProgramDataBaseFileName=".\"
+				WarningLevel="3"
+				SuppressStartupBanner="true"
+				DebugInformationFormat="3"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool" />
-			<Tool
-				Name="VCPreLinkEventTool" />
+				Name="VCManagedResourceCompilerTool"
+			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_DLL,QT_SQL_LIB,QT_GUI_LIB,QT_NETWORK_LIB,QT_CORE_LIB,QT_HAVE_MMX,QT_HAVE_3DNOW,QT_HAVE_SSE,QT_HAVE_MMXEXT,QT_HAVE_SSE2,QT_THREAD_SUPPORT,_DEBUG" />
+				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_DLL,QT_SQL_LIB,QT_GUI_LIB,QT_NETWORK_LIB,QT_CORE_LIB,QT_HAVE_MMX,QT_HAVE_3DNOW,QT_HAVE_SSE,QT_HAVE_MMXEXT,QT_HAVE_SSE2,QT_THREAD_SUPPORT,_DEBUG"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				IgnoreImportLibrary="true"
+				AdditionalOptions="&quot;/MANIFESTDEPENDENCY:type=&apos;win32&apos; name=&apos;Microsoft.Windows.Common-Controls&apos; version=&apos;6.0.0.0&apos; publicKeyToken=&apos;6595b64144ccf1df&apos; language=&apos;*&apos; processorArchitecture=&apos;*&apos;&quot;"
+				AdditionalDependencies="c:\Qt\4.8.4\lib\qtmaind.lib c:\Qt\4.8.4\lib\QtSqld4.lib c:\Qt\4.8.4\lib\QtGuid4.lib c:\Qt\4.8.4\lib\QtNetworkd4.lib c:\Qt\4.8.4\lib\QtCored4.lib"
+				OutputFile="$(OutDir)\culist.exe"
+				SuppressStartupBanner="true"
+				AdditionalLibraryDirectories="c:\Qt\4.8.4\lib"
+				GenerateDebugInformation="true"
+				ProgramDatabaseFile=""
+				SubSystem="2"
+				LinkTimeCodeGeneration="0"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
 			OutputDirectory="release\"
-			ATLMinimizesCRunTimeLibraryUsage="false"
-			ConfigurationType="1"
 			IntermediateDirectory="release\"
-			UseOfMfc="0">
+			ConfigurationType="1"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			>
 			<Tool
-				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="&quot;..\..\..\Qt\4.8.4\include\QtCore&quot;,&quot;..\..\..\Qt\4.8.4\include\QtNetwork&quot;,&quot;..\..\..\Qt\4.8.4\include\QtGui&quot;,&quot;..\..\..\Qt\4.8.4\include\QtSql&quot;,&quot;..\..\..\Qt\4.8.4\include&quot;,&quot;..\..\..\Qt\4.8.4\include\ActiveQt&quot;,&quot;release&quot;,&quot;.&quot;,..\..\..\Qt\4.8.4\mkspecs\default"
-				AdditionalOptions="-Zm200 -w34100 -w34189"
-				AssemblerListingLocation="release\"
-				BufferSecurityCheck="false"
-				DebugInformationFormat="0"
-				ExceptionHandling="1"
-				GeneratePreprocessedFile="0"
-				ObjectFile="release\"
-				Optimization ="2"
-				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_DLL,QT_NO_DEBUG,QT_SQL_LIB,QT_GUI_LIB,QT_NETWORK_LIB,QT_CORE_LIB,QT_HAVE_MMX,QT_HAVE_3DNOW,QT_HAVE_SSE,QT_HAVE_MMXEXT,QT_HAVE_SSE2,QT_THREAD_SUPPORT,NDEBUG"
-				ProgramDataBaseFileName=".\"
-				RuntimeLibrary="2"
-				RuntimeTypeInfo="true"
-				SuppressStartupBanner="true"
-				TreatWChar_tAsBuiltInType="false"
-				WarningLevel="3" />
+				Name="VCPreBuildEventTool"
+			/>
 			<Tool
-				Name="VCCustomBuildTool" />
+				Name="VCCustomBuildTool"
+			/>
 			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="c:\Qt\4.8.4\lib\qtmain.lib c:\Qt\4.8.4\lib\QtSql4.lib c:\Qt\4.8.4\lib\QtGui4.lib c:\Qt\4.8.4\lib\QtNetwork4.lib c:\Qt\4.8.4\lib\QtCore4.lib"
-				AdditionalLibraryDirectories="c:\Qt\4.8.4\lib"
-				AdditionalOptions="&quot;/MANIFESTDEPENDENCY:type=&apos;win32&apos; name=&apos;Microsoft.Windows.Common-Controls&apos; version=&apos;6.0.0.0&apos; publicKeyToken=&apos;6595b64144ccf1df&apos; language=&apos;*&apos; processorArchitecture=&apos;*&apos;&quot;"
-				GenerateDebugInformation="false"
-				IgnoreImportLibrary="true"
-				LinkIncremental="1"
-				LinkTimeCodeGeneration="0"
-				OutputFile="$(OutDir)\culist.exe"
-				ProgramDatabaseFile=""
-				SubSystem="2"
-				SuppressStartupBanner="true" />
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
 			<Tool
 				Name="VCMIDLTool"
+				WarningLevel="0"
 				DefaultCharType="0"
 				EnableErrorChecks="1"
-				WarningLevel="0" />
+			/>
 			<Tool
-				Name="VCPostBuildEventTool" />
+				Name="VCCLCompilerTool"
+				AdditionalOptions="-Zm200 -w34100 -w34189"
+				Optimization="2"
+				AdditionalIncludeDirectories="&quot;..\..\..\Qt\4.8.4\include\QtCore&quot;,&quot;..\..\..\Qt\4.8.4\include\QtNetwork&quot;,&quot;..\..\..\Qt\4.8.4\include\QtGui&quot;,&quot;..\..\..\Qt\4.8.4\include\QtSql&quot;,&quot;..\..\..\Qt\4.8.4\include&quot;,&quot;..\..\..\Qt\4.8.4\include\ActiveQt&quot;,&quot;release&quot;,&quot;.&quot;,..\..\..\Qt\4.8.4\mkspecs\default"
+				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_DLL,QT_NO_DEBUG,QT_SQL_LIB,QT_GUI_LIB,QT_NETWORK_LIB,QT_CORE_LIB,QT_HAVE_MMX,QT_HAVE_3DNOW,QT_HAVE_SSE,QT_HAVE_MMXEXT,QT_HAVE_SSE2,QT_THREAD_SUPPORT,NDEBUG"
+				GeneratePreprocessedFile="0"
+				ExceptionHandling="1"
+				RuntimeLibrary="2"
+				BufferSecurityCheck="false"
+				TreatWChar_tAsBuiltInType="false"
+				RuntimeTypeInfo="true"
+				AssemblerListingLocation="release\"
+				ObjectFile="release\"
+				ProgramDataBaseFileName=".\"
+				WarningLevel="3"
+				SuppressStartupBanner="true"
+				DebugInformationFormat="0"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool" />
-			<Tool
-				Name="VCPreLinkEventTool" />
+				Name="VCManagedResourceCompilerTool"
+			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_DLL,QT_NO_DEBUG,QT_SQL_LIB,QT_GUI_LIB,QT_NETWORK_LIB,QT_CORE_LIB,QT_HAVE_MMX,QT_HAVE_3DNOW,QT_HAVE_SSE,QT_HAVE_MMXEXT,QT_HAVE_SSE2,QT_THREAD_SUPPORT" />
+				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,QT_LARGEFILE_SUPPORT,QT_DLL,QT_NO_DEBUG,QT_SQL_LIB,QT_GUI_LIB,QT_NETWORK_LIB,QT_CORE_LIB,QT_HAVE_MMX,QT_HAVE_3DNOW,QT_HAVE_SSE,QT_HAVE_MMXEXT,QT_HAVE_SSE2,QT_THREAD_SUPPORT"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				IgnoreImportLibrary="true"
+				AdditionalOptions="&quot;/MANIFESTDEPENDENCY:type=&apos;win32&apos; name=&apos;Microsoft.Windows.Common-Controls&apos; version=&apos;6.0.0.0&apos; publicKeyToken=&apos;6595b64144ccf1df&apos; language=&apos;*&apos; processorArchitecture=&apos;*&apos;&quot;"
+				AdditionalDependencies="c:\Qt\4.8.4\lib\qtmain.lib c:\Qt\4.8.4\lib\QtSql4.lib c:\Qt\4.8.4\lib\QtGui4.lib c:\Qt\4.8.4\lib\QtNetwork4.lib c:\Qt\4.8.4\lib\QtCore4.lib"
+				OutputFile="$(OutDir)\culist.exe"
+				LinkIncremental="1"
+				SuppressStartupBanner="true"
+				AdditionalLibraryDirectories="c:\Qt\4.8.4\lib"
+				GenerateDebugInformation="false"
+				ProgramDatabaseFile=""
+				SubSystem="2"
+				LinkTimeCodeGeneration="0"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
 		</Configuration>
 	</Configurations>
+	<References>
+	</References>
 	<Files>
 		<Filter
 			Name="Source Files"
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
-			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
+			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
+			>
 			<File
-				RelativePath="src\astm.cpp" />
+				RelativePath="src\astm.cpp"
+				>
+			</File>
 			<File
-				RelativePath="src\culistgui.cpp" />
+				RelativePath="src\culistgui.cpp"
+				>
+			</File>
 			<File
-				RelativePath="src\main.cpp" />
+				RelativePath="src\main.cpp"
+				>
+			</File>
 			<File
-				RelativePath="src\persistence.cpp" />
+				RelativePath="src\persistence.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
-			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
+			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
+			>
 			<File
-				RelativePath="src\astm.h" />
+				RelativePath="src\astm.h"
+				>
+			</File>
 			<File
-				RelativePath="src\config.h" />
+				RelativePath="src\config.h"
+				>
+			</File>
 			<File
-				RelativePath="src\culistgui.h">
+				RelativePath="src\culistgui.h"
+				>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCustomBuildTool"
-						AdditionalDependencies="C:\Qt\4.8.4\bin\moc.exe;src\culistgui.h"
-						CommandLine="C:\Qt\4.8.4\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_SQL_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;..\..\..\Qt\4.8.4\include\QtCore&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtNetwork&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtGui&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtSql&quot; -I&quot;..\..\..\Qt\4.8.4\include&quot; -I&quot;..\..\..\Qt\4.8.4\include\ActiveQt&quot; -I&quot;debug&quot; -I&quot;.&quot; -I..\..\..\Qt\4.8.4\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\culistgui.h -o debug\moc_culistgui.cpp"
 						Description="MOC src\culistgui.h"
+						CommandLine="C:\Qt\4.8.4\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_SQL_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;..\..\..\Qt\4.8.4\include\QtCore&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtNetwork&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtGui&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtSql&quot; -I&quot;..\..\..\Qt\4.8.4\include&quot; -I&quot;..\..\..\Qt\4.8.4\include\ActiveQt&quot; -I&quot;debug&quot; -I&quot;.&quot; -I..\..\..\Qt\4.8.4\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\culistgui.h -o debug\moc_culistgui.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="C:\Qt\4.8.4\bin\moc.exe;src\culistgui.h"
 						Outputs="debug\moc_culistgui.cpp"
-						Path="c:\Qt\4.8.4\bin" />
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32">
+					Name="Release|Win32"
+					>
 					<Tool
 						Name="VCCustomBuildTool"
-						AdditionalDependencies="C:\Qt\4.8.4\bin\moc.exe;src\culistgui.h"
-						CommandLine="C:\Qt\4.8.4\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_SQL_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;..\..\..\Qt\4.8.4\include\QtCore&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtNetwork&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtGui&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtSql&quot; -I&quot;..\..\..\Qt\4.8.4\include&quot; -I&quot;..\..\..\Qt\4.8.4\include\ActiveQt&quot; -I&quot;release&quot; -I&quot;.&quot; -I..\..\..\Qt\4.8.4\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\culistgui.h -o release\moc_culistgui.cpp"
 						Description="MOC src\culistgui.h"
+						CommandLine="C:\Qt\4.8.4\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_SQL_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;..\..\..\Qt\4.8.4\include\QtCore&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtNetwork&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtGui&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtSql&quot; -I&quot;..\..\..\Qt\4.8.4\include&quot; -I&quot;..\..\..\Qt\4.8.4\include\ActiveQt&quot; -I&quot;release&quot; -I&quot;.&quot; -I..\..\..\Qt\4.8.4\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\culistgui.h -o release\moc_culistgui.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="C:\Qt\4.8.4\bin\moc.exe;src\culistgui.h"
 						Outputs="release\moc_culistgui.cpp"
-						Path="c:\Qt\4.8.4\bin" />
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="src\persistence.h">
+				RelativePath="src\persistence.h"
+				>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCustomBuildTool"
-						AdditionalDependencies="C:\Qt\4.8.4\bin\moc.exe;src\persistence.h"
-						CommandLine="C:\Qt\4.8.4\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_SQL_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;..\..\..\Qt\4.8.4\include\QtCore&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtNetwork&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtGui&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtSql&quot; -I&quot;..\..\..\Qt\4.8.4\include&quot; -I&quot;..\..\..\Qt\4.8.4\include\ActiveQt&quot; -I&quot;debug&quot; -I&quot;.&quot; -I..\..\..\Qt\4.8.4\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\persistence.h -o debug\moc_persistence.cpp"
 						Description="MOC src\persistence.h"
+						CommandLine="C:\Qt\4.8.4\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_SQL_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;..\..\..\Qt\4.8.4\include\QtCore&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtNetwork&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtGui&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtSql&quot; -I&quot;..\..\..\Qt\4.8.4\include&quot; -I&quot;..\..\..\Qt\4.8.4\include\ActiveQt&quot; -I&quot;debug&quot; -I&quot;.&quot; -I..\..\..\Qt\4.8.4\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\persistence.h -o debug\moc_persistence.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="C:\Qt\4.8.4\bin\moc.exe;src\persistence.h"
 						Outputs="debug\moc_persistence.cpp"
-						Path="c:\Qt\4.8.4\bin" />
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32">
+					Name="Release|Win32"
+					>
 					<Tool
 						Name="VCCustomBuildTool"
-						AdditionalDependencies="C:\Qt\4.8.4\bin\moc.exe;src\persistence.h"
-						CommandLine="C:\Qt\4.8.4\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_SQL_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;..\..\..\Qt\4.8.4\include\QtCore&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtNetwork&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtGui&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtSql&quot; -I&quot;..\..\..\Qt\4.8.4\include&quot; -I&quot;..\..\..\Qt\4.8.4\include\ActiveQt&quot; -I&quot;release&quot; -I&quot;.&quot; -I..\..\..\Qt\4.8.4\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\persistence.h -o release\moc_persistence.cpp"
 						Description="MOC src\persistence.h"
+						CommandLine="C:\Qt\4.8.4\bin\moc.exe  -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_SQL_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_HAVE_MMX -DQT_HAVE_3DNOW -DQT_HAVE_SSE -DQT_HAVE_MMXEXT -DQT_HAVE_SSE2 -DQT_THREAD_SUPPORT -I&quot;..\..\..\Qt\4.8.4\include\QtCore&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtNetwork&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtGui&quot; -I&quot;..\..\..\Qt\4.8.4\include\QtSql&quot; -I&quot;..\..\..\Qt\4.8.4\include&quot; -I&quot;..\..\..\Qt\4.8.4\include\ActiveQt&quot; -I&quot;release&quot; -I&quot;.&quot; -I..\..\..\Qt\4.8.4\mkspecs\default -D_MSC_VER=1500 -DWIN32 src\persistence.h -o release\moc_persistence.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="C:\Qt\4.8.4\bin\moc.exe;src\persistence.h"
 						Outputs="release\moc_persistence.cpp"
-						Path="c:\Qt\4.8.4\bin" />
+					/>
 				</FileConfiguration>
 			</File>
 		</Filter>
 		<Filter
 			Name="Generated Files"
 			Filter="cpp;c;cxx;moc;h;def;odl;idl;res;"
-			UniqueIdentifier="{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}">
+			UniqueIdentifier="{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}"
+			>
 			<File
-				RelativePath="debug\Culist.res">
-				<FileConfiguration
-					Name="Release|Win32"
-					ExcludedFromBuild="true" />
-			</File>
-			<File
-				RelativePath="release\Culist.res">
+				RelativePath="release\Culist.res"
+				>
 				<FileConfiguration
 					Name="Debug|Win32"
-					ExcludedFromBuild="true" />
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="debug\moc_culistgui.cpp">
+				RelativePath="debug\Culist.res"
+				>
 				<FileConfiguration
 					Name="Release|Win32"
-					ExcludedFromBuild="true" />
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="release\moc_culistgui.cpp">
+				RelativePath="release\moc_culistgui.cpp"
+				>
 				<FileConfiguration
 					Name="Debug|Win32"
-					ExcludedFromBuild="true" />
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="debug\moc_persistence.cpp">
+				RelativePath="debug\moc_culistgui.cpp"
+				>
 				<FileConfiguration
 					Name="Release|Win32"
-					ExcludedFromBuild="true" />
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="release\moc_persistence.cpp">
-				<FileConfiguration
-					Name="Debug|Win32"
-					ExcludedFromBuild="true" />
-			</File>
-			<File
-				RelativePath="debug\qrc_res.cpp">
+				RelativePath="debug\moc_persistence.cpp"
+				>
 				<FileConfiguration
 					Name="Release|Win32"
-					ExcludedFromBuild="true" />
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="release\qrc_res.cpp">
+				RelativePath="release\moc_persistence.cpp"
+				>
 				<FileConfiguration
 					Name="Debug|Win32"
-					ExcludedFromBuild="true" />
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="ui_culistgui.h" />
+				RelativePath="release\qrc_res.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="debug\qrc_res.cpp"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="ui_culistgui.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Form Files"
 			Filter="ui"
 			UniqueIdentifier="{99349809-55BA-4b9d-BF79-8FDBB0286EB3}"
-			ParseFiles="false">
+			ParseFiles="false"
+			>
 			<File
-				RelativePath="src\culistgui.ui">
+				RelativePath="src\culistgui.ui"
+				>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCustomBuildTool"
-						AdditionalDependencies="C:\Qt\4.8.4\bin\uic.exe;src\culistgui.ui"
-						CommandLine="C:\Qt\4.8.4\bin\uic.exe src\culistgui.ui -o ui_culistgui.h"
 						Description="UIC src\culistgui.ui"
+						CommandLine="C:\Qt\4.8.4\bin\uic.exe src\culistgui.ui -o ui_culistgui.h&#x0D;&#x0A;"
+						AdditionalDependencies="C:\Qt\4.8.4\bin\uic.exe;src\culistgui.ui"
 						Outputs="ui_culistgui.h"
-						Path="c:\Qt\4.8.4\bin" />
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32">
+					Name="Release|Win32"
+					>
 					<Tool
 						Name="VCCustomBuildTool"
-						AdditionalDependencies="C:\Qt\4.8.4\bin\uic.exe;src\culistgui.ui"
-						CommandLine="C:\Qt\4.8.4\bin\uic.exe src\culistgui.ui -o ui_culistgui.h"
 						Description="UIC src\culistgui.ui"
+						CommandLine="C:\Qt\4.8.4\bin\uic.exe src\culistgui.ui -o ui_culistgui.h&#x0D;&#x0A;"
+						AdditionalDependencies="C:\Qt\4.8.4\bin\uic.exe;src\culistgui.ui"
 						Outputs="ui_culistgui.h"
-						Path="c:\Qt\4.8.4\bin" />
+					/>
 				</FileConfiguration>
 			</File>
 		</Filter>
@@ -277,93 +431,159 @@
 			Name="Resource Files"
 			Filter="qrc;*"
 			UniqueIdentifier="{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}"
-			ParseFiles="false">
+			ParseFiles="false"
+			>
 			<File
-				RelativePath="src\res\ack.png" />
+				RelativePath="src\res\ack.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\add.png" />
+				RelativePath="src\res\add.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\add_comment.png" />
+				RelativePath="src\res\add_comment.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\add_header.png" />
+				RelativePath="src\res\add_header.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\add_manufacturing.png" />
+				RelativePath="src\res\add_manufacturing.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\add_message.png" />
+				RelativePath="src\res\add_message.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\add_order.png" />
+				RelativePath="src\res\add_order.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\add_patient.png" />
+				RelativePath="src\res\add_patient.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\add_request.png" />
+				RelativePath="src\res\add_request.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\add_result.png" />
+				RelativePath="src\res\add_result.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\add_scientific.png" />
+				RelativePath="src\res\add_scientific.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\add_session.png" />
+				RelativePath="src\res\add_session.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\add_terminator.png" />
+				RelativePath="src\res\add_terminator.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\clear.png" />
+				RelativePath="src\res\clear.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\connect.png" />
+				RelativePath="src\res\connect.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\disconnect.png" />
+				RelativePath="src\res\disconnect.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\exit.png" />
+				RelativePath="src\res\exit.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\fork.png" />
+				RelativePath="src\res\fork.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\import-trace.png" />
+				RelativePath="src\res\import-trace.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\listen.png" />
+				RelativePath="src\res\listen.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\nak.png" />
+				RelativePath="src\res\nak.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\project-new.png" />
+				RelativePath="src\res\project-new.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\project-open.png" />
+				RelativePath="src\res\project-open.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\project-save-as.png" />
+				RelativePath="src\res\project-save-as.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\project-save.png" />
+				RelativePath="src\res\project-save.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\remove.png" />
+				RelativePath="src\res\remove.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\res.qrc">
+				RelativePath="src\res\res.qrc"
+				>
 				<FileConfiguration
-					Name="Debug|Win32">
+					Name="Debug|Win32"
+					>
 					<Tool
 						Name="VCCustomBuildTool"
-						AdditionalDependencies="C:\Qt\4.8.4\bin\rcc.exe;src\res\ack.png;src\res\add.png;src\res\add_comment.png;src\res\add_header.png;src\res\add_manufacturing.png;src\res\add_message.png;src\res\add_order.png;src\res\add_patient.png;src\res\add_request.png;src\res\add_result.png;src\res\add_scientific.png;src\res\add_session.png;src\res\add_terminator.png;src\res\clear.png;src\res\connect.png;src\res\disconnect.png;src\res\exit.png;src\res\fork.png;src\res\import-trace.png;src\res\listen.png;src\res\nak.png;src\res\project-new.png;src\res\project-open.png;src\res\project-save-as.png;src\res\project-save.png;src\res\remove.png;src\res\res.qrc;src\res\save.png;src\res\send.png;src\res\stop_listen.png;src\res\trace-export.png"
-						CommandLine="C:\Qt\4.8.4\bin\rcc.exe -name res src\res\res.qrc -o debug\qrc_res.cpp"
 						Description="RCC src\res\res.qrc"
+						CommandLine="C:\Qt\4.8.4\bin\rcc.exe -name res src\res\res.qrc -o debug\qrc_res.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="C:\Qt\4.8.4\bin\rcc.exe;src\res\ack.png;src\res\add.png;src\res\add_comment.png;src\res\add_header.png;src\res\add_manufacturing.png;src\res\add_message.png;src\res\add_order.png;src\res\add_patient.png;src\res\add_request.png;src\res\add_result.png;src\res\add_scientific.png;src\res\add_session.png;src\res\add_terminator.png;src\res\clear.png;src\res\connect.png;src\res\disconnect.png;src\res\exit.png;src\res\fork.png;src\res\import-trace.png;src\res\listen.png;src\res\nak.png;src\res\project-new.png;src\res\project-open.png;src\res\project-save-as.png;src\res\project-save.png;src\res\remove.png;src\res\res.qrc;src\res\save.png;src\res\send.png;src\res\stop_listen.png;src\res\trace-export.png"
 						Outputs="debug\qrc_res.cpp"
-						Path="c:\Qt\4.8.4\bin" />
+					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Release|Win32">
+					Name="Release|Win32"
+					>
 					<Tool
 						Name="VCCustomBuildTool"
-						AdditionalDependencies="C:\Qt\4.8.4\bin\rcc.exe;src\res\ack.png;src\res\add.png;src\res\add_comment.png;src\res\add_header.png;src\res\add_manufacturing.png;src\res\add_message.png;src\res\add_order.png;src\res\add_patient.png;src\res\add_request.png;src\res\add_result.png;src\res\add_scientific.png;src\res\add_session.png;src\res\add_terminator.png;src\res\clear.png;src\res\connect.png;src\res\disconnect.png;src\res\exit.png;src\res\fork.png;src\res\import-trace.png;src\res\listen.png;src\res\nak.png;src\res\project-new.png;src\res\project-open.png;src\res\project-save-as.png;src\res\project-save.png;src\res\remove.png;src\res\res.qrc;src\res\save.png;src\res\send.png;src\res\stop_listen.png;src\res\trace-export.png"
-						CommandLine="C:\Qt\4.8.4\bin\rcc.exe -name res src\res\res.qrc -o release\qrc_res.cpp"
 						Description="RCC src\res\res.qrc"
+						CommandLine="C:\Qt\4.8.4\bin\rcc.exe -name res src\res\res.qrc -o release\qrc_res.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="C:\Qt\4.8.4\bin\rcc.exe;src\res\ack.png;src\res\add.png;src\res\add_comment.png;src\res\add_header.png;src\res\add_manufacturing.png;src\res\add_message.png;src\res\add_order.png;src\res\add_patient.png;src\res\add_request.png;src\res\add_result.png;src\res\add_scientific.png;src\res\add_session.png;src\res\add_terminator.png;src\res\clear.png;src\res\connect.png;src\res\disconnect.png;src\res\exit.png;src\res\fork.png;src\res\import-trace.png;src\res\listen.png;src\res\nak.png;src\res\project-new.png;src\res\project-open.png;src\res\project-save-as.png;src\res\project-save.png;src\res\remove.png;src\res\res.qrc;src\res\save.png;src\res\send.png;src\res\stop_listen.png;src\res\trace-export.png"
 						Outputs="release\qrc_res.cpp"
-						Path="c:\Qt\4.8.4\bin" />
+					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="src\res\save.png" />
+				RelativePath="src\res\save.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\send.png" />
+				RelativePath="src\res\send.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\stop_listen.png" />
+				RelativePath="src\res\stop_listen.png"
+				>
+			</File>
 			<File
-				RelativePath="src\res\trace-export.png" />
+				RelativePath="src\res\trace-export.png"
+				>
+			</File>
 		</Filter>
 		<File
-			RelativePath="Culist.rc" />
+			RelativePath="Culist.rc"
+			>
+		</File>
 	</Files>
 	<Globals>
 	</Globals>

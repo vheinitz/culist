@@ -106,18 +106,19 @@ void CulistGui::setCurrentProfile( QString profile )
 		if (profile != "ASTM_E1394_E97") //TODO remove this dev BP
 			profile = profile;
 
-		TRecordInfo recInfo = ASTMFactory::instance().recordInfo( _projectData._currentProfile,  it.key() );
+		PRecordInfo recInfo = ASTMFactory::instance().recordInfo( _projectData._currentProfile,  it.key() );
 		_profileFields.insertRow(_profileFields.rowCount());		
 		_profileFields.setItem(_profileFields.rowCount()-1,0, new QStandardItem(it.value() ) );
 		QStandardItem *curRec = _profileFields.item( _profileFields.rowCount()-1 ) ;
 		curRec->setCheckable(true);
-		curRec->setCheckState( recInfo.second ? Qt::Checked : Qt::Unchecked );
+		curRec->setCheckState( recInfo->_visible ? Qt::Checked : Qt::Unchecked );
 		curRec->setData(it.key(), Qt::UserRole+1);
 				
 		
 		//int r=0;		
-		foreach( PFieldInfo fi, recInfo.first )
+		for( QList<PFieldInfo>::const_iterator it = recInfo->constBegin(), end =  recInfo->constEnd(); it!=end; ++it  )
 		{		
+			PFieldInfo fi = *it;
 			QString un = fi->_userName;
 			QStandardItem *field = new QStandardItem();
 			field->setCheckable(true);
@@ -125,7 +126,7 @@ void CulistGui::setCurrentProfile( QString profile )
 			field->setData( un, Qt::DisplayRole ); 
 			curRec->appendRow( field );
 			/*child->setData( rt, Qt::UserRole+1 );
-			TRecordInfo recInfo = ASTMFactory::instance().recordInfo( _projectData._profile, rt );
+			PRecordInfo recInfo = ASTMFactory::instance().recordInfo( _projectData._profile, rt );
 			QMap<QString,QVariant> vals;
 			foreach( PFieldInfo fi, recInfo.first )
 			{
@@ -152,7 +153,10 @@ void CulistGui::setCurrentProfile( QString profile )
 
 CulistGui::~CulistGui()
 {
-    delete ui;
+    if (_tcpServerConnection)
+		_tcpServerConnection->deleteLater();
+	delete ui;
+
 }
 
 
@@ -513,7 +517,7 @@ void CulistGui::on_trvEditRecords_clicked( const QModelIndex & index )
 	processRecordSelected( index );
 }
 
-void CulistGui::processRecordSelected( const QModelIndex & index )
+void CulistGui::processRecordSelected( const QModelIndex & index, const QString & profile )
 {
 	_currentEditItem = index;
 	if ( _currentEditItem.isValid() )
@@ -525,70 +529,29 @@ void CulistGui::processRecordSelected( const QModelIndex & index )
 			return;
 
 		RecordType rt = static_cast<RecordType>(_currentEditItem.data(Qt::UserRole+1).toInt());
-		Astm *_rec=0;
-		switch(rt)
-		{
-			case EPatient:
-				_rec = new ASTMPatient(1);
-			break;
-			case ERequest:
-				_rec = new ASTMRequest(1);
-			break;
-			case EScientific:
-				_rec = new ASTMScientific(1);
-			break;
-			case EOrder:
-				_rec = new ASTMOrder(1);
-			break;
-			case EResult:
-				_rec = new ASTMResult(1);
-			break;
-			case EComment:
-				_rec = new ASTMComment(1);
-			break;
-			case EManufacturer:
-				_rec = new ASTMManufacturer(1);
-			break;
-			case EHeader:
-				_rec = new ASTMHeader("");
-			break;
-			case ETerminator:
-				_rec = new ASTMTerminator(1);
-			break;
-		}
 
-		if ( !_rec )
+		PRecordInfo recInfo = ASTMFactory::instance().recordInfo( profile, rt );
+
+
+		if ( recInfo.isNull() )
 		{
 			return;
 		}
 		
 		char rectype=0;
-		int fi=-1;
-		foreach( QString fld, _rec->fields() )
-		{
-			
-
-			fi++;
-			
-			if ( fld == "type" )
-			{
-				QString type = _rec->values()["type"].toString();
-				rectype = type.at(0).toAscii();
-				continue;
-			}
-			if ( fld == "seq" )
-				continue;
-
+		//foreach( QString fld, recinfo->->fields() )
+		for( QList<PFieldInfo>::const_iterator it = recInfo->constBegin(), end =  recInfo->constEnd(); it!=end; ++it  )
+		{						
 			QHBoxLayout *hboxLayout = new QHBoxLayout;
 			_recordEditViews.append( hboxLayout );
 			//QSpacerItem *spacerItem = new QSpacerItem(;
 			ui->ltRecordFlds->addLayout( hboxLayout);
-			QLabel * fn= new QLabel(ASTMFactory::instance().userName("ASTM_E1394_E97",rectype,fi) );
+			QLabel * fn= new QLabel(ASTMFactory::instance().userName("ASTM_E1394_E97",rt,(*it)->_recIdx) );
 			fn->setMinimumWidth(150);
 			hboxLayout->addWidget( fn );
 			QLineEdit * fv = new QLineEdit;
 			hboxLayout->addWidget( fv );
-			fv->setObjectName(fld+"_myLisTraqDynamicEditView4711");
+			fv->setObjectName((*it)->_shortName+"_myLisTraqDynamicEditView4711");
 			//hboxLayout->addSpacerItem( spacerItem );
 			fn->show();
 			fv->show();
@@ -794,51 +757,58 @@ bool CulistGui::dataFromMessage( QStandardItem *mesg, QList<QByteArray> &outData
 		switch(recType)
 		{
 		case EHeader:
-			rec = new ASTMHeader("");
+			rec = new ASTMHeader("");			
 			patientNum=1;
 			orderNum=1;
 			resultNum=1;
 			commentNum=1;
 			break;
 		case EPatient:
-			rec = new ASTMPatient(patientNum);
+			rec = new ASTMPatient();
+			rec->setSeqNum( patientNum );
 			patientNum++;
 			orderNum=1;
 			resultNum=1;
 			commentNum=1;
 			break;
 		case ERequest:
-			rec = new ASTMRequest(requestNum);
+			rec = new ASTMRequest();
+			rec->setSeqNum( requestNum );
 			requestNum++;
 			orderNum=1;
 			resultNum=1;
 			commentNum=1;
 			break;
 		case EScientific:
-			rec = new ASTMScientific(scientificNum);
+			rec = new ASTMScientific();
+			rec->setSeqNum( scientificNum );
 			scientificNum++;
 			break;
 		case EOrder:
-			rec = new ASTMOrder(orderNum);
+			rec = new ASTMOrder();
+			rec->setSeqNum( orderNum );
 			orderNum++;
 			resultNum=1;
 			commentNum=1;
 			break;
 		case EResult:
-			rec = new ASTMResult(resultNum);
+			rec = new ASTMResult();
+			rec->setSeqNum( resultNum );
 			resultNum++;
 			commentNum=1;
 			break;
 		case EComment:
-			rec = new ASTMComment(commentNum);
+			rec = new ASTMComment();
+			rec->setSeqNum( commentNum );
 			commentNum++;
 			break;
 		case EManufacturer:
-			rec = new ASTMManufacturer(manufacturerNum);
+			rec = new ASTMManufacturer();
+			rec->setSeqNum( manufacturerNum );
 			manufacturerNum++;
 			break;
 		case ETerminator:
-			rec = new ASTMTerminator(1); //todo: could be something else then 1?
+			rec = new ASTMTerminator(); //todo: could be something else then 1?
 			break;	
 		case EMessage:
 			rec = new Astm(); //todo: handle fake record message
@@ -852,7 +822,7 @@ bool CulistGui::dataFromMessage( QStandardItem *mesg, QList<QByteArray> &outData
 		{
 			if (it.key() == "seq" || it.key() == "type")
 				continue;
-			rec->setValue( it.key(), it.value().toString() );
+		//TODO implement	rec->setValue( it.key(), it.value().toString() );
 		}
 		//sep = rec->_sep;
 		
@@ -910,8 +880,8 @@ bool CulistGui::setRecord( PAstm rec )
 	QStandardItem * cur = addRecord( rec->_type );
 	if(!cur)
 		return false;
-	QMap<QString, QVariant> fields = rec->values();//todo for dbg
-	cur->setData( rec->values(), Qt::UserRole+2);
+	//QMap<QString, QVariant> fields = rec->values();//todo for dbg
+	//cur->setData( rec->values(), Qt::UserRole+2);
 
 	return true;
 }
@@ -960,13 +930,15 @@ QStandardItem * CulistGui::addRecord( RecordType rt )
 		{
 			QStandardItem *child = new QStandardItem(ASTMFactory::instance()._recordNames[rt]);
 			child->setData( rt, Qt::UserRole+1 );
-			TRecordInfo recInfo = ASTMFactory::instance().recordInfo( _projectData._currentProfile, rt );
+			PRecordInfo recInfo = ASTMFactory::instance().recordInfo( _projectData._currentProfile, rt );
 			QMap<QString,QVariant> vals;
-			foreach( PFieldInfo fi, recInfo.first )
+			//foreach( PFieldInfo fi, recInfo.first )
+			for( QList<PFieldInfo>::const_iterator it = recInfo->constBegin(), end =  recInfo->constEnd(); it!=end; ++it  )
 			{
-				vals[fi->_shortName] = fi->_stdValue;
-			}
+				vals[(*it)->_shortName] = (*it)->_stdValue;
+			}		
 			child->setEditable(false);
+
 			child->setData(vals,Qt::UserRole+2);
 			cur->appendRow(child);
 			_currentEditItem = _editRecords.indexFromItem(child);
@@ -995,7 +967,7 @@ void CulistGui::on_actionAdd_Message_triggered()
 		QStandardItem *child = new QStandardItem("Message");
 		QStandardItem *cur = _editRecords.itemFromIndex(_currentEditItem);
 		child->setData( EMessage, Qt::UserRole+1 );
-		child->setEditable(false);
+		child->setEditable(true);
 		cur->appendRow(child);
 		_currentEditItem = _editRecords.indexFromItem(child);
 	}
@@ -1553,7 +1525,6 @@ void CulistGui::on_actionLoad_Project_triggered()
 					if ( !ASTMFactory::instance().profiles().contains(profile) )
 					{
 						ASTMFactory::instance().createProfile( profile );
-						ASTMFactory::instance().clearFields( profile ); //???
 					}
 					ASTMFactory::instance().setRecordVisible( profile, recname, recVisible );
 
@@ -1657,7 +1628,7 @@ void CulistGui::on_lvProfileRecords_clicked(const QModelIndex &index)
 		_currentRt = (RecordType)ri->data(Qt::UserRole+1).toInt();
 		if ( ri->checkState() == Qt::Checked )
 		{
-			TRecordInfo recInfo = ASTMFactory::instance().recordInfo( _projectData._profile,  _currentRt );
+			PRecordInfo recInfo = ASTMFactory::instance().recordInfo( _projectData._profile,  _currentRt );
 			int r=0;
 			foreach( PFieldInfo fi, recInfo.first )
 			{
@@ -1724,7 +1695,7 @@ for ( TTypeToName::iterator it = ASTMFactory::instance()._recordNames.begin(); i
 		QStandardItem *curRec = _profileFields.item( _profileFields.rowCount()-1 ) ;
 		curRec->setCheckable(true);
 		curRec->setData(it.key(), Qt::UserRole+1);
-		TRecordInfo recInfo = ASTMFactory::instance().recordInfo( _projectData._profile,  it.key() );		
+		PRecordInfo recInfo = ASTMFactory::instance().recordInfo( _projectData._profile,  it.key() );		
 		
 		int r=0;		
 		foreach( PFieldInfo fi, recInfo.first )
