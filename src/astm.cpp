@@ -94,159 +94,159 @@ void ASTMFactory::init()
 
 	_profilesInfo.clear();
 	_profilesInfo["ASTM_E1394_E97"]['H'] = PRecordInfo( new TRecordInfo );
-	_profilesInfo["ASTM_E1394_E97"]['H']->append( PFieldInfo(new FieldInfo(1,0,"7.1.1","type","Record Type ID") ) );
-	_profilesInfo["ASTM_E1394_E97"]['H']->append( PFieldInfo(new FieldInfo(2,0,"7.1.2","delimeter","Delimiter Definition") ) );
-	_profilesInfo["ASTM_E1394_E97"]['H']->append( PFieldInfo(new FieldInfo(3,0,"7.1.3","message_id","Message Control ID") ) );
-	_profilesInfo["ASTM_E1394_E97"]['H']->append( PFieldInfo(new FieldInfo(4,0,"7.1.4","password","Access Password") ) );
-	_profilesInfo["ASTM_E1394_E97"]['H']->append( PFieldInfo(new FieldInfo(5,0,"7.1.5","sender","Sender Nameor ID") ) );
-	_profilesInfo["ASTM_E1394_E97"]['H']->append( PFieldInfo(new FieldInfo(6,0,"7.1.6","address","Sender Street Address") ) );
-	_profilesInfo["ASTM_E1394_E97"]['H']->append( PFieldInfo(new FieldInfo(7,0,"7.1.7","reserved","Reserved Field") ) );
-	_profilesInfo["ASTM_E1394_E97"]['H']->append( PFieldInfo(new FieldInfo(8,0,"7.1.8","phone","Sender Telephone Number") ) );
-	_profilesInfo["ASTM_E1394_E97"]['H']->append( PFieldInfo(new FieldInfo(9,0,"7.1.9","caps","Characteristics of Sender") ) );
-	_profilesInfo["ASTM_E1394_E97"]['H']->append( PFieldInfo(new FieldInfo(10,0,"7.1.10","receiver","Receiver ID") ) );
-	_profilesInfo["ASTM_E1394_E97"]['H']->append( PFieldInfo(new FieldInfo(11,0,"7.1.11","comments","Comments") ) );
-	_profilesInfo["ASTM_E1394_E97"]['H']->append( PFieldInfo(new FieldInfo(12,0,"7.1.12","processing_id","Processing ID") ) );
-	_profilesInfo["ASTM_E1394_E97"]['H']->append( PFieldInfo(new FieldInfo(13,0,"7.1.13","version","Version Number") ) );
-	_profilesInfo["ASTM_E1394_E97"]['H']->append( PFieldInfo(new FieldInfo(14,0,"7.1.14","timestamp","Date/Timeof Message") ) );
+	_profilesInfo["ASTM_E1394_E97"]['H']->append( PFieldInfo(new FieldInfo(1,"7.1.1","type","Record Type ID") ) );
+	_profilesInfo["ASTM_E1394_E97"]['H']->append( PFieldInfo(new FieldInfo(2,"7.1.2","delimeter","Delimiter Definition") ) );
+	_profilesInfo["ASTM_E1394_E97"]['H']->append( PFieldInfo(new FieldInfo(3,"7.1.3","message_id","Message Control ID") ) );
+	_profilesInfo["ASTM_E1394_E97"]['H']->append( PFieldInfo(new FieldInfo(4,"7.1.4","password","Access Password") ) );
+	_profilesInfo["ASTM_E1394_E97"]['H']->append( PFieldInfo(new FieldInfo(5,"7.1.5","sender","Sender Nameor ID") ) );
+	_profilesInfo["ASTM_E1394_E97"]['H']->append( PFieldInfo(new FieldInfo(6,"7.1.6","address","Sender Street Address") ) );
+	_profilesInfo["ASTM_E1394_E97"]['H']->append( PFieldInfo(new FieldInfo(7,"7.1.7","reserved","Reserved Field") ) );
+	_profilesInfo["ASTM_E1394_E97"]['H']->append( PFieldInfo(new FieldInfo(8,"7.1.8","phone","Sender Telephone Number") ) );
+	_profilesInfo["ASTM_E1394_E97"]['H']->append( PFieldInfo(new FieldInfo(9,"7.1.9","caps","Characteristics of Sender") ) );
+	_profilesInfo["ASTM_E1394_E97"]['H']->append( PFieldInfo(new FieldInfo(10,"7.1.10","receiver","Receiver ID") ) );
+	_profilesInfo["ASTM_E1394_E97"]['H']->append( PFieldInfo(new FieldInfo(11,"7.1.11","comgments","Comments") ) );
+	_profilesInfo["ASTM_E1394_E97"]['H']->append( PFieldInfo(new FieldInfo(12,"7.1.12","processing_id","Processing ID") ) );
+	_profilesInfo["ASTM_E1394_E97"]['H']->append( PFieldInfo(new FieldInfo(13,"7.1.13","version","Version Number") ) );
+	_profilesInfo["ASTM_E1394_E97"]['H']->append( PFieldInfo(new FieldInfo(14,"7.1.14","timestamp","Date/Timeof Message") ) );
 
 	//Standard patient definition
 	_profilesInfo["ASTM_E1394_E97"]['P'] = PRecordInfo( new TRecordInfo );
-	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(1,0,"8.1.1","type","Record Type ID") ) );
-	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(2,0,"8.1.2","seq","Sequence Number") ) );
-	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(3,0,"8.1.3","practice_id","Practice Assigned Patient ID") ) );
-	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(4,0,"8.1.4","laboratory_id","Laboratory Assigned Patient ID") ) );
-	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(5,0,"8.1.5","id","Patient ID") ) );
-	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(6,0,"8.1.6","name","Patient Name") ) );
-	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(7,0,"8.1.7","maiden_name","Mother’s Maiden Name") ) );
-	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(8,0,"8.1.8","birthdate","Birthdate") ) );
-	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(9,0,"8.1.9","sex","Patient Sex") ) );
-	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(10,0,"8.1.10","race","Patient Race-, Ethnic Origin") ) );
-	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(11,0,"8.1.11","address","Patient Address") ) );
-	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(12,0,"8.1.12","reserved","Reserved Field") ) );
-	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(13,0,"8.1.13","phone","Patient Telephone Number") ) );
-	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(14,0,"8.1.14","physician_id","Attending Physician ID") ) );
-	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(15,0,"8.1.15","special_1","Special Field No. 1") ) );
-	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(16,0,"8.1.16","special_2","Special Field No. 2") ) );
-	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(17,0,"8.1.17","height","Patient Height") ) );
-	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(18,0,"8.1.18","weight","Patient Weight") ) );
-	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(19,0,"8.1.19","diagnosis","Patient’s Known Diagnosis") ) );
-	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(20,0,"8.1.20","medication","Patient’s Active Medication") ) );
-	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(21,0,"8.1.21","diet","Patient’s Diet") ) );
-	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(22,0,"8.1.22","practice_field_1","Practice Field No. 1") ) );
-	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(23,0,"8.1.23","practice_field_2","Practice Field No. 2") ) );
-	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(24,0,"8.1.24","admission_date","Admission/Discharge Dates") ) );
-	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(25,0,"8.1.25","admission_status","Admission Status") ) );
-	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(26,0,"8.1.26","location","Location") ) );
+	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(1,"8.1.1","type","Record Type ID") ) );
+	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(2,"8.1.2","seq","Sequence Number") ) );
+	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(3,"8.1.3","practice_id","Practice Assigned Patient ID") ) );
+	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(4,"8.1.4","laboratory_id","Laboratory Assigned Patient ID") ) );
+	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(5,"8.1.5","id","Patient ID") ) );
+	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(6,"8.1.6","name","Patient Name") ) );
+	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(7,"8.1.7","maiden_name","Mother’s Maiden Name") ) );
+	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(8,"8.1.8","birthdate","Birthdate") ) );
+	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(9,"8.1.9","sex","Patient Sex") ) );
+	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(10,"8.1.10","race","Patient Race-, Ethnic Origin") ) );
+	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(11,"8.1.11","address","Patient Address") ) );
+	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(12,"8.1.12","reserved","Reserved Field") ) );
+	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(13,"8.1.13","phone","Patient Telephone Number") ) );
+	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(14,"8.1.14","physician_id","Attending Physician ID") ) );
+	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(15,"8.1.15","special_1","Special Field No. 1") ) );
+	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(16,"8.1.16","special_2","Special Field No. 2") ) );
+	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(17,"8.1.17","height","Patient Height") ) );
+	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(18,"8.1.18","weight","Patient Weight") ) );
+	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(19,"8.1.19","diagnosis","Patient’s Known Diagnosis") ) );
+	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(20,"8.1.20","medication","Patient’s Active Medication") ) );
+	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(21,"8.1.21","diet","Patient’s Diet") ) );
+	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(22,"8.1.22","practice_field_1","Practice Field No. 1") ) );
+	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(23,"8.1.23","practice_field_2","Practice Field No. 2") ) );
+	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(24,"8.1.24","admission_date","Admission/Discharge Dates") ) );
+	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(25,"8.1.25","admission_status","Admission Status") ) );
+	_profilesInfo["ASTM_E1394_E97"]['P']->append( PFieldInfo(new FieldInfo(26,"8.1.26","location","Location") ) );
 
 	//Standard order definition
 	_profilesInfo["ASTM_E1394_E97"]['O'] = PRecordInfo( new TRecordInfo );
-	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(1,0,"9.4.1","type","Record Type ID") ) );
-	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(2,0,"9.4.2","seq","Sequence Number") ) );
-	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(3,0,"9.4.3","sample_id","Specimen ID") ) );
-	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(4,0,"9.4.4","instrument","Instrument Specimen ID") ) );
-	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(5,0,"9.4.5","test","Universal Test ID") ) );
-	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(6,0,"9.4.6","priority","Priority") ) );
-	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(7,0,"9.4.7","created_at","Requested/Ordered Date/Time") ) );
-	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(8,0,"9.4.8","sampled_at","Specimen Collection Date/Time") ) );
-	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(9,0,"9.4.9","collected_at","Collection End Time") ) );
-	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(10,0,"9.4.10","volume","Collection Volume") ) );
-	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(11,0,"9.4.11","collector","Collector ID") ) );
-	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(12,0,"9.4.12","action_code","Action Code") ) );
-	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(13,0,"9.4.13","danger_code","Danger Code") ) );
-	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(14,0,"9.4.14","clinical_info","Relevant Information") ) );
-	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(15,0,"9.4.15","delivered_at","Date/Time Specimen Received") ) );
-	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(16,0,"9.4.16","biomaterial","Specimen Descriptor") ) );
-	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(17,0,"9.4.17","physician","Ordering Physician") ) );
-	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(18,0,"9.4.18","physician_phone","Physician’s Telephone Number") ) );
-	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(19,0,"9.4.19","user_field_1","User Field No. 1") ) );
-	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(20,0,"9.4.20","user_field_2","User Field No. 2") ) );
-	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(21,0,"9.4.21","laboratory_field_1","Laboratory Field No. 1") ) );
-	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(22,0,"9.4.22","laboratory_field_2","Laboratory Field No. 2") ) );
-	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(23,0,"9.4.23","modified_at","Date/Time Reported") ) );
-	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(24,0,"9.4.24","instrument_charge","Instrument Charge") ) );
-	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(25,0,"9.4.25","instrument_section","Instrument Section ID") ) );
-	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(26,0,"9.4.26","report_type","Report Type") ) );
+	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(1,"9.4.1","type","Record Type ID") ) );
+	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(2,"9.4.2","seq","Sequence Number") ) );
+	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(3,"9.4.3","sample_id","Specimen ID") ) );
+	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(4,"9.4.4","instrument","Instrument Specimen ID") ) );
+	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(5,"9.4.5","test","Universal Test ID") ) );
+	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(6,"9.4.6","priority","Priority") ) );
+	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(7,"9.4.7","created_at","Requested/Ordered Date/Time") ) );
+	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(8,"9.4.8","sampled_at","Specimen Collection Date/Time") ) );
+	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(9,"9.4.9","collected_at","Collection End Time") ) );
+	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(10,"9.4.10","volume","Collection Volume") ) );
+	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(11,"9.4.11","collector","Collector ID") ) );
+	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(12,"9.4.12","action_code","Action Code") ) );
+	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(13,"9.4.13","danger_code","Danger Code") ) );
+	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(14,"9.4.14","clinical_info","Relevant Information") ) );
+	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(15,"9.4.15","delivered_at","Date/Time Specimen Received") ) );
+	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(16,"9.4.16","biomaterial","Specimen Descriptor") ) );
+	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(17,"9.4.17","physician","Ordering Physician") ) );
+	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(18,"9.4.18","physician_phone","Physician’s Telephone Number") ) );
+	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(19,"9.4.19","user_field_1","User Field No. 1") ) );
+	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(20,"9.4.20","user_field_2","User Field No. 2") ) );
+	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(21,"9.4.21","laboratory_field_1","Laboratory Field No. 1") ) );
+	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(22,"9.4.22","laboratory_field_2","Laboratory Field No. 2") ) );
+	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(23,"9.4.23","modified_at","Date/Time Reported") ) );
+	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(24,"9.4.24","instrument_charge","Instrument Charge") ) );
+	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(25,"9.4.25","instrument_section","Instrument Section ID") ) );
+	_profilesInfo["ASTM_E1394_E97"]['O']->append( PFieldInfo(new FieldInfo(26,"9.4.26","report_type","Report Type") ) );
 
 	//Standard result definition
 	_profilesInfo["ASTM_E1394_E97"]['R'] = PRecordInfo( new TRecordInfo );
-	_profilesInfo["ASTM_E1394_E97"]['R']->append( PFieldInfo(new FieldInfo(1,0,"10.1.1","type","Record Type ID") ) );
-	_profilesInfo["ASTM_E1394_E97"]['R']->append( PFieldInfo(new FieldInfo(2,0,"10.1.2","seq","Sequence Number") ) );
-	_profilesInfo["ASTM_E1394_E97"]['R']->append( PFieldInfo(new FieldInfo(3,0,"10.1.3","test","Universal Test ID") ) );
-	_profilesInfo["ASTM_E1394_E97"]['R']->append( PFieldInfo(new FieldInfo(4,0,"10.1.4","value","Data or Measurement Value") ) );
-	_profilesInfo["ASTM_E1394_E97"]['R']->append( PFieldInfo(new FieldInfo(5,0,"10.1.5","units","Units") ) );
-	_profilesInfo["ASTM_E1394_E97"]['R']->append( PFieldInfo(new FieldInfo(6,0,"10.1.6","references","Reference Ranges") ) );
-	_profilesInfo["ASTM_E1394_E97"]['R']->append( PFieldInfo(new FieldInfo(7,0,"10.1.7","abnormal_flag","Result Abnormal Flags") ) );
-	_profilesInfo["ASTM_E1394_E97"]['R']->append( PFieldInfo(new FieldInfo(8,0,"10.1.8","abnormality_nature","Nature of Abnormal Testing") ) );
-	_profilesInfo["ASTM_E1394_E97"]['R']->append( PFieldInfo(new FieldInfo(9,0,"10.1.9","status","Results Status") ) );
-	_profilesInfo["ASTM_E1394_E97"]['R']->append( PFieldInfo(new FieldInfo(10,0,"10.1.10","norms_changed_at","Date of Changein Instrument") ) );
-	_profilesInfo["ASTM_E1394_E97"]['R']->append( PFieldInfo(new FieldInfo(11,0,"10.1.11","operator","Operator Identification") ) );
-	_profilesInfo["ASTM_E1394_E97"]['R']->append( PFieldInfo(new FieldInfo(12,0,"10.1.12","started_at","Date/Time Test Started") ) );
-	_profilesInfo["ASTM_E1394_E97"]['R']->append( PFieldInfo(new FieldInfo(13,0,"10.1.13","completed_at","Date/Time Test Complete") ) );
-	_profilesInfo["ASTM_E1394_E97"]['R']->append( PFieldInfo(new FieldInfo(14,0,"10.1.14","instrument","Instrument Identification") ) );
+	_profilesInfo["ASTM_E1394_E97"]['R']->append( PFieldInfo(new FieldInfo(1,"10.1.1","type","Record Type ID") ) );
+	_profilesInfo["ASTM_E1394_E97"]['R']->append( PFieldInfo(new FieldInfo(2,"10.1.2","seq","Sequence Number") ) );
+	_profilesInfo["ASTM_E1394_E97"]['R']->append( PFieldInfo(new FieldInfo(3,"10.1.3","test","Universal Test ID") ) );
+	_profilesInfo["ASTM_E1394_E97"]['R']->append( PFieldInfo(new FieldInfo(4,"10.1.4","value","Data or Measurement Value") ) );
+	_profilesInfo["ASTM_E1394_E97"]['R']->append( PFieldInfo(new FieldInfo(5,"10.1.5","units","Units") ) );
+	_profilesInfo["ASTM_E1394_E97"]['R']->append( PFieldInfo(new FieldInfo(6,"10.1.6","references","Reference Ranges") ) );
+	_profilesInfo["ASTM_E1394_E97"]['R']->append( PFieldInfo(new FieldInfo(7,"10.1.7","abnormal_flag","Result Abnormal Flags") ) );
+	_profilesInfo["ASTM_E1394_E97"]['R']->append( PFieldInfo(new FieldInfo(8,"10.1.8","abnormality_nature","Nature of Abnormal Testing") ) );
+	_profilesInfo["ASTM_E1394_E97"]['R']->append( PFieldInfo(new FieldInfo(9,"10.1.9","status","Results Status") ) );
+	_profilesInfo["ASTM_E1394_E97"]['R']->append( PFieldInfo(new FieldInfo(10,"10.1.10","norms_changed_at","Date of Changein Instrument") ) );
+	_profilesInfo["ASTM_E1394_E97"]['R']->append( PFieldInfo(new FieldInfo(11,"10.1.11","operator","Operator Identification") ) );
+	_profilesInfo["ASTM_E1394_E97"]['R']->append( PFieldInfo(new FieldInfo(12,"10.1.12","started_at","Date/Time Test Started") ) );
+	_profilesInfo["ASTM_E1394_E97"]['R']->append( PFieldInfo(new FieldInfo(13,"10.1.13","completed_at","Date/Time Test Complete") ) );
+	_profilesInfo["ASTM_E1394_E97"]['R']->append( PFieldInfo(new FieldInfo(14,"10.1.14","instrument","Instrument Identification") ) );
 
 	//Standard comment definition
 	_profilesInfo["ASTM_E1394_E97"]['C'] = PRecordInfo( new TRecordInfo );
-	_profilesInfo["ASTM_E1394_E97"]['C']->append( PFieldInfo(new FieldInfo(1,0,"11.1.1","type","Record Type ID") ) );
-	_profilesInfo["ASTM_E1394_E97"]['C']->append( PFieldInfo(new FieldInfo(2,0,"11.1.2","seq","Sequence Number") ) );
-	_profilesInfo["ASTM_E1394_E97"]['C']->append( PFieldInfo(new FieldInfo(3,0,"11.1.3","source","Comment Source") ) );
-	_profilesInfo["ASTM_E1394_E97"]['C']->append( PFieldInfo(new FieldInfo(4,0,"11.1.4","data","Comment Text") ) );
-	_profilesInfo["ASTM_E1394_E97"]['C']->append( PFieldInfo(new FieldInfo(5,0,"11.1.5","ctype","Comment Type") ) );
+	_profilesInfo["ASTM_E1394_E97"]['C']->append( PFieldInfo(new FieldInfo(1,"11.1.1","type","Record Type ID") ) );
+	_profilesInfo["ASTM_E1394_E97"]['C']->append( PFieldInfo(new FieldInfo(2,"11.1.2","seq","Sequence Number") ) );
+	_profilesInfo["ASTM_E1394_E97"]['C']->append( PFieldInfo(new FieldInfo(3,"11.1.3","source","Comment Source") ) );
+	_profilesInfo["ASTM_E1394_E97"]['C']->append( PFieldInfo(new FieldInfo(4,"11.1.4","data","Comment Text") ) );
+	_profilesInfo["ASTM_E1394_E97"]['C']->append( PFieldInfo(new FieldInfo(5,"11.1.5","ctype","Comment Type") ) );
 
 	//Standard request definition
 	_profilesInfo["ASTM_E1394_E97"]['Q'] = PRecordInfo( new TRecordInfo );
-	_profilesInfo["ASTM_E1394_E97"]['Q']->append( PFieldInfo(new FieldInfo(1,0,"12.1.1","type","Record Type ID") ) );
-	_profilesInfo["ASTM_E1394_E97"]['Q']->append( PFieldInfo(new FieldInfo(2,0,"12.1.2","seq","Sequence Number") ) );
-	_profilesInfo["ASTM_E1394_E97"]['Q']->append( PFieldInfo(new FieldInfo(3,0,"12.1.3","srangeid","Starting Range ID Number") ) );
-	_profilesInfo["ASTM_E1394_E97"]['Q']->append( PFieldInfo(new FieldInfo(4,0,"12.1.4","erangeid","Ending Range ID Number") ) );
-	_profilesInfo["ASTM_E1394_E97"]['Q']->append( PFieldInfo(new FieldInfo(5,0,"12.1.5","utestid","Universal Test ID") ) );
-	_profilesInfo["ASTM_E1394_E97"]['Q']->append( PFieldInfo(new FieldInfo(5,0,"12.1.6","noreqtmlim","Nature of Request Time Limits") ) );
-	_profilesInfo["ASTM_E1394_E97"]['Q']->append( PFieldInfo(new FieldInfo(5,0,"12.1.7","begreqresdt","Beginning Request Results Date and Time") ) );
-	_profilesInfo["ASTM_E1394_E97"]['Q']->append( PFieldInfo(new FieldInfo(5,0,"12.1.8","endreqresdt","Ending Request Results Date and Time") ) );
-	_profilesInfo["ASTM_E1394_E97"]['Q']->append( PFieldInfo(new FieldInfo(5,0,"12.1.9","reqphysname","Requesting Physician Name") ) );
-	_profilesInfo["ASTM_E1394_E97"]['Q']->append( PFieldInfo(new FieldInfo(5,0,"12.1.10","reqphystel","Requesting Physician Telephone Number") ) );
-	_profilesInfo["ASTM_E1394_E97"]['Q']->append( PFieldInfo(new FieldInfo(5,0,"12.1.11","userfld1","User Field No. 1") ) );
-	_profilesInfo["ASTM_E1394_E97"]['Q']->append( PFieldInfo(new FieldInfo(5,0,"12.1.12","userfld2","User Field No. 2") ) );
-	_profilesInfo["ASTM_E1394_E97"]['Q']->append( PFieldInfo(new FieldInfo(5,0,"12.1.13","utestid","Request Information Status Codes","","/[CPFXISMRANOD]/") ) );
+	_profilesInfo["ASTM_E1394_E97"]['Q']->append( PFieldInfo(new FieldInfo(1,"12.1.1","type","Record Type ID") ) );
+	_profilesInfo["ASTM_E1394_E97"]['Q']->append( PFieldInfo(new FieldInfo(2,"12.1.2","seq","Sequence Number") ) );
+	_profilesInfo["ASTM_E1394_E97"]['Q']->append( PFieldInfo(new FieldInfo(3,"12.1.3","srangeid","Starting Range ID Number") ) );
+	_profilesInfo["ASTM_E1394_E97"]['Q']->append( PFieldInfo(new FieldInfo(4,"12.1.4","erangeid","Ending Range ID Number") ) );
+	_profilesInfo["ASTM_E1394_E97"]['Q']->append( PFieldInfo(new FieldInfo(5,"12.1.5","utestid","Universal Test ID") ) );
+	_profilesInfo["ASTM_E1394_E97"]['Q']->append( PFieldInfo(new FieldInfo(6,"12.1.6","noreqtmlim","Nature of Request Time Limits") ) );
+	_profilesInfo["ASTM_E1394_E97"]['Q']->append( PFieldInfo(new FieldInfo(7,"12.1.7","begreqresdt","Beginning Request Results Date and Time") ) );
+	_profilesInfo["ASTM_E1394_E97"]['Q']->append( PFieldInfo(new FieldInfo(8,"12.1.8","endreqresdt","Ending Request Results Date and Time") ) );
+	_profilesInfo["ASTM_E1394_E97"]['Q']->append( PFieldInfo(new FieldInfo(9,"12.1.9","reqphysname","Requesting Physician Name") ) );
+	_profilesInfo["ASTM_E1394_E97"]['Q']->append( PFieldInfo(new FieldInfo(10,"12.1.10","reqphystel","Requesting Physician Telephone Number") ) );
+	_profilesInfo["ASTM_E1394_E97"]['Q']->append( PFieldInfo(new FieldInfo(11,"12.1.11","userfld1","User Field No. 1") ) );
+	_profilesInfo["ASTM_E1394_E97"]['Q']->append( PFieldInfo(new FieldInfo(12,"12.1.12","userfld2","User Field No. 2") ) );
+	_profilesInfo["ASTM_E1394_E97"]['Q']->append( PFieldInfo(new FieldInfo(13,"12.1.13","utestid","Request Information Status Codes","","/[CPFXISMRANOD]/") ) );
 
 	//Standard termination definition
 	_profilesInfo["ASTM_E1394_E97"]['L'] = PRecordInfo( new TRecordInfo );
-	_profilesInfo["ASTM_E1394_E97"]['L']->append( PFieldInfo(new FieldInfo(1,0,"13.1.1","type","Record Type ID") ) );
-	_profilesInfo["ASTM_E1394_E97"]['L']->append( PFieldInfo(new FieldInfo(2,0,"13.1.2","seq","Sequence Number") ) );
-	_profilesInfo["ASTM_E1394_E97"]['L']->append( PFieldInfo(new FieldInfo(3,0,"13.1.3","code","Termination Code") ) );
+	_profilesInfo["ASTM_E1394_E97"]['L']->append( PFieldInfo(new FieldInfo(1,"13.1.1","type","Record Type ID") ) );
+	_profilesInfo["ASTM_E1394_E97"]['L']->append( PFieldInfo(new FieldInfo(2,"13.1.2","seq","Sequence Number") ) );
+	_profilesInfo["ASTM_E1394_E97"]['L']->append( PFieldInfo(new FieldInfo(3,"13.1.3","code","Termination Code") ) );
 
 	//Standard manufacturer definition
 	_profilesInfo["ASTM_E1394_E97"]['M'] = PRecordInfo( new TRecordInfo );
-	_profilesInfo["ASTM_E1394_E97"]['M']->append( PFieldInfo(new FieldInfo(1,0,"15.1.1","type","Record Type ID") ) );
-	_profilesInfo["ASTM_E1394_E97"]['M']->append( PFieldInfo(new FieldInfo(2,0,"15.1.2","seq","Sequence Number") ) );
-	_profilesInfo["ASTM_E1394_E97"]['M']->append( PFieldInfo(new FieldInfo(2,0,"15.0.0","mf1","Manufacturer Field 1") ) );
-	_profilesInfo["ASTM_E1394_E97"]['M']->append( PFieldInfo(new FieldInfo(2,0,"15.0.0","mf2","Manufacturer Field 2") ) );
-	_profilesInfo["ASTM_E1394_E97"]['M']->append( PFieldInfo(new FieldInfo(2,0,"15.0.0","mf3","Manufacturer Field 3") ) );
-	_profilesInfo["ASTM_E1394_E97"]['M']->append( PFieldInfo(new FieldInfo(2,0,"15.0.0","mf4","Manufacturer Field 4") ) );
-	_profilesInfo["ASTM_E1394_E97"]['M']->append( PFieldInfo(new FieldInfo(2,0,"15.0.0","mf5","Manufacturer Field 5") ) );
+	_profilesInfo["ASTM_E1394_E97"]['M']->append( PFieldInfo(new FieldInfo(1,"15.1.1","type","Record Type ID") ) );
+	_profilesInfo["ASTM_E1394_E97"]['M']->append( PFieldInfo(new FieldInfo(2,"15.1.2","seq","Sequence Number") ) );
+	_profilesInfo["ASTM_E1394_E97"]['M']->append( PFieldInfo(new FieldInfo(3,"15.0.0","mf1","Manufacturer Field 1") ) );
+	_profilesInfo["ASTM_E1394_E97"]['M']->append( PFieldInfo(new FieldInfo(4,"15.0.0","mf2","Manufacturer Field 2") ) );
+	_profilesInfo["ASTM_E1394_E97"]['M']->append( PFieldInfo(new FieldInfo(5,"15.0.0","mf3","Manufacturer Field 3") ) );
+	_profilesInfo["ASTM_E1394_E97"]['M']->append( PFieldInfo(new FieldInfo(6,"15.0.0","mf4","Manufacturer Field 4") ) );
+	_profilesInfo["ASTM_E1394_E97"]['M']->append( PFieldInfo(new FieldInfo(7,"15.0.0","mf5","Manufacturer Field 5") ) );
 
 	//Standard scientific definition
 	_profilesInfo["ASTM_E1394_E97"]['S'] = PRecordInfo( new TRecordInfo );
-	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(1,0,"14.1.1","type","Record Type ID") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(2,0,"14.1.2","seq","Sequence Number") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(3,0,"14.1.3","anmeth","Analytical Method") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(4,0,"14.1.4","instr","Instrumentation") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(5,0,"14.1.5","reagents","Reagents") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(6,0,"14.1.6","unitofmeas","Units of Measure") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(7,0,"14.1.7","qc","Quality Control") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(8,0,"14.1.8","spcmdescr","Specimen Descriptor") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(9,0,"14.1.9","resrvd","Reserved Field") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(10,0,"14.1.10","container","Container") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(11,0,"14.1.11","spcmid","Specimen ID") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(12,0,"14.1.12","analyte","Analyte") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(13,0,"14.1.13","result","Result") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(14,0,"14.1.14","resunts","Result Units") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(15,0,"14.1.15","collctdt","Collection Date and Time") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(16,0,"14.1.16","resdt","Result Date and Time") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(17,0,"14.1.17","anlprocstp","Analytical Preprocessing Steps") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(18,0,"14.1.18","patdiagn","Patient Diagnosis") ) ); //TODO validate as IDC-9-CM
-	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(19,0,"14.1.19","patbd","Patient Birthdate") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(20,0,"14.1.20","patsex","Patient Sex") ) );
-	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(21,0,"14.1.21","patrace","Patient Race") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(1,"14.1.1","type","Record Type ID") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(2,"14.1.2","seq","Sequence Number") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(3,"14.1.3","anmeth","Analytical Method") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(4,"14.1.4","instr","Instrumentation") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(5,"14.1.5","reagents","Reagents") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(6,"14.1.6","unitofmeas","Units of Measure") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(7,"14.1.7","qc","Quality Control") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(8,"14.1.8","spcmdescr","Specimen Descriptor") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(9,"14.1.9","resrvd","Reserved Field") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(10,"14.1.10","container","Container") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(11,"14.1.11","spcmid","Specimen ID") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(12,"14.1.12","analyte","Analyte") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(13,"14.1.13","result","Result") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(14,"14.1.14","resunts","Result Units") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(15,"14.1.15","collctdt","Collection Date and Time") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(16,"14.1.16","resdt","Result Date and Time") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(17,"14.1.17","anlprocstp","Analytical Preprocessing Steps") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(18,"14.1.18","patdiagn","Patient Diagnosis") ) ); //TODO validate as IDC-9-CM
+	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(19,"14.1.19","patbd","Patient Birthdate") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(20,"14.1.20","patsex","Patient Sex") ) );
+	_profilesInfo["ASTM_E1394_E97"]['S']->append( PFieldInfo(new FieldInfo(21,"14.1.21","patrace","Patient Race") ) );
 
 }
 
@@ -256,8 +256,8 @@ QString ASTMFactory::userName( const QString & profile, char rt, int fidx )
 	TRecordsInfo::ConstIterator riit;
 	if ( (prit = _profilesInfo.find(profile)) != _profilesInfo.end()  )
 		if( (riit = prit->find( rt ) ) != prit.value().end()  )
-			if ( riit.value()->size() > fidx && fidx>0 )
-				return riit.value()->at(fidx)->_userName;
+			if ( riit.value()->size() > fidx-1 && fidx>0 )
+				return riit.value()->at(fidx-1)->_userName;
 
 	return QString::null;
 }
@@ -269,12 +269,12 @@ PFieldInfo ASTMFactory::fieldInfo( const QString & profile, char rt, int fidx )
 	TRecordsInfo::Iterator riit;
 	if ( (prit = _profilesInfo.find(profile)) != _profilesInfo.end()  )
 		if( (riit = prit->find( rt ) ) != prit.value().end()  )
-			if ( riit.value()->size() > fidx && fidx>=0 )
+			if ( riit.value()->size() > fidx-1 && fidx>0 )
 			{
-				return riit.value()->at(fidx);
+				return riit.value()->at(fidx-1);
 			}
 	
-	return result;
+	return result; //err
 }
 
 
@@ -287,13 +287,13 @@ bool ASTMFactory::setFieldVisible( const QString & profile, char rt, int fidx, b
 	TRecordsInfo::Iterator riit;
 	if ( (prit = _profilesInfo.find(profile)) != _profilesInfo.end()  )
 		if( (riit = prit->find( rt ) ) != prit.value().end()  )
-			if ( riit.value()->size() < fidx || fidx<0 )
+			if ( riit.value()->size() <= fidx-1 || fidx<=0 )
 			{
 				return false;
 			}
 			else
 			{
-				riit.value()->at(fidx)->_stdVisible = visible;
+				riit.value()->at(fidx-1)->_stdVisible = visible;
 				return true;
 			}
 			
@@ -308,9 +308,9 @@ bool ASTMFactory::setFieldStdValue( const QString & profile, char rt, int fidx, 
 	TRecordsInfo::Iterator riit;
 	if ( (prit = _profilesInfo.find(profile)) != _profilesInfo.end()  )
 		if( (riit = prit->find( rt ) ) != prit.value().end()  )
-			if ( riit.value()->size() > fidx && fidx>0 )
+			if ( riit.value()->size() > fidx-1 && fidx>0 )
 			{
-				riit.value()->at(fidx)->_stdValue = value.toString();
+				riit.value()->at(fidx-1)->_stdValue = value.toString();
 				return true;
 			}
 			
@@ -325,9 +325,9 @@ bool ASTMFactory::setFieldValidator( const QString & profile, char rt, int fidx,
 	TRecordsInfo::Iterator riit;
 	if ( (prit = _profilesInfo.find(profile)) != _profilesInfo.end()  )
 		if( (riit = prit->find( rt ) ) != prit.value().end()  )
-			if ( riit.value()->size() > fidx && fidx>0 )
+			if ( riit.value()->size() > fidx-1 && fidx>0 )
 			{
-				riit.value()->at(fidx)->_validation = value;
+				riit.value()->at(fidx-1)->_validation = value;
 				return true;
 			}
 			

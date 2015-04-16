@@ -498,23 +498,23 @@ void CulistGui::clearRecordEditView()
 
 void CulistGui::processCurrentRowChanged ( const QModelIndex & current, const QModelIndex & previous )
 {
-	processRecordSelected( current );
+	//processRecordSelected( current );
 }
 
 void CulistGui::on_trvEditRecords_activated( const QModelIndex & index )
 {
-	processRecordSelected( index );
+	processRecordSelected( index, ui->cbCurrentProfile->currentText() );
 }
 
 void CulistGui::on_trvEditRecords_entered( const QModelIndex & index )
 {
-	processRecordSelected( index );
+	processRecordSelected( index, ui->cbCurrentProfile->currentText() );
 }
 
 
 void CulistGui::on_trvEditRecords_clicked( const QModelIndex & index )
 {
-	processRecordSelected( index );
+	processRecordSelected( index, ui->cbCurrentProfile->currentText() );
 }
 
 void CulistGui::processRecordSelected( const QModelIndex & index, const QString & profile )
@@ -542,11 +542,13 @@ void CulistGui::processRecordSelected( const QModelIndex & index, const QString 
 		//foreach( QString fld, recinfo->->fields() )
 		for( QList<PFieldInfo>::const_iterator it = recInfo->constBegin(), end =  recInfo->constEnd(); it!=end; ++it  )
 		{						
+			if (  (*it)->_stdVisible )
+			{
 			QHBoxLayout *hboxLayout = new QHBoxLayout;
 			_recordEditViews.append( hboxLayout );
 			//QSpacerItem *spacerItem = new QSpacerItem(;
 			ui->ltRecordFlds->addLayout( hboxLayout);
-			QLabel * fn= new QLabel(ASTMFactory::instance().userName("ASTM_E1394_E97",rt,(*it)->_recIdx) );
+				QLabel * fn= new QLabel(ASTMFactory::instance().userName(profile,rt,(*it)->_recIdx) );
 			fn->setMinimumWidth(150);
 			hboxLayout->addWidget( fn );
 			QLineEdit * fv = new QLineEdit;
@@ -557,6 +559,7 @@ void CulistGui::processRecordSelected( const QModelIndex & index, const QString 
 			fv->show();
 			_recordEditViews.append( fn );
 			_recordEditViews.append( fv );
+		}
 		}
 
 		QMap<QString,QVariant> vals = cur->data(Qt::UserRole+2).toMap();		
@@ -577,30 +580,7 @@ void CulistGui::processRecordSelected( const QModelIndex & index, const QString 
 		}
 	}
 }
-/*
-QMap<QString, QVariant> EditRecord::values()
-{
-	QMap<QString, QVariant> vals;
-	if ( !_rec )
-	{
-		return vals;
-	}
 	
-	foreach( QString fld, _rec->fields() )
-	{
-		if ( fld == "type" || fld == "seq" )
-			continue;
-
-		QLineEdit * valEdit = this->findChild<QLineEdit*>( fld );
-		if (!valEdit)
-			break;
-		vals[fld] = valEdit->text();
-	}
-	
-	return vals;
-
-}
-*/
 void CulistGui::on_trvEditRecords_customContextMenuRequested(const QPoint &pos)
 {
 	_currentEditItem = ui->trvEditRecords->indexAt( pos );
@@ -1666,7 +1646,7 @@ void CulistGui::on_bSaveProfile_clicked()
 				recItem->checkState() == Qt::Checked
 				);
 			int fidx=1;
-			while( QStandardItem *fieldItem = recItem->child(fidx,0) )
+			while( QStandardItem *fieldItem = recItem->child(fidx-1,0) )
 			{
 				ASTMFactory::instance().setFieldVisible( 
 					_projectData._currentProfile, 

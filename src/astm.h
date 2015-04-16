@@ -357,7 +357,10 @@ public:
 	RecordInfo():_visible(true){}
 	bool _visible;
 	void append( PFieldInfo fi ){ _fldInfos.append(fi); }
-	int size()const{ return _fldInfos.size(); }
+	int size()const
+	{ 
+		return _fldInfos.size(); 
+	}
 	const PFieldInfo & at( int i ){ return _fldInfos.at(i); }
 	const QList<PFieldInfo>::const_iterator constBegin() const{ return _fldInfos.constBegin();}
 	const QList<PFieldInfo>::const_iterator constEnd() const{ return _fldInfos.constEnd();}
