@@ -181,6 +181,8 @@ private slots:
 
     void on_cbCurrentProfile_currentIndexChanged(const QString &arg1);
 
+    void on_bSendRaw_clicked();
+
 private:
 	void setCurrentProfile( QString );
 	void saveProject();

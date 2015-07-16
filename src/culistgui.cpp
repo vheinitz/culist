@@ -1739,3 +1739,21 @@ void CulistGui::on_cbCurrentProfile_currentIndexChanged(const QString &profile)
     on_bSaveProfile_clicked();
     setCurrentProfile( profile );
 }
+
+void CulistGui::on_bSendRaw_clicked()
+{
+	QByteArray data =  ui->tSendRaw->toPlainText().toAscii();
+	data.replace('\n','\r');
+    if(_tcpConnection)
+    {
+        traceDataSent(data, "C-->");
+        _tcpConnection->write (data);
+    }
+    else if(_tcpServerConnection)
+    {
+        traceDataSent(data, "S-->");
+        _tcpServerConnection->write ( data );
+    }
+    else
+        ;//todo error
+}
