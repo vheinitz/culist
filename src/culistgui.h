@@ -183,6 +183,8 @@ private slots:
 
     void on_bSendRaw_clicked();
 
+	void sendRawBuffer();
+
 private:
 	void setCurrentProfile( QString );
 	void saveProject();
@@ -226,6 +228,7 @@ private:
 	QString _winTitleBase;
 	QStandardItemModel _profileFields;
 	//QStandardItemModel _profileRecords;
+	QStringList _sendRawBuffer;
 };
 
 #endif // LISTRAQGUI_H
