@@ -1742,8 +1742,37 @@ void CulistGui::on_cbCurrentProfile_currentIndexChanged(const QString &profile)
 
 void CulistGui::on_bSendRaw_clicked()
 {
-	QByteArray data =  ui->tSendRaw->toPlainText().toAscii();
-	data.replace('\n','\r');
+	_sendRawBuffer = ui->tSendRaw->toPlainText().split("\n");
+	sendRawBuffer();
+}
+
+void CulistGui::sendRawBuffer()
+{
+	if ( _sendRawBuffer.isEmpty() )
+		return;
+
+	QString sdata = _sendRawBuffer.takeFirst();
+
+	if(sdata.indexOf("sleep")==0)//sleep 1000 -- 1 sec pause
+	{
+		QTimer::singleShot( sdata.section(" ",1).toInt(), this, SLOT(sendRawBuffer()));
+		return;
+	}
+
+
+	sdata.replace("<CR>",QChar(ASTM_CR));
+	sdata.replace("<LF>",QChar(ASTM_LF));
+	sdata.replace("<ETB>",QChar(ASTM_ETB));
+	sdata.replace("<STX>",QChar(ASTM_STX));
+	sdata.replace("<ETX>",QChar(ASTM_ETX));
+	sdata.replace("<ENQ>",QChar(ASTM_ENQ));
+	sdata.replace("<EOT>",QChar(ASTM_EOT));
+	sdata.replace("<ACK>",QChar(ASTM_ACK));
+	sdata.replace("<NAK>",QChar(ASTM_NAK));
+
+	//<STX>1H|\^&|||Helmed_IFA|||||||P|LIS2-A2|20130417180439<CR><ETB>1C<CR><LF>
+	QByteArray data =  sdata.toLatin1();
+
     if(_tcpConnection)
     {
         traceDataSent(data, "C-->");
@@ -1755,5 +1784,7 @@ void CulistGui::on_bSendRaw_clicked()
         _tcpServerConnection->write ( data );
     }
     else
-        ;//todo error
+        _sendRawBuffer.clear();//todo error
+
+	QTimer::singleShot( 1000, this, SLOT(sendRawBuffer()));
 }
