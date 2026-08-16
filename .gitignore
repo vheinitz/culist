@@ -1,0 +1,30 @@
+# Build
+build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+*.o
+*.obj
+*.a
+*.so
+*.so.*
+*.dll
+*.exe
+Makefile
+
+# IDE
+.idea/
+.vscode/
+*.user
+*.suo
+*.sln.docstates
+
+# Qt
+moc_*.cpp
+ui_*.h
+qrc_*.cpp
+*.pro.user
+
+# OS
+.DS_Store
+Thumbs.db
