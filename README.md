@@ -1,83 +1,63 @@
-# Copyright 2013: Valentin Heinitz, www.heinitz-it.de
-# CULIST [coolest] Comprehensive, usable LIS tool
-# Author: Valentin Heinitz, 2015-04-16
-# License: MIT
+# culist — Comprehensive, Usable LIS Tool 🔬
 
-Description
-===========
-CULIST [coolest] helps to connect devices and systems to LIS (Labour Automation System).
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![C++](https://img.shields.io/badge/C%2B%2B-blue.svg)](#)
 
-Motivation
-==========
-As I had to connect a customer's device to an LIS I found out, there are no really usable tool
-for analysing and debugging ASTM E1394 (LIS01-A2, LIS2-A2) protocols. Some commercial tools, I've got for evaluation
-used to be either old, bad, vendor-specific, expensive or (mostly) all these together.
+**CULIST [coolest]** — a *C*omprehensive, *u*sable **LIS tool** for connecting
+devices and systems to a **Laboratory Information System (LIS)** over the
+**ASTM E1394 (LIS01-A2 / LIS2-A2)** protocol.
 
-Features
-========
--Client/server TCP connection mode
--Parsing of ASTM-trace files into a tree-like structure
--Displaying each field separately
--LIS01-A2 and LIS2-A2
+## Motivation
 
-Future goals
-============
--Serial connection
--HL7
--Monitoring Files/Directories for sending/receiving actions
+> *"As I had to connect a customer's device to an LIS I found out there are no
+> really usable tools for analysing and debugging ASTM E1394 (LIS01-A2, LIS2-A2)
+> protocols. Some commercial tools I got for evaluation were old, bad,
+> vendor-specific, expensive — or (mostly) all of these together."*
 
-TODOs
-=====
--Show current project in status or window-title
--Save project as new Project (started on scratch)
--Project should have a name (create simple New ProJect wizard)
--Load/save all project configs, server, etc.
--New view for displaying traces
--New view for editing profiles
--Select Project's profile in Settings.
--Impelement Serial connection
--Display current connection status
--Display local/server IP, Serial Port
--Implement connection-test (Enq-Ack-EOT)
--Help
--Assign accoustic signals to events (LOW)
--DB-connection
--Select LIS2-A2(single frame) / LIS01-A1
--Record Termination with <CR> or <CR><LF> possible
--Show session/message contents when clicked LIS01-A1/LIS2-A2
--Add comments in traces
--Implement configurable timing settings:
- -repeat time (15s)
- -repeat number (6)
- -record pause (0s)
- -message pause (20ms)
- -response pause (2s)
--Implement configurable settings:
- -use fixed delimeters
- -use received delimeters
--Implement configurable error simulation:
- -wrong CS
- -wrong framenr
- -wrong length (>240, no ETB)
- -Responses on ENQ
-  -ACK, NAK, ENQ, None x n-tme
- -Responses on Record
-  -ACK, NAK, None x n-tme
- -Incomplete record
-  -no STX, CR, ETX/ETB, CR, LF
--Store traces in internal DB for analysis
- -Export this DB
- -Create reports
--Export data as html
--Create profiles from traces (used messages, fields)
- -Warn user, when too less data for reliable statistics
--Sniff on Serial, Ethernet
+CULIST fills that gap for the developer sitting between an instrument and a LIS.
 
+## Features
 
+- **Client/server TCP connection mode** — act as either end of the line.
+- **Parsing ASTM trace files** into a tree-like structure.
+- **Display each field separately** — inspect every record/field of a message.
+- Supports **LIS01-A2** and **LIS2-A2** framing.
 
-CHANGELOG
-=========
-2013-0-02 
-	Load/store projects
-	Message editing/saving
-	Manufacturer and query records implemented
+## Roadmap / planned
+
+- Serial (RS-232) connection
+- HL7 support
+- Monitoring files/directories for send/receive actions
+- Connection test (ENQ–ACK–EOT), configurable timing & error simulation
+- DB connection
+
+See [`doc/readme.txt`](doc/readme.txt) for the full TODO list.
+
+## Project layout
+
+```
+src/astm.{h,cpp}       ASTM E1394 record model + control chars (ENQ/ACK/EOT/…)
+src/culistgui.{h,cpp}  main GUI
+src/persistence.{h,cpp}  project/state persistence
+CULIST.pro             qmake project
+```
+
+## Requirements
+
+- Qt (Gui), a C++ compiler
+
+## Build
+
+```bash
+qmake && make
+```
+
+## Related
+
+This is the most complete LIS tool in the family — see also
+[GoodnightAstm](../GoodnightAstm) (parser), [ASTMViewer](../ASTMViewer) (message
+tree viewer) and [cl2](../cl2) (reusable `lis/` module).
+
+## License
+
+[Apache License 2.0](LICENSE) © Valentin Heinitz
