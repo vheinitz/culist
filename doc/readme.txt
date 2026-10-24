@@ -1,11 +1,11 @@
 # Copyright 2013: Valentin Heinitz, www.heinitz-it.de
 # CULIST [coolest] Comprehensive, usable LIS tool
 # Author: Valentin Heinitz, 2013-04-26
-# License: Apache V2.0, http://www.apache.org/licenses/LICENSE-2.0
+# License: MIT, see LICENSE
 
 Description
 ===========
-CULIST [coolest] helps to connect devices and systems to LIS (Labour Automation System).
+CULIST [coolest] helps to connect devices and systems to LIS (Laboratory Information System).
 
 Motivation
 ==========

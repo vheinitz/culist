@@ -62,4 +62,4 @@ On Windows, `createvcprj.bat` generates a Visual Studio project and
 
 ## License
 
-[Apache License 2.0](LICENSE), (c) 2013 Valentin Heinitz
+[MIT](LICENSE), (c) 2013 Valentin Heinitz
